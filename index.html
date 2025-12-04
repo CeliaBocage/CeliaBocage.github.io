@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Célia Bocage – Accueil</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="site-wrapper">
+  <header>
+    <div class="logo">Célia Bocage</div>
+    <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="experiences.html">Expériences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="vie-associative.html">Vie associative</a></li>
+        <li><a href="passions.html">Passions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Barre de contact présente sur toutes les pages -->
+  <div class="contact-bar">
+    <span>Me contacter :</span>
+    <div class="contact-links">
+      <a href="mailto:ton.email@exemple.com">📧 Email</a>
+      <a href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">🔗 LinkedIn</a>
+      <a href="https://github.com/ton-github" target="_blank" rel="noopener">💻 GitHub</a>
+    </div>
+  </div>
+
+  <main>
+    <h1>Bienvenue 👋</h1>
+    <p class="tagline">
+      Passionnée de cybersécurité, je teste et analyse des systèmes à travers des projets,
+      du pentest et des CTF. Je recherche un stage en sécurité offensive, SOC ou analyse
+      de vulnérabilités (février – juillet 2026).
+    </p>
+
+    <div class="chips">
+      <span class="chip">Cybersécurité</span>
+      <span class="chip">Sécurité offensive</span>
+      <span class="chip">SOC</span>
+      <span class="chip">Analyse de vulnérabilités</span>
+      <span class="chip">Data & Machine Learning</span>
+    </div>
+
+    <h2>Découvrir mon profil</h2>
+    <p>Ce site complète mon CV et présente plus en détail mon parcours :</p>
+    <ul class="section-list">
+      <li><a href="formations.html">Formations</a> – EPITA, semestre à l’étranger, diplômes…</li>
+      <li><a href="experiences.html">Expériences professionnelles</a> – data science, hôtellerie, pharmacie…</li>
+      <li><a href="projets.html">Projets</a> – CTF & cybersécurité, jeux vidéo, OCR, recettes…</li>
+      <li><a href="vie-associative.html">Vie associative</a> – Staff’ Communication, La Cave, scoutisme…</li>
+      <li><a href="passions.html">Passions</a> – lecture, sport, culture, etc.</li>
+    </ul>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Célia Bocage
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
