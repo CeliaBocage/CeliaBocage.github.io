@@ -96,7 +96,7 @@ nav a:hover {
 main {
   flex: 1;
   padding: 2rem 1.5rem;
-  max-width: 1000px; /* Augmenter la largeur pour la vue CV */
+  max-width: 1000px; /* Taille optimale pour la vue CV */
   margin: 0 auto;
   background: #ffffff;
 }
@@ -127,18 +127,23 @@ main > h1 {
   gap: 2rem;
   margin-top: 1rem;
   align-items: flex-start;
+  /* CHANGEMENT 1: Inverser l'ordre pour mettre la sidebar à gauche */
+  flex-direction: row-reverse; 
 }
 
-/* Colonne principale (Gauche, Formations/Expériences) */
+/* Colonne principale (Droite, Formations/Expériences) */
 .cv-main-content {
   flex: 2; /* Prend environ 66% de l'espace */
   min-width: 0;
 }
 
-/* Colonne de droite (Sidebar, couleur de fond) */
+/* Colonne de gauche (Sidebar, couleur de fond) */
 .cv-sidebar {
   flex: 1; /* Prend environ 33% de l'espace */
-  background-color: #f2f6fb; /* Fond de couleur clair */
+  /* CHANGEMENT 2: Couleur de fond bleu foncé pour la sidebar */
+  background-color: #0b2845;
+  /* CHANGEMENT 3: Couleur du texte par défaut en blanc pour la sidebar */
+  color: #fff;
   padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
@@ -146,12 +151,12 @@ main > h1 {
 
 /* Style des titres de section (h2) */
 main h1 {
-  /* Laisser le h1 comme défini ci-dessus */
   font-size: 2rem;
   margin-bottom: 0.75rem;
 }
 
-.cv-section h2, .cv-main-content h2, .cv-sidebar h2 {
+.cv-section h2, .cv-main-content h2 {
+  /* H2 dans la colonne blanche */
   font-size: 1.2rem;
   color: #0b2845;
   text-transform: uppercase;
@@ -164,14 +169,17 @@ main h1 {
 .cv-main-content h2:first-of-type {
   margin-top: 0;
 }
+
 .cv-sidebar h2 {
+  /* H2 dans la colonne bleue */
   font-size: 1.1rem;
+  color: #fff; /* Texte blanc sur fond bleu */
+  border-bottom: 2px solid #fff; /* Ligne blanche */
   margin-top: 1.5rem;
 }
 .cv-sidebar h2:first-of-type {
   margin-top: 0;
 }
-
 
 /* Style de la section contact */
 .contact-block {
@@ -184,12 +192,12 @@ main h1 {
   margin-bottom: 0.4rem;
 }
 .contact-block li a {
-  color: inherit;
+  color: #fff; /* Liens en blanc dans la sidebar */
   text-decoration: none;
 }
 .contact-block .contact-icon {
   margin-right: 0.5rem;
-  color: #0b2845;
+  color: #fff; /* Icônes en blanc */
 }
 
 /* Style des éléments d'expérience/formation/projet */
@@ -225,12 +233,40 @@ main h1 {
 }
 .cv-sidebar .chips-list h4 {
   font-size: 0.9rem;
-  color: #0b2845;
+  color: #fff; /* Titre de compétence en blanc */
   margin-top: 0.5rem;
   margin-bottom: 0.4rem;
   font-weight: 500;
 }
-.cv-sidebar .chips .chip {
+/* IMPORTANT: les puces (li) de la sidebar sont en blanc grâce au .cv-sidebar { color: #fff } */
+
+
+/* Gestion des chips (attention aux couleurs sur le fond foncé) */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.cv-sidebar .chips {
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.chip {
+  font-size: 0.85rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid #0b2845;
+  color: #0b2845;
+  background: #f2f6fb;
+}
+
+/* Chips spécifiques à la sidebar (inverser les couleurs pour le fond foncé) */
+.cv-sidebar .chip {
+  border: 1px solid #fff; /* Bordure blanche */
+  color: #fff; /* Texte blanc */
+  background: transparent; /* Fond transparent pour plus de contraste */
   font-size: 0.8rem;
   padding: 0.2rem 0.6rem;
 }
@@ -244,51 +280,17 @@ main h1 {
   width: 100%;
   max-width: 120px;
   height: auto;
+  /* Changement de couleur de bordure pour le fond foncé */
+  border: 3px solid #fff; 
   border-radius: 50%;
-  border: 3px solid #0b2845;
   object-fit: cover;
 }
 
-/* Petits blocs d’info (modifiés pour ne pas impacter les chips de la sidebar) */
+/* Petits blocs d’info (tagline) */
 .tagline {
   font-style: italic;
   color: #444;
   margin-bottom: 1rem;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.chip {
-  font-size: 0.85rem;
-  border-radius: 999px;
-  padding: 0.25rem 0.7rem;
-  border: 1px solid #0b2845;
-  color: #0b2845;
-  background: #f2f6fb;
-}
-
-/* Listes de sections (non utilisées dans la structure CV, mais conservées) */
-.section-list {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.section-list li {
-  margin-bottom: 0.5rem;
-}
-
-.section-list a {
-  color: #0b2845;
-  text-decoration: none;
-}
-
-.section-list a:hover {
-  text-decoration: underline;
 }
 
 /* Footer */
@@ -310,7 +312,7 @@ footer {
     gap: 0;
   }
   .cv-sidebar {
-    order: -1; /* Mettre la sidebar en haut */
+    order: -1; /* Mettre la sidebar en haut (pour mobile) */
     margin-bottom: 1.5rem;
   }
 }
