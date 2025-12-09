@@ -216,3 +216,96 @@ footer {
     font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
 }
+
+/* --- Mise en page CV (2 colonnes) --- */
+
+/* Conteneur principal dans main */
+.cv-container {
+    display: flex;
+    gap: 2rem; /* Espace entre les colonnes */
+    align-items: flex-start; /* Aligner le haut des colonnes */
+}
+
+/* Colonne de droite (informations principales) */
+.cv-main-content {
+    flex: 2; /* Prend deux fois plus de place que la sidebar (environ 66%) */
+    min-width: 0;
+}
+
+/* Colonne de gauche (sidebar, couleur de fond sombre) */
+.cv-sidebar {
+    flex: 1; /* Prend une partie (environ 33%) */
+    background-color: #f2f6fb; /* Couleur de fond légèrement différente pour la sidebar */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Styles des sections de la sidebar */
+.cv-sidebar h2 {
+    font-size: 1.1rem;
+    color: #0b2845;
+    text-transform: uppercase;
+    border-bottom: 2px solid #0b2845;
+    padding-bottom: 0.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+.cv-sidebar h2:first-child {
+    margin-top: 0;
+}
+
+/* Styles pour les listes dans le CV */
+.cv-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+.cv-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* Style de la photo (ajuster la taille) */
+.cv-photo {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 50%; /* Pour un style plus moderne, ou 0 pour un carré */
+    border: 3px solid #0b2845;
+}
+
+/* Correction pour les h2 dans la main content */
+.cv-main-content h2 {
+    font-size: 1.5rem;
+    color: #0b2845;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.cv-main-content h2:first-of-type {
+    margin-top: 0;
+}
+/* Style pour les blocs d'expérience/formation dans la colonne principale */
+.cv-item {
+    margin-bottom: 1.5rem;
+}
+.cv-item h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+.cv-item .date-location {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+.cv-item ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+}
+.cv-item ul li {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
