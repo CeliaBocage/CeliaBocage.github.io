@@ -173,4 +173,46 @@ footer {
     padding-inline: 1rem;
   }
 }
+/* Style pour les cartes qui ne sont pas des liens (comme Compétences ou Langues) */
+.static-card {
+  cursor: default; /* Enlève le pointeur */
+  opacity: 1; /* S'assure qu'elles ne sont pas transparentes comme les liens hover */
+}
 
+/* Enlève l'effet de survol pour les cartes statiques */
+.cards-container .static-card:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+/* Ajustement des listes ul/li dans les cartes */
+.profile-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.profile-card ul li {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+}
+
+/* Style spécifique pour la liste de chips dans la carte Compétences */
+.chips-list {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.chips-list h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: #0b2845;
+}
+
+.chips.small .chip {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+}
