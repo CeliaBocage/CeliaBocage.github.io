@@ -190,12 +190,12 @@ main h1 {
   margin-bottom: 1.5rem;
 }
 .contact-block li {
-  color: #66c7f4;
+  color: #ffffff;
   font-size: 0.9rem;
   margin-bottom: 0.4rem;
 }
 .contact-block li a {
-  color: #66c7f4; /* Liens en bleu clair dans la sidebar */
+  color: #ffffff; /* Liens en bleu clair dans la sidebar */
   text-decoration: none;
 }
 .contact-block .contact-icon {
@@ -298,7 +298,7 @@ footer {
   text-align: center;
   font-size: 0.85rem;
   padding: 1rem;
-  color: #a5d0f3; /* Couleur de texte claire */
+  color: #ffffff; /* Couleur de texte claire */
   background: #002954; /* Couleur de fond foncée pour le footer */
   margin-top: auto; /* Permet au footer d'être poussé vers le bas dans le flex container (.site-wrapper) */
 }
