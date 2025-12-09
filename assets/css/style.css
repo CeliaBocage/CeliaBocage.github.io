@@ -254,13 +254,12 @@ main h1 {
 
 .chip {
   font-size: 0.85rem;
-  border-radius: 999px;
+  border-radius: 4px; /* Changé de 999px à 4px (ou 0 pour des coins vifs) */
   padding: 0.25rem 0.7rem;
   border: 1px solid #0b2845;
   color: #0b2845;
   background: #f2f6fb;
 }
-
 /* Chips spécifiques à la sidebar (inverser les couleurs pour le fond foncé) */
 .cv-sidebar .chip {
   border: 1px solid #fff; 
@@ -268,6 +267,7 @@ main h1 {
   background: transparent; 
   font-size: 0.8rem;
   padding: 0.2rem 0.6rem;
+  border-radius: 4px; /* Ajout de la même valeur de border-radius */
 }
 
 /* Style de la photo (si vous l'incluez) */
