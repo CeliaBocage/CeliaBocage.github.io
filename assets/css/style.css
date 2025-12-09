@@ -92,32 +92,164 @@ nav a:hover {
   border-bottom-style: solid;
 }
 
-/* Contenu principal */
+/* Contenu principal (Adapté pour le CV) */
 main {
   flex: 1;
   padding: 2rem 1.5rem;
-  max-width: 900px;
+  max-width: 1000px; /* Augmenter la largeur pour la vue CV */
   margin: 0 auto;
   background: #ffffff;
 }
 
+/* --- Styles spécifiques au CV (Réplique du document) --- */
+
+/* Titre principal pour le CV */
+main > h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  color: #0b2845;
+}
+
+/* Tagline / Statut */
+.tagline.cv-title-info {
+  font-size: 1.1rem;
+  font-style: normal;
+  color: #444;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #ddd;
+}
+
+/* --- Structure à deux colonnes --- */
+.cv-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  align-items: flex-start;
+}
+
+/* Colonne principale (Gauche, Formations/Expériences) */
+.cv-main-content {
+  flex: 2; /* Prend environ 66% de l'espace */
+  min-width: 0;
+}
+
+/* Colonne de droite (Sidebar, couleur de fond) */
+.cv-sidebar {
+  flex: 1; /* Prend environ 33% de l'espace */
+  background-color: #f2f6fb; /* Fond de couleur clair */
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style des titres de section (h2) */
 main h1 {
+  /* Laisser le h1 comme défini ci-dessus */
   font-size: 2rem;
   margin-bottom: 0.75rem;
 }
 
-main h2 {
-  font-size: 1.3rem;
+.cv-section h2, .cv-main-content h2, .cv-sidebar h2 {
+  font-size: 1.2rem;
+  color: #0b2845;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 2px solid #0b2845;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.cv-main-content h2:first-of-type {
+  margin-top: 0;
+}
+.cv-sidebar h2 {
+  font-size: 1.1rem;
   margin-top: 1.5rem;
+}
+.cv-sidebar h2:first-of-type {
+  margin-top: 0;
+}
+
+
+/* Style de la section contact */
+.contact-block {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+.contact-block li {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.contact-block li a {
+  color: inherit;
+  text-decoration: none;
+}
+.contact-block .contact-icon {
+  margin-right: 0.5rem;
+  color: #0b2845;
+}
+
+/* Style des éléments d'expérience/formation/projet */
+.cv-item {
+  margin-bottom: 1.5rem;
+}
+.cv-item h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.1rem;
+}
+.cv-item .item-details {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #666;
   margin-bottom: 0.5rem;
 }
-
-main p,
-main li {
-  font-size: 0.98rem;
+.cv-item ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.cv-item ul li {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Petits blocs d’info */
+/* Styles pour les compétences (chips dans le sidebar) */
+.cv-sidebar .chips-list {
+  margin-bottom: 1.2rem;
+}
+.cv-sidebar .chips-list h4 {
+  font-size: 0.9rem;
+  color: #0b2845;
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.cv-sidebar .chips .chip {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+}
+
+/* Style de la photo (si vous l'incluez) */
+.cv-photo-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.cv-photo {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #0b2845;
+  object-fit: cover;
+}
+
+/* Petits blocs d’info (modifiés pour ne pas impacter les chips de la sidebar) */
 .tagline {
   font-style: italic;
   color: #444;
@@ -140,7 +272,7 @@ main li {
   background: #f2f6fb;
 }
 
-/* Listes de sections */
+/* Listes de sections (non utilisées dans la structure CV, mais conservées) */
 .section-list {
   list-style: none;
   margin-top: 1rem;
@@ -172,140 +304,13 @@ footer {
   header, main, .contact-bar {
     padding-inline: 1rem;
   }
-}
-/* Style pour les cartes qui ne sont pas des liens (comme Compétences ou Langues) */
-.static-card {
-  cursor: default; /* Enlève le pointeur */
-  opacity: 1; /* S'assure qu'elles ne sont pas transparentes comme les liens hover */
-}
-
-/* Enlève l'effet de survol pour les cartes statiques */
-.cards-container .static-card:hover {
-  transform: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  opacity: 1;
-}
-
-/* Ajustement des listes ul/li dans les cartes */
-.profile-card ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 0.5rem;
-}
-
-.profile-card ul li {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin-bottom: 0.2rem;
-}
-
-/* Style spécifique pour la liste de chips dans la carte Compétences */
-.chips-list {
-    margin-top: 1rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #eee;
-}
-
-.chips-list h4 {
-    font-size: 0.9rem;
-    margin-bottom: 0.4rem;
-    color: #0b2845;
-}
-
-.chips.small .chip {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-}
-
-/* --- Mise en page CV (2 colonnes) --- */
-
-/* Conteneur principal dans main */
-.cv-container {
-    display: flex;
-    gap: 2rem; /* Espace entre les colonnes */
-    align-items: flex-start; /* Aligner le haut des colonnes */
-}
-
-/* Colonne de droite (informations principales) */
-.cv-main-content {
-    flex: 2; /* Prend deux fois plus de place que la sidebar (environ 66%) */
-    min-width: 0;
-}
-
-/* Colonne de gauche (sidebar, couleur de fond sombre) */
-.cv-sidebar {
-    flex: 1; /* Prend une partie (environ 33%) */
-    background-color: #f2f6fb; /* Couleur de fond légèrement différente pour la sidebar */
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* Styles des sections de la sidebar */
-.cv-sidebar h2 {
-    font-size: 1.1rem;
-    color: #0b2845;
-    text-transform: uppercase;
-    border-bottom: 2px solid #0b2845;
-    padding-bottom: 0.3rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-}
-.cv-sidebar h2:first-child {
-    margin-top: 0;
-}
-
-/* Styles pour les listes dans le CV */
-.cv-list {
-    list-style: none;
-    padding: 0;
+  /* Empilement des colonnes sur mobile */
+  .cv-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+  .cv-sidebar {
+    order: -1; /* Mettre la sidebar en haut */
     margin-bottom: 1.5rem;
-}
-.cv-list li {
-    margin-bottom: 0.5rem;
-}
-
-/* Style de la photo (ajuster la taille) */
-.cv-photo {
-    display: block;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    margin: 0 auto 1.5rem auto;
-    border-radius: 50%; /* Pour un style plus moderne, ou 0 pour un carré */
-    border: 3px solid #0b2845;
-}
-
-/* Correction pour les h2 dans la main content */
-.cv-main-content h2 {
-    font-size: 1.5rem;
-    color: #0b2845;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-.cv-main-content h2:first-of-type {
-    margin-top: 0;
-}
-/* Style pour les blocs d'expérience/formation dans la colonne principale */
-.cv-item {
-    margin-bottom: 1.5rem;
-}
-.cv-item h3 {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 0.2rem;
-}
-.cv-item .date-location {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-.cv-item ul {
-    list-style: disc;
-    padding-left: 1.25rem;
-}
-.cv-item ul li {
-    font-size: 0.95rem;
-    margin-bottom: 0.3rem;
+  }
 }
