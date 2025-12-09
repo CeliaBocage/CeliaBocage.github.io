@@ -127,8 +127,8 @@ main > h1 {
   display: flex;
   gap: 2rem;
   margin-top: 1rem;
-  align-items: flex-start;
-  /* Changement de la flex-direction à row par défaut, l'ordre est géré par le HTML */
+  /* CORRECTION : Utiliser stretch pour que la colonne bleue s'étende sur toute la hauteur */
+  align-items: stretch; 
   flex-direction: row; 
 }
 
@@ -136,7 +136,6 @@ main > h1 {
 .cv-main-content {
   flex: 2; 
   min-width: 0;
-  /* CORRECTION 1: Assurer que le texte dans la zone blanche est noir */
   color: #222; 
 }
 
@@ -144,7 +143,6 @@ main > h1 {
 .cv-sidebar {
   flex: 1; 
   background-color: #0b2845;
-  /* Assurer que le texte par défaut dans la sidebar est blanc */
   color: #fff;
   padding: 1.5rem;
   border-radius: 4px;
@@ -165,9 +163,9 @@ main h1 {
   font-weight: bold;
   border-bottom: 2px solid #0b2845;
   padding-bottom: 0.3rem;
-  /* Réduction de la marge pour les titres de section */
-  margin-top: 1.5rem; /* Réduit de 2rem à 1.5rem */
-  margin-bottom: 0.75rem; /* Réduit de 1rem à 0.75rem */
+  /* MODIFICATION : Réduction de la marge pour les titres de section */
+  margin-top: 1.5rem; 
+  margin-bottom: 0.75rem;
 }
 .cv-main-content h2:first-of-type {
   margin-top: 0;
@@ -196,7 +194,7 @@ main h1 {
   margin-bottom: 0.4rem;
 }
 .contact-block li a {
-  color: #ffffff; /* Liens en bleu clair dans la sidebar */
+  color: #ffffff; /* Liens en blanc dans la sidebar */
   text-decoration: none;
 }
 .contact-block .contact-icon {
@@ -206,6 +204,7 @@ main h1 {
 
 /* Style des éléments d'expérience/formation/projet */
 .cv-item {
+  /* MODIFICATION : Réduction de la marge entre les sections */
   margin-bottom: 0.75rem;
 }
 .cv-item h3 {
@@ -257,7 +256,7 @@ main h1 {
 
 .chip {
   font-size: 0.85rem;
-  border-radius: 4px; /* Changé de 999px à 4px (ou 0 pour des coins vifs) */
+  border-radius: 4px; 
   padding: 0.25rem 0.7rem;
   border: 1px solid #0b2845;
   color: #0b2845;
@@ -270,7 +269,7 @@ main h1 {
   background: transparent; 
   font-size: 0.8rem;
   padding: 0.2rem 0.6rem;
-  border-radius: 4px; /* Ajout de la même valeur de border-radius */
+  border-radius: 4px; 
 }
 
 /* Style de la photo (si vous l'incluez) */
