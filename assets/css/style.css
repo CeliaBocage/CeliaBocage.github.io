@@ -7,13 +7,13 @@
 
 /* Couleurs de la marque */
 :root {
-    --color-primary-dark: #0b2845; /* Bleu foncé (Header, Sidebar, Fond des cartes) */
+    --color-primary-dark: #0b2845; /* Bleu foncé (Sidebar, Fond des cartes) */
     --color-primary-medium: #0f3257; /* Bleu moyen (Contact Bar) */
     --color-accent-light: #a5d0f3; /* Bleu clair */
     --color-text-dark: #222;
     --color-background-app: #002f5f; /* Bleu très foncé (Body) */
+    --sidebar-width: 250px; /* Largeur du menu */
 }
-
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -22,107 +22,99 @@ body {
   line-height: 1.6;
 }
 
-/* Layout général */
+/* --- Layout général (Sidebar à gauche + Contenu à droite) --- */
 .site-wrapper {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Flex row pour mettre sidebar et contenu côte à côte */
+  width: 100%; 
 }
 
-/* Header + nav */
+/* Header devenu Sidebar */
 header {
   background: var(--color-primary-dark);
   color: #fff;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
+  width: var(--sidebar-width);
+  flex-shrink: 0; 
+  height: 100vh; /* Toute la hauteur */
+  position: sticky; 
+  top: 0;
+  overflow-y: auto; 
 }
 
 header .logo {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
 }
 
 header .subtitle {
   font-size: 0.9rem;
   opacity: 0.85;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Navigation verticale */
 nav {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 nav ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: block; 
+  gap: 0;
+}
+
+nav li {
+  margin-bottom: 0.5rem; 
 }
 
 nav a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.95rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1rem;
+  padding: 0.5rem; 
+  border-radius: 4px;
+  display: block; /* Prend toute la largeur */
+  transition: background 0.2s;
 }
 
 nav a:hover {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Barre de contact globale */
-.contact-bar {
-  background: var(--color-primary-medium);
-  color: #ffffff;
-  padding: 0.5rem 1.5rem;
-  font-size: 0.9rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
+/* --- Zone de Contenu Principal (Main + Footer) --- */
+/* C'est la partie qui manquait pour que le footer ne soit pas à droite */
+.content-area {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column; /* Main en haut, Footer en bas */
+    min-width: 0; 
 }
 
-.contact-bar span {
-  opacity: 0.9;
-}
-
-.contact-links {
-  display: flex;
-  color: var(--color-accent-light);
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.contact-links a {
-  color: var(--color-accent-light);
-  text-decoration: none;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.6);
-}
-
-.contact-links a:hover {
-  border-bottom-style: solid;
-}
-
-/* Contenu principal (Adapté pour le CV et les pages internes) */
+/* Main */
 main {
-  flex: 1;
-  padding: 2rem 1.5rem;
-  max-width: 1000px; 
-  margin: 0 auto;
-  background: #ffffff; /* Fond blanc pour le contenu principal */
+  flex: 1; /* Prend l'espace restant avant le footer */
+  padding: 2rem;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
 }
 
-/* --- Styles spécifiques au CV (index.html) --- */
-
-/* Titre principal pour le CV (index.html) */
-.cv-layout main > h1 {
+/* Titres H1 */
+main > h1 {
   font-size: 2.5rem;
   text-transform: uppercase;
   margin-bottom: 0.2rem;
   color: #001327;
 }
 
-/* Tagline / Statut */
+/* Tagline */
 .tagline.cv-title-info {
   font-size: 1.1rem;
   font-style: normal;
@@ -132,7 +124,7 @@ main {
   border-bottom: 2px solid #ddd;
 }
 
-/* --- Structure à deux colonnes (index.html) --- */
+/* --- Structure interne du CV (2 colonnes: Sidebar CV + Main CV) --- */
 .cv-layout {
   display: flex;
   gap: 2rem;
@@ -141,14 +133,14 @@ main {
   flex-direction: row; 
 }
 
-/* Colonne de droite (Formations/Expériences) */
+/* Colonne de droite du CV (Blanc) */
 .cv-main-content {
   flex: 2; 
   min-width: 0;
   color: var(--color-text-dark); 
 }
 
-/* Colonne de gauche (Sidebar, couleur de fond) */
+/* Colonne de gauche du CV (Bleu) */
 .cv-sidebar {
   flex: 1; 
   background-color: var(--color-primary-dark);
@@ -158,9 +150,8 @@ main {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Style des titres de section (h2) */
+/* Styles des titres H2 internes */
 .cv-main-content h2 {
-  /* H2 dans la colonne blanche */
   font-size: 1.2rem;
   color: var(--color-primary-dark);
   text-transform: uppercase;
@@ -175,7 +166,6 @@ main {
 }
 
 .cv-sidebar h2 {
-  /* H2 dans la colonne bleue */
   font-size: 1.1rem;
   color: #fff; 
   border-bottom: 2px solid #fff; 
@@ -186,7 +176,7 @@ main {
   margin-top: 0;
 }
 
-/* Style de la section contact */
+/* Contact Block */
 .contact-block {
   list-style: none;
   padding: 0;
@@ -206,7 +196,7 @@ main {
   color: #fff; 
 }
 
-/* Style des éléments d'expérience/formation/projet (index.html) */
+/* Items CV */
 .cv-item {
   margin-bottom: 0.75rem;
 }
@@ -233,7 +223,7 @@ main {
   margin-bottom: 0.3rem;
 }
 
-/* Styles pour les compétences (chips dans le sidebar) */
+/* Chips (Compétences) */
 .cv-sidebar .chips-list {
   margin-bottom: 1.2rem;
 }
@@ -244,8 +234,6 @@ main {
   margin-bottom: 0.4rem;
   font-weight: 500;
 }
-
-/* Gestion des chips (index.html - Sidebar) */
 .cv-sidebar .chips {
   display: flex;
   flex-wrap: wrap;
@@ -253,7 +241,6 @@ main {
   margin-top: 0.5rem;
   margin-bottom: 0.8rem;
 }
-
 .chip {
   font-size: 0.85rem;
   border-radius: 4px; 
@@ -262,7 +249,6 @@ main {
   color: var(--color-primary-dark);
   background: #f2f6fb;
 }
-/* Chips spécifiques à la sidebar (inverser les couleurs pour le fond foncé) */
 .cv-sidebar .chip {
   border: 1px solid #fff; 
   color: #fff; 
@@ -272,7 +258,7 @@ main {
   border-radius: 4px; 
 }
 
-/* Style de la photo */
+/* Photo */
 .cv-photo-container {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -286,14 +272,7 @@ main {
   object-fit: cover;
 }
 
-/* Petits blocs d’info (tagline) */
-.tagline {
-  font-style: italic;
-  color: #444;
-  margin-bottom: 1rem;
-}
-
-/* Footer - Styles ajustés pour le fond bleu */
+/* Footer */
 footer {
   text-align: center;
   font-size: 0.85rem;
@@ -301,19 +280,10 @@ footer {
   color: #ffffff; 
   background: #002954; 
   margin-top: auto; 
+  width: 100%;
 }
 
-/* --- Styles spécifiques aux pages internes (Formations, Expériences, Projets...) --- */
-
-/* Titre H1 des pages internes (Fondations, Expériences, Projets, etc.) */
-main > h1 {
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-  color: var(--color-primary-dark);
-}
-
-/* Style de la ligne d'introduction au-dessus des cartes */
+/* Autres éléments (Pages internes) */
 .page-intro-details {
     margin-bottom: 1.5rem;
 }
@@ -331,47 +301,38 @@ main > h1 {
     border-bottom: 2px solid var(--color-primary-dark);
 }
 
-
-/* Nouveau style pour l'affichage en grille (3 colonnes sur desktop) */
 .experience-grid {
     display: grid;
-    /* 3 colonnes de largeur égale, se replient si la carte est trop petite */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     margin-top: 1.5rem;
 }
 
-/* Style des cartes d'expérience (Dark Blue on White background) */
 .experience-card {
-    background: var(--color-primary-dark); /* Fond bleu foncé pour la carte */
-    color: #fff; /* Texte blanc */
+    background: var(--color-primary-dark);
+    color: #fff; 
     border: 1px solid var(--color-primary-dark);
-    border-radius: 15px; /* Coins plus arrondis comme sur l'image */
+    border-radius: 15px;
     padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Ombre prononcée */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column; 
 }
-
 .experience-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
-
 .card-header {
-    /* Pas de bordure sous le header, on utilise juste les marges */
     padding-bottom: 0;
     margin-bottom: 0;
 }
-
 .experience-card .card-title {
-    font-size: 1.5rem; /* Titre plus grand et plus impactant */
+    font-size: 1.5rem;
     color: #fff;
     margin-bottom: 0.2rem;
     font-weight: 700; 
 }
-
 .card-details-wrapper {
     display: flex;
     justify-content: space-between;
@@ -386,58 +347,105 @@ main > h1 {
 .card-details-wrapper .date {
     font-weight: 600;
 }
-
 .card-content {
   display: block; 
   flex-grow: 1;
 }
-
 .experience-card .card-description {
-    list-style-type: '• '; /* Utiliser un point customisé, plus gros */
+    list-style-type: '• ';
     padding-left: 1.25rem;
     flex-grow: 1;
 }
-
 .experience-card .card-description li {
     font-size: 1rem;
     margin-bottom: 0.75rem; 
     color: #fff;
-    padding-left: 0.5rem; /* Ajuster l'espacement avec le puce custom */
+    padding-left: 0.5rem; 
 }
-
-
-/* Styles pour les puces de compétences dans le footer de la carte */
 .chips-footer {
     padding-top: 1rem;
-    /* Ligne de séparation interne blanche très fine */
     border-top: 1px solid rgba(255, 255, 255, 0.2); 
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-
 .chips-footer .chip {
     font-size: 0.85rem;
     border: 1px solid #fff; 
-    color: var(--color-primary-dark); /* Texte de la puce en foncé */
-    background: #fff; /* Fond de la puce en blanc */
+    color: var(--color-primary-dark);
+    background: #fff;
     padding: 0.2rem 0.6rem;
     font-weight: 600;
     border-radius: 4px;
 }
 
+/* --- Responsive (Mobile / Tablette) --- */
+@media (max-width: 900px) {
+  
+  .site-wrapper {
+    flex-direction: column;
+  }
+  
+  header {
+    width: 100%;
+    height: auto; 
+    position: static; 
+    overflow-y: visible;
+  }
+  
+  nav ul {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 
-/* Responsive */
-@media (max-width: 600px) {
+  nav li {
+    margin-bottom: 0;
+  }
+
+  nav a {
+    display: inline-block; 
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .contact-bar span {
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+  
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .contact-links a {
+    display: inline;
+    margin-bottom: 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.6);
+  }
+
   header, main, .contact-bar {
     padding-inline: 1rem;
   }
-  /* Empilement des colonnes sur mobile pour le CV */
+
   .cv-layout {
     flex-direction: column;
     gap: 0;
   }
+  
   .cv-sidebar {
     order: -1; 
     margin-bottom: 1.5rem;
