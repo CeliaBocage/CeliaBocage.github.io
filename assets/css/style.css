@@ -58,16 +58,17 @@ header .subtitle {
 }
 
 /* Navigation verticale */
-/* --- Navigation (Style Boutons) --- */
+/* --- Navigation (Boutons visibles par défaut) --- */
 nav {
   margin-top: 2rem;
 }
 
 nav ul {
   list-style: none;
-  display: flex; /* Changement pour gérer l'espacement */
+  display: flex; 
   flex-direction: column;
-  gap: 0.8rem; /* Espace entre les boutons */
+  gap: 1rem; /* Espace un peu plus grand entre les boutons */
+  padding-right: 1rem; /* Marge interne pour ne pas coller au bord droit */
 }
 
 nav li {
@@ -76,39 +77,39 @@ nav li {
 }
 
 nav a {
-  display: flex; /* Permet d'aligner le texte/icône si besoin */
+  display: flex;
   align-items: center;
   width: 100%;
-  padding: 0.8rem 1.2rem; /* Plus d'espace interne pour l'effet bouton */
+  padding: 0.8rem 1.2rem;
+
+  /* Fond visible immédiatement (Bleu plus clair que le fond) */
+  background-color: rgba(255, 255, 255, 0.15); 
+  /* Bordure visible immédiatement */
+  border: 1px solid rgba(255, 255, 255, 0.4); 
   
-  /* Style du bouton au repos */
-  background-color: rgba(255, 255, 255, 0.08); /* Fond blanc légèrement transparent */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Bordure fine discrète */
   color: #ffffff;
-  
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 8px; /* Coins arrondis */
-  transition: all 0.3s ease; /* Animation fluide pour tout changement */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre */
+  transition: all 0.3s ease; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre pour donner du volume */
 }
 
-/* Effet au survol de la souris */
+/* Effet au survol (devient plus lumineux) */
 nav a:hover {
-  background-color: var(--color-accent-light); /* Devient bleu clair */
-  color: var(--color-primary-dark); /* Texte devient foncé */
-  border-color: var(--color-accent-light);
-  transform: translateX(5px); /* Le bouton se déplace légèrement vers la droite */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* L'ombre grandit */
-  font-weight: 600;
+  background-color: #ffffff; /* Fond blanc au survol */
+  color: var(--color-primary-dark); /* Texte bleu foncé */
+  border-color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
 }
 
-/* Effet au clic */
+/* Effet clic */
 nav a:active {
-  transform: scale(0.98); /* Léger effet de pression */
+  transform: scale(0.98);
 }
-
 /* --- Zone de Contenu Principal (Main + Footer) --- */
 /* C'est la partie qui manquait pour que le footer ne soit pas à droite */
 .content-area {
