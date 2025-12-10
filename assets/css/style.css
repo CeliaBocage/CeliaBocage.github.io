@@ -7,9 +7,9 @@
 
 /* Couleurs de la marque */
 :root {
-    --color-primary-dark: #0b2845; /* Bleu foncé (Header, Sidebar) */
+    --color-primary-dark: #0b2845; /* Bleu foncé (Header, Sidebar, Fond des cartes) */
     --color-primary-medium: #0f3257; /* Bleu moyen (Contact Bar) */
-    --color-accent-light: #a5d0f3; /* Bleu clair (Liens, fond des cartes) */
+    --color-accent-light: #a5d0f3; /* Bleu clair */
     --color-text-dark: #222;
     --color-background-app: #002f5f; /* Bleu très foncé (Body) */
 }
@@ -305,17 +305,32 @@ footer {
 
 /* --- Styles spécifiques aux pages internes (Formations, Expériences, Projets...) --- */
 
-/* --- Styles spécifiques aux pages internes (Formations, Expériences, Projets...) --- */
-
 /* Titre H1 des pages internes (Fondations, Expériences, Projets, etc.) */
 main > h1 {
   font-size: 2rem;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   color: var(--color-primary-dark);
-  border-bottom: 2px solid var(--color-primary-dark);
-  padding-bottom: 0.5rem;
 }
+
+/* Style de la ligne d'introduction au-dessus des cartes */
+.page-intro-details {
+    margin-bottom: 1.5rem;
+}
+.page-intro-details .intro-summary {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+.page-intro-details .page-subsection-link {
+    font-size: 0.9rem;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--color-primary-dark);
+}
+
 
 /* Nouveau style pour l'affichage en grille (3 colonnes sur desktop) */
 .experience-grid {
@@ -326,14 +341,14 @@ main > h1 {
     margin-top: 1.5rem;
 }
 
-/* Style des cartes d'expérience (Bleu clair sur fond blanc) */
+/* Style des cartes d'expérience (Dark Blue on White background) */
 .experience-card {
-    background: var(--color-accent-light); /* Fond bleu clair pour la carte */
-    color: var(--color-primary-dark);
+    background: var(--color-primary-dark); /* Fond bleu foncé pour la carte */
+    color: #fff; /* Texte blanc */
     border: 1px solid var(--color-primary-dark);
-    border-radius: 8px;
+    border-radius: 15px; /* Coins plus arrondis comme sur l'image */
     padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Ombre prononcée */
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column; 
@@ -341,65 +356,61 @@ main > h1 {
 
 .experience-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
 
 .card-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.75rem;
+    /* Pas de bordure sous le header, on utilise juste les marges */
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .experience-card .card-title {
-    font-size: 1.25rem;
-    color: var(--color-primary-dark); 
+    font-size: 1.5rem; /* Titre plus grand et plus impactant */
+    color: #fff;
     margin-bottom: 0.2rem;
-    /* Pour que le titre soit en gras comme sur la photo */
     font-weight: 700; 
 }
 
-.experience-card .card-details {
+.card-details-wrapper {
     display: flex;
     justify-content: space-between;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--color-primary-dark);
-    opacity: 0.85;
+    font-size: 0.9rem;
+    color: #fff;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
+.card-details-wrapper .location {
+    font-weight: 400;
+}
+.card-details-wrapper .date {
+    font-weight: 600;
 }
 
 .card-content {
-  display: flex;
-  gap: 1rem;
+  display: block; 
   flex-grow: 1;
 }
 
-.card-media {
-  /* Pourrait contenir une image ou une icône */
-  max-width: 80px; 
-  flex-shrink: 0;
-}
-
 .experience-card .card-description {
-    list-style: disc;
+    list-style-type: '• '; /* Utiliser un point customisé, plus gros */
     padding-left: 1.25rem;
-    flex-grow: 1; /* Pousse le footer vers le bas */
+    flex-grow: 1;
 }
 
 .experience-card .card-description li {
-    font-size: 0.95rem;
-    margin-bottom: 0.4rem;
-    color: var(--color-primary-dark);
+    font-size: 1rem;
+    margin-bottom: 0.75rem; 
+    color: #fff;
+    padding-left: 0.5rem; /* Ajuster l'espacement avec le puce custom */
 }
 
-/* Retrait du style italic sur les puces pour ressembler à la photo */
-.experience-card .card-description li strong {
-    font-style: normal;
-}
 
 /* Styles pour les puces de compétences dans le footer de la carte */
 .chips-footer {
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    /* Ligne de séparation interne blanche très fine */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -407,11 +418,13 @@ main > h1 {
 }
 
 .chips-footer .chip {
-    font-size: 0.8rem;
-    border: 1px solid var(--color-primary-dark); 
-    color: var(--color-primary-dark); 
-    background: #f9f9f9; /* Fond très clair pour les puces dans la carte bleue */
+    font-size: 0.85rem;
+    border: 1px solid #fff; 
+    color: var(--color-primary-dark); /* Texte de la puce en foncé */
+    background: #fff; /* Fond de la puce en blanc */
     padding: 0.2rem 0.6rem;
+    font-weight: 600;
+    border-radius: 4px;
 }
 
 
@@ -429,5 +442,8 @@ main > h1 {
     order: -1; 
     margin-bottom: 1.5rem;
   }
-  /* La grille des expériences passe à une colonne sur mobile (minmax(300px, 1fr) gère ça naturellement) */
+  
+  .card-content {
+    flex-direction: column;
+  }
 }
