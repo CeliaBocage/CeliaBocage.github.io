@@ -112,22 +112,31 @@ nav a:active {
 }
 /* --- Zone de Contenu Principal (Main + Footer) --- */
 /* C'est la partie qui manquait pour que le footer ne soit pas à droite */
+/* Contenu Principal (MAIN + FOOTER) */
 .content-area {
     flex-grow: 1; 
     display: flex;
-    flex-direction: column; /* Main en haut, Footer en bas */
+    flex-direction: column; 
     min-width: 0; 
+    background-color: #f7f7f7; /* Couleur de fond gris clair (le "bureau") */
+    
+    /* --- CHANGEMENT ICI : AJOUT D'ESPACE --- */
+    padding: 2rem; /* Crée un espace de 32px tout autour de la feuille */
+    /* Vous pouvez augmenter à 3rem ou 4rem si vous voulez plus d'espace en haut */
 }
 
-/* Main */
+/* Main (La feuille blanche) */
 main {
-  flex: 1; /* Prend l'espace restant avant le footer */
+  flex: 1; 
   padding: 2rem;
   max-width: 1200px; 
-  margin: 0 auto; 
+  margin: 0 auto; /* Centre la feuille horizontalement */
   width: 100%;
   background: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre légèrement plus douce */
+  
+  /* --- CHANGEMENT ICI : COINS ARRONDIS --- */
+  border-radius: 15px; /* Arrondit les coins pour l'effet "feuille" moderne */
 }
 
 /* Titres H1 */
