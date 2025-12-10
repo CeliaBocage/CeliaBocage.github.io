@@ -132,7 +132,7 @@ main {
   max-width: 1200px; 
   margin: 0 auto; /* Centre la feuille horizontalement */
   width: 100%;
-  background: #ffffff;
+  background: #0f3257;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre légèrement plus douce */
   
   /* --- CHANGEMENT ICI : COINS ARRONDIS --- */
