@@ -354,8 +354,8 @@ footer {
   
   flex: 0 1 calc(33.333% - 20px);
 
-  min-width: 1000px; 
-  max-width: 1000px;
+  min-width: 500px; 
+  max-width: 500px;
 }
 
 .experience-card:hover {
