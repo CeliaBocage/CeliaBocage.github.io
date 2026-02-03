@@ -334,8 +334,8 @@ footer {
 }
 
 .experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin-top: 1.5rem;
 }
@@ -348,8 +348,12 @@ footer {
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s, box-shadow 0.2s;
+
   display: flex;
   flex-direction: column;
+  
+  flex: 1 1 300px;
+  max-width: 100px;
 }
 
 .experience-card:hover {
