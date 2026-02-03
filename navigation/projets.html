@@ -23,15 +23,96 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Projets</h1>
+  <div class="content-area">
+    <main>
+      <h1>Projets Techniques</h1>
 
-    <!-- Ici tu mets le détail de tes formations, à partir du CV -->
-  </main>
+      <div class="page-intro-details">
+        <p class="intro-summary">Sélection de projets académiques et personnels réalisés durant mon cursus à l'EPITA et à l'étranger.</p>
+        <a href="#projets" class="page-subsection-link">Voir les détails</a>
+      </div>
 
-  <footer>
-    © <span id="year"></span> Célia Bocage
-  </footer>
+      <div class="experience-grid" id="projets">
+        
+        <section class="experience-card">
+            <div class="card-header">
+                <h2 class="card-title">Logiciel de résolution de mots cachés (OCR)</h2>
+                <div class="card-details-wrapper">
+                    <span class="location">EPITA</span>
+                    <span class="date">3e semestre</span>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <ul class="card-description">
+                    <li>Développement d'un système de reconnaissance optique de caractères (OCR).</li>
+                    <li>Implémentation d'algorithmes de Machine Learning et d'analyse d'image.</li>
+                    <li>Gestion du cycle complet : FrontEnd et BackEnd.</li>
+                </ul>
+            </div>
+
+            <div class="chips-footer">
+                <span class="chip">C</span>
+                <span class="chip">Machine Learning</span>
+                <span class="chip">Analyse d'Image</span>
+            </div>
+        </section>
+
+        <section class="experience-card">
+            <div class="card-header">
+                <h2 class="card-title">Projet Jeu Vidéo 3D</h2>
+                <div class="card-details-wrapper">
+                    <span class="location">EPITA</span>
+                    <span class="date">2e semestre</span>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <ul class="card-description">
+                    <li>Modélisation d'une carte de jeu en 3D avec Blender.</li>
+                    <li>Création d'un menu dynamique de changement de commandes en C# via JSON.</li>
+                    <li>Utilisation du moteur de jeu Godot pour l'intégration globale.</li>
+                </ul>
+            </div>
+            <div class="chips-footer">
+                <span class="chip">C#</span>
+                <span class="chip">Godot</span>
+                <span class="chip">Blender</span>
+                <span class="chip">JSON</span>
+            </div>
+        </section>
+
+        <section class="experience-card">
+            <div class="card-header">
+                <h2 class="card-title">Logiciel de recettes de cuisine</h2>
+                <div class="card-details-wrapper">
+                    <span class="location">ATU Sligo, Irlande</span>
+                    <span class="date">Semestre à l'étranger</span>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <ul class="card-description">
+                    <li>Conception d'une application de gestion de recettes avec interface utilisateur.</li>
+                    <li>Gestion de base de données relationnelle avec SQL et LinQ.</li>
+                    <li>Développement de l'interface graphique en XAML.</li>
+                </ul>
+            </div>
+            <div class="chips-footer">
+                <span class="chip">C#</span>
+                <span class="chip">SQL</span>
+                <span class="chip">XAML</span>
+                <span class="chip">LinQ</span>
+            </div>
+        </section>
+
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Célia Bocage
+    </footer>
+  </div>
 </div>
 
 <script>
@@ -39,4 +120,3 @@
 </script>
 </body>
 </html>
-
