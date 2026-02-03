@@ -1,11 +1,39 @@
-<main>
-    <h1>Passions & Centres d'intérêt</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Célia Bocage – Passions</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="site-wrapper">
+  <header>
+    <div class="logo">Célia Bocage</div>
+    <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="experiences.html">Expériences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="vie-associative.html">Vie associative</a></li>
+        <li><a href="passions.html">Passions</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="page-intro-details">
+  <div class="content-area">
+    <main>
+      <h1>Passions & Centres d'intérêt</h1>
+
+      <div class="page-intro-details">
         <p class="intro-summary">Développement de compétences en autodidacte et activités extra-scolaires.</p>
-    </div>
+        <a href="#passions" class="page-subsection-link">Découvrir mes centres d'intérêt</a>
+      </div>
 
-    <div class="experience-grid">
+      <div class="experience-grid" id="passions">
+        
         <section class="experience-card">
             <div class="card-header">
                 <h2 class="card-title">Cybersécurité en autodidacte</h2>
@@ -14,13 +42,15 @@
                     <span class="date">Continu</span>
                 </div>
             </div>
+            
             <div class="card-content">
                 <ul class="card-description">
-                    <li>Analyse et test de systèmes via des environnements dédiés.</li>
+                    <li>Analyse et test de systèmes via des environnements dédiés (Pentest).</li>
                     <li>Pratique régulière de CTF (Capture The Flag) pour le développement de compétences offensives.</li>
                     <li>Résolution de challenges sur diverses plateformes spécialisées.</li>
                 </ul>
             </div>
+
             <div class="chips-footer">
                 <span class="chip">TryHackMe</span>
                 <span class="chip">HackTheBox</span>
@@ -37,6 +67,7 @@
                     <span class="date">Personnel</span>
                 </div>
             </div>
+            
             <div class="card-content">
                 <ul class="card-description">
                     <li>Photographie et voyages.</li>
@@ -51,5 +82,18 @@
                 <span class="chip">Surf</span>
             </div>
         </section>
-    </div>
-</main>
+
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Célia Bocage
+    </footer>
+  </div> 
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
