@@ -354,7 +354,7 @@ footer {
   
   flex: 0 1 calc(33.333% - 20px);
 
-  min-width: 500px; 
+  min-width: 400px; 
   max-width: 500px;
 }
 
