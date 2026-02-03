@@ -338,6 +338,8 @@ footer {
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 1.5rem;
+  min-width: 400px;
+  max-width: 400px;
 }
 
 .experience-card {
