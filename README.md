@@ -1,73 +1,68 @@
-# CeliaBocage.github.io
-👩‍💻 Célia Bocage - Portfolio Web
+# 👩‍💻 Célia Bocage - Portfolio Web
 
-Bienvenue sur le dépôt GitHub de mon portfolio en ligne. Ce site présente mon parcours en tant qu'étudiante en ingénierie informatique à l'EPITA, mes compétences, mes expériences professionnelles, ainsi que mes projets et engagements associatifs.
-🎯 Objectif du Projet
+Bienvenue sur le dépôt GitHub de mon portfolio en ligne. Ce site, conçu comme un CV interactif, détaille mon parcours d'étudiante en ingénierie informatique à l'EPITA, mes compétences techniques, ainsi que mes projets et engagements associatifs.
 
-L'objectif principal de ce projet est de servir de CV interactif et détaillé pour mes candidatures de stage, notamment pour un poste en cybersécurité offensive, SOC, ou analyse de vulnérabilités, recherché pour Février - Juillet 2026.
-🛠️ Technologies Utilisées
+## 🎯 Objectif
 
-Ce projet est conçu avec des technologies web de base pour garantir la simplicité, la rapidité et la compatibilité.
+L'objectif principal de ce portfolio est d'appuyer mes candidatures pour un **stage en cybersécurité** (Sécurité offensive, SOC, ou analyse de vulnérabilités) pour la période de **Février à Juillet 2026**.
 
-    HTML5 : Pour la structure sémantique du contenu.
+## 📂 Contenu du Portfolio
 
-    CSS3 : Pour le stylisme et la mise en page (fichier assets/css/style.css).
+Le site est structuré autour de plusieurs axes détaillant mon profil :
 
-    JavaScript : Utilisé pour des fonctionnalités simples comme l'affichage dynamique de l'année dans le footer.
+### 🎓 **[Formations](navigation/formations.html)**
+Un aperçu de mon parcours académique :
+* **EPITA (2023 - Présent) :** Ingénierie informatique, Algorithmique, Mathématiques, C, C#, Python, SQL.
+* **ATU Sligo, Irlande (Jan. - Juin 2025) :** Semestre international axé sur le Game Design et le développement logiciel.
+* **Certifications :** BAFA (Spécialisation scoutisme) et TOEIC/TOEFL.
 
-📂 Structure du Projet
+### 💼 **[Expériences Professionnelles](navigation/experiences.html)**
+Mes expériences en entreprise :
+* **Stage Data Science - ArtMajeur (4 mois) :** Analyse de données, modélisation (BERT), SQL, Python et visualisation de données.
+* **Jobs d'été & saisonniers :** Commis de salle (Hôtel Eldorado 4*) et Réceptionniste en pharmacie. Développement de l'autonomie et de l'adaptabilité.
 
-Le projet suit une structure de fichiers claire et organisée, comme illustré ci-dessous :
+### 💻 **[Projets Techniques](navigation/projets.html)**
+Présentation détaillée de mes réalisations académiques et personnelles :
+* **Logiciel OCR (C) :** Résolution de mots cachés utilisant le Machine Learning et l'analyse d'image.
+* **Jeu Vidéo 3D (Godot/C#) :** Modélisation Blender, scripts C# et gestion de menus dynamiques (JSON).
+* **Application de Cuisine (C#/XAML) :** Gestion de recettes avec base de données SQL et LinQ.
 
-.
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── Docs/
-│   │   └── CV Celia BOCAGE.pdf
-│   └── Images/
-│       └── Photo_CV.png
-├── experiences.html
-├── formations.html
-├── index.html
-├── passions.html
-├── projets.html
-├── README.md (Ce fichier)
-└── vie-associative.html
+### 🤝 **[Vie Associative](navigation/vie-associative.html)**
+Mon engagement bénévole :
+* **Staff' Communication EPITA :** Représentation de l'école et encadrement d'événements.
+* **La Cave :** Organisation de dégustations et promotion du terroir français.
+* **Scouts et Guides de France :** Animation et encadrement de jeunes (Responsabilité & Pédagogie).
 
-🧭 Navigation et Contenu
+### 🚩 **[Passions & Cybersécurité](navigation/passions.html)**
+* **Cybersécurité (Autodidacte) :** Pratique active de CTF et Pentesting sur **TryHackMe**, **HackTheBox**, **RootMe**.
+* **Loisirs :** Photographie, Voyage, Rugby, Œnologie, Surf.
 
-Le site est organisé en plusieurs pages, chacune détaillant une partie spécifique de mon profil :
+---
 
-    index.html (Accueil/CV Principal) : Page d'atterrissage présentant une synthèse de mon profil, mes coordonnées, mes compétences clés (Langages, Outils, Soft Skills), et des aperçus de mes formations, expériences et projets.
+## 🛠️ Technologies Utilisées
 
-    formations.html : Page dédiée à l'historique complet de mes études et certifications (à détailler).
+Ce projet privilégie la légèreté et la compatibilité :
+* **HTML5 :** Structure sémantique.
+* **CSS3 :** Mise en page personnalisée (fichier `assets/css/style.css`).
+* **JavaScript :** Fonctionnalités dynamiques légères.
 
-    experiences.html : Page dédiée à mes expériences professionnelles (stages, emplois saisonniers) (à détailler).
+## 🚀 Installation & Visualisation
 
-    projets.html : Page dédiée à la présentation détaillée de mes projets techniques (jeu vidéo, logiciel OCR, etc.) (à détailler).
+Ce site est statique. Pour le visualiser localement :
 
-    vie-associative.html : Page détaillant mon engagement associatif (Scoutisme, Staff' Communication EPITA, La Cave) (à détailler).
+1.  Cloner ce dépôt :
+    ```bash
+    git clone [https://github.com/CeliaBocage/CeliaBocage.github.io.git](https://github.com/CeliaBocage/CeliaBocage.github.io.git)
+    ```
+2.  Ouvrir le fichier `index.html` dans votre navigateur.
 
-    passions.html : Page dédiée à mes centres d'intérêt, notamment la cybersécurité en autodidacte (TryHackMe, HackTheBox) et autres loisirs (à détailler).
-
-🚀 Lancement
-
-Ce site est un ensemble de fichiers statiques. Pour le visualiser localement, vous pouvez simplement :
-
-    Cloner ce dépôt : git clone https://github.com/CeliaBocage/NomDuRepo.git
-
-    Ouvrir le fichier index.html dans votre navigateur.
-
-Le projet est hébergé en ligne pour un accès public.
-📧 Contact
+## 📧 Contact
 
 Pour toute opportunité de stage ou question :
 
-    Email : celia.bocage.pro@gmail.com
+* **Email :** [celia.bocage.pro@gmail.com](mailto:celia.bocage.pro@gmail.com)
+* **LinkedIn :** [Célia Bocage](https://www.linkedin.com/in/célia-bocage-549b082ab)
+* **Localisation :** Le Kremlin-Bicêtre / Villejuif
 
-    LinkedIn : Célia Bocage
-
-    GitHub : 
-
-N'hésitez pas à me contacter !
+---
+*© 2026 Célia Bocage - Tous droits réservés.*
