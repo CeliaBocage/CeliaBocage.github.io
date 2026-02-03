@@ -354,7 +354,7 @@ footer {
   display: flex;
   flex-direction: column;
   
-  flex: 1 1 calc(33.333% - 20px);
+  flex: 0 1 calc(33.333% - 20px);
 
   min-width: 400px; 
   max-width: 400px;
