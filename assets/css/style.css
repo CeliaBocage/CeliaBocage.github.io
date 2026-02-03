@@ -338,8 +338,8 @@ footer {
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 1.5rem;
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 1000px;
 }
 
 .experience-card {
@@ -357,7 +357,7 @@ footer {
   flex: 0 1 calc(33.333% - 20px);
 
   min-width: 400px; 
-  max-width: 400px;
+  max-width: 1000px;
 }
 
 .experience-card:hover {
