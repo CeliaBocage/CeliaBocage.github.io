@@ -440,6 +440,7 @@ footer {
 }
 
 /* --- Responsive (Mobile / Tablette) --- */
+
 @media (max-width: 900px) {
   .site-wrapper {
     flex-direction: column;
@@ -450,7 +451,22 @@ footer {
     height: auto;
     position: static;
     overflow-y: visible;
-    padding: 1rem;
+  }
+
+  .content-area {
+    padding: 0.5rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  main > h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
 
   nav ul {
@@ -468,61 +484,12 @@ footer {
     padding: 0.3rem 0.6rem;
   }
 
-  .content-area {
-    padding: 0.25rem;
-  }
-
-  .contact-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0.5rem;
-  }
-
-  .contact-bar span {
-    display: inline;
-    font-weight: normal;
-    margin-bottom: 0;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .contact-links a {
-    display: inline;
-    margin-bottom: 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.6);
-  }
-
-  header, main, .contact-bar {
-    padding-inline: 1rem;
-  }
-
-  main {
-    padding: 1rem 0.8rem;
-    width: 100%;
-    border-radius: 8px;
-  }
-
-  main > h1 {
-    font-size: 1.6rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    word-wrap: break-word;
-  }
-
   .cv-layout {
     flex-direction: column;
     gap: 0;
   }
 
-.cv-sidebar {
+  .cv-sidebar {
     order: -1;
     margin-bottom: 1.5rem;
   }
