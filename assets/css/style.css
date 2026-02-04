@@ -467,6 +467,10 @@ footer {
     padding: 0.3rem 0.6rem;
   }
 
+  .content-area {
+    padding: 1rem;
+  }
+
   .contact-bar {
     display: flex;
     flex-wrap: wrap;
@@ -497,6 +501,15 @@ footer {
 
   header, main, .contact-bar {
     padding-inline: 1rem;
+  }
+
+  main {
+    padding: 1.2rem 1rem;
+  }
+
+  main > h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   .cv-layout {
