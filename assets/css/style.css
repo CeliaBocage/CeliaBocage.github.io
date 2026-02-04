@@ -439,6 +439,10 @@ footer {
   border-radius: 4px;
 }
 
+.menu-toggle{
+  display: None;
+}
+
 /* --- Responsive (Mobile / Tablette) --- */
 
 @media (max-width: 900px) {
