@@ -8,20 +8,17 @@
 </head>
 <body>
 <div class="site-wrapper">
-  <header>
+<header>
     <div class="logo">Célia Bocage</div>
     <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
+    
+    <button class="menu-toggle" aria-label="Menu">☰ Menu</button>
     <nav>
-      <ul>
-        <li><a href="../index.html">Accueil</a></li>
-        <li><a href="formations.html">Formations</a></li>
-        <li><a href="experiences.html">Expériences</a></li>
-        <li><a href="projets.html">Projets</a></li>
-        <li><a href="vie-associative.html">Vie associative</a></li>
-        <li><a href="passions.html">Passions</a></li>
-      </ul>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+             </ul>
     </nav>
-  </header>
+</header>
 
   <div class="content-area">
     <main>
@@ -139,6 +136,28 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script>
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('nav ul');
+
+        if (toggleButton && navList) {
+            toggleButton.addEventListener('click', function() {
+
+                navList.classList.toggle('open');
+                
+                if (navList.classList.contains('open')) {
+                    toggleButton.textContent = "✕ Fermer";
+                } else {
+                    toggleButton.textContent = "☰ Menu";
+                }
+            });
+        }
+    });
 </script>
 </body>
 </html>
