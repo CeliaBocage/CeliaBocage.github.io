@@ -450,6 +450,7 @@ footer {
     height: auto;
     position: static;
     overflow-y: visible;
+    padding: 1rem;
   }
 
   nav ul {
@@ -468,7 +469,7 @@ footer {
   }
 
   .content-area {
-    padding: 1rem;
+    padding: 0.25rem;
   }
 
   .contact-bar {
@@ -504,12 +505,16 @@ footer {
   }
 
   main {
-    padding: 1.2rem 1rem;
+    padding: 1rem 0.8rem;
+    width: 100%;
+    border-radius: 8px;
   }
 
   main > h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
   }
 
   .cv-layout {
