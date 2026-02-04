@@ -12,11 +12,17 @@
     <div class="logo">Célia Bocage</div>
     <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
     
-    <button class="menu-toggle" aria-label="Menu">☰ Menu</button>
+    <button id="menuButton" class="menu-toggle" aria-label="Menu">☰ Menu</button>
+
     <nav>
-        <ul>
+        <ul id="menuList">
             <li><a href="index.html">Accueil</a></li>
-             </ul>
+            <li><a href="navigation/formations.html">Formations</a></li>
+            <li><a href="navigation/experiences.html">Expériences</a></li>
+            <li><a href="navigation/projets.html">Projets</a></li>
+            <li><a href="navigation/vie-associative.html">Vie associative</a></li>
+            <li><a href="navigation/passions.html">Passions</a></li>
+        </ul>
     </nav>
 </header>
   <div class="content-area">
@@ -109,17 +115,15 @@
   </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-<script>
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
+
         const toggleButton = document.querySelector('.menu-toggle');
         const navList = document.querySelector('nav ul');
 
         if (toggleButton && navList) {
+            
             toggleButton.addEventListener('click', function() {
 
                 navList.classList.toggle('open');
@@ -130,6 +134,8 @@
                     toggleButton.textContent = "☰ Menu";
                 }
             });
+        } else {
+            console.error("Erreur : Le bouton menu ou la liste n'a pas été trouvé.");
         }
     });
 </script>
