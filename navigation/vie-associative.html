@@ -119,30 +119,6 @@
   </div> 
 </div>
 
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('DOMContentLoaded', function() {
-
-        const toggleButton = document.querySelector('.menu-toggle');
-        const navList = document.querySelector('nav ul');
-
-        if (toggleButton && navList) {
-            
-            toggleButton.addEventListener('click', function() {
-
-                navList.classList.toggle('open');
-                
-                if (navList.classList.contains('open')) {
-                    toggleButton.textContent = "✕ Fermer";
-                } else {
-                    toggleButton.textContent = "☰ Menu";
-                }
-            });
-        } else {
-            console.error("Erreur : Le bouton menu ou la liste n'a pas été trouvé.");
-        }
-    });
-</script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

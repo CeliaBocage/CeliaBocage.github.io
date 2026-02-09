@@ -77,7 +77,7 @@
                 </ul>
             </div>
             <div class="chips-footer">
-                <span class="chip">Esprit d'equipe</span>
+                <span class="chip">Esprit d'équipe</span>
                 <span class="chip">Concentration</span>
                 <span class="chip">Implication</span>
             </div>
@@ -87,7 +87,7 @@
             <div class="card-header">
                 <h2 class="card-title">Voyage</h2>
                 <div class="card-details-wrapper">
-                    <span class="location">Localisation variees</span>
+                    <span class="location">Localisations variées</span>
                     <span class="date">Continue</span>
                 </div>
             </div>
@@ -95,19 +95,19 @@
                 <ul class="card-description">
                     <li>Tanzanie (Zanzibar)</li>
                     <li>Irlande (Sligo, Galway, Limerick, Dublin, Cork, Belfast)</li>
-                    <li>Indonesie (Jakarta, Yogyakarta, Ubud)</li>
+                    <li>Indonésie (Jakarta, Yogyakarta, Ubud)</li>
                     <li>Roumanie (Bucarest)</li>
                 </ul>
             </div>
             <div class="chips-footer">
                 <span class="chip">Ouverture culturelle</span>
-                <span class="chip">Amelioration du niveau des langues parlees</span>
+                <span class="chip">Amélioration du niveau des langues parlées</span>
             </div>
         </section>
 
                 <section class="experience-card">
             <div class="card-header">
-                <h2 class="card-title">Oenologie</h2>
+                <h2 class="card-title">Œnologie</h2>
                 <div class="card-details-wrapper">
                     <span class="location">EPITA - Le Kremlin Bicetre</span>
                     <span class="date">Depuis 2024</span>
@@ -116,8 +116,8 @@
             <div class="card-content">
                 <ul class="card-description">
                     <li>Apprentissage du processus pour produire du vin</li>
-                    <li>Presidente de l'association La Cave</li>
-                    <li>Participation a des degustations de vins</li>
+                    <li>Présidente de l'association La Cave</li>
+                    <li>Participation à des dégustations de vins</li>
                 </ul>
             </div>
         </section>
@@ -131,30 +131,6 @@
   </div> 
 </div>
 
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('DOMContentLoaded', function() {
-
-        const toggleButton = document.querySelector('.menu-toggle');
-        const navList = document.querySelector('nav ul');
-
-        if (toggleButton && navList) {
-            
-            toggleButton.addEventListener('click', function() {
-
-                navList.classList.toggle('open');
-                
-                if (navList.classList.contains('open')) {
-                    toggleButton.textContent = "✕ Fermer";
-                } else {
-                    toggleButton.textContent = "☰ Menu";
-                }
-            });
-        } else {
-            console.error("Erreur : Le bouton menu ou la liste n'a pas été trouvé.");
-        }
-    });
-</script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
