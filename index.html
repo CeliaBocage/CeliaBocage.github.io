@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Célia Bocage – Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -30,11 +33,11 @@
             <main>
                 <h1>CÉLIA BOCAGE</h1>
                 <p class="tagline cv-title-info">Étudiante à l'<strong>EPITA</strong> | Recherche d'<strong>alternance en cybersécurité</strong> (sept. 2026 - juil. 2029)</p>
-                <section style="margin-bottom: 2rem;">
-                    <p style="color: #222;">
-                        Actuellement en 3<sup>e</sup> année à l'<strong>EPITA</strong>, je me spécialise en <strong>cybersécurité</strong> à travers des projets techniques, du <strong>pentest</strong> et des <strong>CTF</strong> (Capture The Flag).
-                        Curieuse et autodidacte, je m'entraîne quotidiennement sur des plateformes comme <strong>TryHackMe</strong> et <strong>HackTheBox</strong> pour développer mes compétences en <strong>sécurité offensive</strong>, analyse de vulnérabilités et réponse à incidents.
-                        Mon parcours mêle rigueur technique, expériences internationales et engagement associatif.
+                <section class="intro-block">
+                    <p>
+                        Étudiante en 3<sup>e</sup> année à l'<strong>EPITA</strong>, je me spécialise en <strong>cybersécurité</strong> à travers le <strong>pentest</strong>, les <strong>CTF</strong> et l'analyse de vulnérabilités.
+                        Je m'entraîne quotidiennement sur <strong>TryHackMe</strong>, <strong>HackTheBox</strong> et <strong>RootMe</strong> en sécurité offensive.
+                        Mon parcours associe rigueur technique, un stage de 10 mois en <strong>data science</strong>, une expérience internationale en Irlande et un engagement associatif fort.
                     </p>
                 </section>
 
@@ -71,9 +74,17 @@
                             </div>
                         </div>
                         <div class="chips-list">
+                            <h4>CYBERSÉCURITÉ</h4>
+                            <div class="chips">
+                                <span class="chip">Pentest</span> <span class="chip">CTF</span>
+                                <span class="chip">Nmap</span> <span class="chip">Burp Suite</span>
+                                <span class="chip">Wireshark</span> <span class="chip">Metasploit</span>
+                            </div>
+                        </div>
+                        <div class="chips-list">
                             <h4>OUTILS</h4>
                             <div class="chips">
-                                <span class="chip">Vim / Neovim</span> <span class="chip">VSCode</span> <span class="chip">Cursor</span>
+                                <span class="chip">Git</span> <span class="chip">Vim / Neovim</span> <span class="chip">VSCode</span>
                                 <span class="chip">Godot</span> <span class="chip">Blender</span>
                             </div>
                         </div>
@@ -101,9 +112,9 @@
 
                         <h2><a href="navigation/passions.html" style="color: #66c7f4;">PASSIONS</a></h2>
                         <ul class="cv-list contact-block">
-                            <li>Apprentissage autonome de la <strong>cybersécurité</strong> :</li>
-                            <li style="margin-left: 1rem; list-style: none; font-size: 0.85rem;">(TryHackMe, HackTheBox, RootMe, HackThisSite)</li>
-                            <li style="margin-top: 0.5rem;">Photographie, Voyage, Rugby (USOMC), Œnologie</li>
+                            <li><strong>Cybersécurité</strong> en autodidacte : pentest, CTF</li>
+                            <li style="margin-left: 1rem; list-style: none; font-size: 0.85rem;">TryHackMe · HackTheBox · RootMe</li>
+                            <li style="margin-top: 0.5rem;">Rugby (USOMC) · Voyage · Œnologie</li>
                         </ul>
 
                         <h2>VERSIONS PDF</h2>
@@ -114,113 +125,111 @@
 
                     <div class="cv-main-content">
                         <h2><a href="navigation/formations.html" style="color: rgb(57, 57, 105);">FORMATIONS</a></h2>
-                        <section class="cv-item">
-                            <h3>3e année en école d'ingénieurs <strong>informatique</strong> - EPITA</h3>
+                        <section class="cv-item cv-item-highlight">
+                            <h3>3e année en école d'ingénieurs <strong>informatique</strong> — EPITA</h3>
                             <div class="item-details">
                                 <span class="location">Villejuif</span>
-                                <span class="date">2023 - Présent</span>
+                                <span class="date">2023 — Présent</span>
                             </div>
                             <ul>
-                                <li>Cours principaux : <strong>Algorithmique</strong>, <strong>Mathématiques</strong></li>
-                                <li>Semestre à l'étranger : <strong>Game Design</strong> - ATU, Irlande</li>
-                                <li>Apprentissage de la programmation à l'aide de multiples travaux pratiques et de projets</li>
-                                <li>Projet jeux vidéo 3D - Première Année</li>
-                                <li>Projet <strong>OCR</strong> - Deuxième Année</li>
+                                <li>Tronc commun intensif : <strong>algorithmique</strong>, <strong>mathématiques</strong>, programmation (C, C#, Python, SQL)</li>
+                                <li>Semestre international en <strong>Game Design</strong> — ATU Sligo, Irlande (6 mois)</li>
+                                <li>Projets majeurs : jeu vidéo 3D multijoueur (S2), <strong>OCR par réseau de neurones</strong> à 99,9 % (S3)</li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>Semestre à l'étranger : <strong>Game Design</strong> - ATU</h3>
+                            <h3>Semestre à l'étranger : <strong>Game Design</strong> — ATU</h3>
                             <div class="item-details">
                                 <span class="location">Sligo, Irlande</span>
-                                <span class="date">janv. 2025 - juin 2025</span>
+                                <span class="date">janv. 2025 — juin 2025</span>
                             </div>
                             <ul>
-                                <li>Apprentissage de la <strong>modélisation 3D</strong></li>
-                                <li>Projet jeu vidéo 3D</li>
-                                <li>Projet logiciel de gestion de recettes de cuisine</li>
+                                <li>Immersion anglophone 6 mois — <strong>modélisation 3D</strong>, développement logiciel, game design</li>
+                                <li>FPS solo sur <strong>Unreal Engine</strong> et application desktop avec <strong>MariaDB</strong></li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>BAFA</h3>
+                            <h3>BAFA — Spécialisation scoutisme</h3>
                             <div class="item-details">
                                 <span class="location">Gaillac</span>
                                 <span class="date">2024</span>
                             </div>
-                            <ul>
-                                <li>Spécialisation accueil de scoutisme</li>
-                            </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>BACCALAURÉAT Général - Collège-Lycée St Joseph</h3>
+                            <h3>Baccalauréat Général — Lycée St Joseph</h3>
                             <div class="item-details">
                                 <span class="location">Gaillac</span>
                                 <span class="date">2023</span>
                             </div>
                             <ul>
-                                <li>Spécialités Mathématiques, Physique-chimie</li>
-                                <li>Option Maths Expertes</li>
+                                <li>Spécialités Mathématiques, Physique-Chimie — Option Maths Expertes</li>
                             </ul>
                         </section>
 
                                                 <h2><a href="navigation/experiences.html" style="color: rgb(57, 57, 105);">EXPÉRIENCE PROFESSIONNELLE</a></h2>
-                        <section class="cv-item">
-                            <h3>Stage Data Science - <a href="https://www.artmajeur.com" target="_blank" style="color: inherit; text-decoration: underline;">ArtMajeur</a></h3>
+                        <section class="cv-item cv-item-highlight">
+                            <h3>Stage Data Science — <a href="https://www.artmajeur.com" target="_blank" style="color: inherit; text-decoration: underline;">ArtMajeur</a></h3>
                             <div class="item-details">
                                 <span class="location">Levallois-Perret</span>
                                 <span class="date">10 mois</span>
                             </div>
                             <ul>
-                                <li><strong>Analyse data & comportements</strong> sur ~3,5 M d'œuvres et ~1 M de comptes : SQL, Python, statistiques.</li>
-                                <li><strong>Classification sémantique</strong> (BERT) des descriptions d'œuvres et biographies d'artistes.</li>
-                                <li>Dashboards interactifs (<strong>Plotly/Dash</strong>) et cartographies de données pour les équipes produit, dev et communication.</li>
-                                <li>Étude ayant mené à un <strong>changement de la plateforme</strong>, validé par A/B testing puis déployé à l'ensemble des utilisateurs.</li>
+                                <li><strong>Analyse data</strong> sur ~3,5 M d'œuvres et ~1 M de comptes : SQL, Python, statistiques, classification <strong>BERT</strong>.</li>
+                                <li><strong>Dashboards interactifs</strong> (Plotly/Dash) pour les équipes produit, dev et communication.</li>
+                                <li>Étude ayant mené à un <strong>changement de la plateforme</strong> — validé par A/B testing, déployé en production.</li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>Commis de salle - <a href="https://hoteleldoradoparis.com/" target="_blank" style="color: inherit; text-decoration: underline;">Hôtel Eldorado, 4*</a></h3>
+                            <h3>Commis de salle — <a href="https://hoteleldoradoparis.com/" target="_blank" style="color: inherit; text-decoration: underline;">Hôtel Eldorado, 4*</a></h3>
                             <div class="item-details">
                                 <span class="location">Paris 18</span>
                                 <span class="date">3 mois</span>
                             </div>
                             <ul>
-                                <li>Service de ~75 couverts par service (salle de 40 places, 2 services).</li>
-                                <li>Mise en place <strong>autonome</strong>, polyvalence et gestion du stress en période d'affluence.</li>
+                                <li>~75 couverts/service — autonomie, polyvalence, gestion du stress en période d'affluence.</li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>Réceptionniste - Pharmacie de Piquerouge</h3>
+                            <h3>Réceptionniste — Pharmacie de Piquerouge</h3>
                             <div class="item-details">
                                 <span class="location">Gaillac</span>
                                 <span class="date">7 mois</span>
                             </div>
                             <ul>
-                                <li>Réception, <strong>gestion de stock</strong> et mise en rayon (parapharmacie, ~2/3 des références en vente).</li>
-                                <li><strong>Rigueur</strong>, rapidité d'exécution et respect des normes de traçabilité.</li>
+                                <li><strong>Gestion de stock</strong> à fort volume, rigueur et respect des normes de traçabilité.</li>
                             </ul>
                         </section>
 
                         <h2><a href="navigation/projets.html" style="color: rgb(57, 57, 105);">PROJETS</a></h2>
-                        <section class="cv-item">
-                            <h3>Puzzle/Escape Game 3D - Équipe de 5</h3>
-                            <div class="item-details">
-                                <span class="location">EPITA</span>
-                                <span class="date">2e semestre</span>
-                            </div>
-                            <ul>
-                                <li>Escape game <strong>multijoueur</strong> dans un manoir avec énigmes et fantôme en <strong>pathfinding</strong> (Godot, C#).</li>
-                                <li><strong>Modélisation 3D</strong> de la carte avec <strong>Blender</strong>, système de configuration des contrôles via <strong>JSON</strong>.</li>
-                            </ul>
-                        </section>
-                        <section class="cv-item">
-                            <h3>Résolution de mots cachés par OCR - Équipe de 4</h3>
+                        <section class="cv-item cv-item-highlight">
+                            <h3>OCR par réseau de neurones — Équipe de 4</h3>
                             <div class="item-details">
                                 <span class="location">EPITA</span>
                                 <span class="date">3e semestre</span>
                             </div>
                             <ul>
-                                <li>Réseau de neurones en <strong>C</strong> pour la reconnaissance de caractères (<strong>99,9 %</strong> de précision).</li>
-                                <li>Pipeline complet : prétraitement d'image, segmentation, <strong>Machine Learning</strong>, résolution.</li>
-                                <li>Interface graphique avec <strong>GTK/Glade</strong>.</li>
+                                <li>Réseau de neurones en <strong>C</strong> — <strong>99,9 %</strong> de précision. Pipeline complet : prétraitement, segmentation, ML, résolution.</li>
+                                <li>Interface graphique <strong>GTK/Glade</strong>.</li>
+                            </ul>
+                        </section>
+                        <section class="cv-item">
+                            <h3>Escape Game 3D multijoueur — Équipe de 5</h3>
+                            <div class="item-details">
+                                <span class="location">EPITA</span>
+                                <span class="date">2e semestre</span>
+                            </div>
+                            <ul>
+                                <li>Escape game coopératif avec IA ennemie en <strong>pathfinding</strong> (Godot, C#). Modélisation 3D sous <strong>Blender</strong>.</li>
+                            </ul>
+                        </section>
+                        <section class="cv-item">
+                            <h3>FPS Solo — Unreal Engine</h3>
+                            <div class="item-details">
+                                <span class="location">ATU Sligo, Irlande</span>
+                                <span class="date">Semestre à l'étranger</span>
+                            </div>
+                            <ul>
+                                <li>Projet individuel complet : gameplay, IA ennemie, carte 3D. Modélisation <strong>Maya</strong>, scripts <strong>C#</strong>.</li>
                             </ul>
                         </section>
                         <section class="cv-item">
@@ -230,65 +239,49 @@
                                 <span class="date">Semestre à l'étranger</span>
                             </div>
                             <ul>
-                                <li>Application desktop avec filtrage par ingrédient et <strong>constraint programming</strong> ("recettes avec ce que j'ai dans le frigo").</li>
-                                <li>Base de données <strong>MariaDB</strong>, interface multi-pages en <strong>XAML</strong>, requêtes <strong>SQL/LINQ</strong>.</li>
+                                <li>Application desktop avec <strong>constraint programming</strong>, base <strong>MariaDB</strong>, interface <strong>XAML</strong>.</li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>FPS Solo - Unreal Engine</h3>
-                            <div class="item-details">
-                                <span class="location">ATU Sligo, Irlande</span>
-                                <span class="date">Semestre à l'étranger</span>
-                            </div>
-                            <ul>
-                                <li>FPS solo réalisé seule sur <strong>Unreal Engine</strong> : gameplay, ennemis IA, carte 3D.</li>
-                                <li>Modélisation et textures avec <strong>Maya</strong>, scripts en <strong>C#</strong>.</li>
-                            </ul>
-                        </section>
-                        <section class="cv-item">
-                            <h3>Projet personnel : Portfolio</h3>
+                            <h3>Portfolio personnel</h3>
                             <div class="item-details">
                                 <span class="location">Le Kremlin-Bicêtre</span>
                                 <span class="date">Continu</span>
                             </div>
                             <ul>
-                                <li>Projet entièrement réalisé en <strong>HTML</strong> et <strong>CSS</strong></li>
-                                <li>Vibe coding</li>
+                                <li>Site from scratch en <strong>HTML</strong>, <strong>CSS</strong> — Vibe coding</li>
                             </ul>
                         </section>
                         
                         <h2><a href="navigation/vie-associative.html" style="color: rgb(57, 57, 105);">VIE ASSOCIATIVE</a></h2>
                         <section class="cv-item">
-                            <h3>Animatrice (Bénévolat) - Scouts et Guides de France</h3>
+                            <h3>Animatrice bénévole — Scouts et Guides de France</h3>
                             <div class="item-details">
                                 <span class="location">Gaillac</span>
-                                <span class="date">2023 - Présent</span>
+                                <span class="date">2023 — Présent</span>
                             </div>
                             <ul>
-                                <li>Encadrement bénévole d'un groupe de <strong>30 jeunes</strong> (8-17 ans), au sein d'une unité de ~100 scouts.</li>
-                                <li>Animation d'activités éducatives, garantie de la sécurité et accompagnement du développement des jeunes.</li>
+                                <li>Encadrement de <strong>30 jeunes</strong> (8-17 ans) au sein d'une unité de ~100 scouts — pédagogie, sécurité, responsabilité.</li>
                             </ul>
                         </section>
                         <section class="cv-item">
-                            <h3>Staff' Communication</h3>
+                            <h3>Staff' Communication — EPITA</h3>
                             <div class="item-details">
-                                <span class="location">EPITA, Le Kremlin-Bicêtre</span>
-                                <span class="date">2025 - Présent</span>
+                                <span class="location">Le Kremlin-Bicêtre</span>
+                                <span class="date">2025 — Présent</span>
                             </div>
                             <ul>
-                                <li>Représentation de l'EPITA sur <strong>3 JPO</strong>, <strong>10 salons</strong> et des présentations en lycées (France et étranger).</li>
-                                <li>Encadrement d'étudiants, accueil et conseil auprès des futurs candidats et de leurs familles.</li>
+                                <li><strong>3 JPO</strong>, <strong>10 salons</strong>, présentations en lycées (France et étranger) — aisance orale et relationnel.</li>
                             </ul>
                         </section>
-                        <section class="cv-item">
-                            <h3>Présidente de La Cave - Association du terroir (~50 membres)</h3>
+                        <section class="cv-item cv-item-highlight">
+                            <h3>Présidente de La Cave — Association du terroir (~50 membres)</h3>
                             <div class="item-details">
-                                <span class="location">EPITA, Le Kremlin-Bicêtre</span>
-                                <span class="date">2024 - Présent</span>
+                                <span class="location">EPITA</span>
+                                <span class="date">2024 — Présent</span>
                             </div>
                             <ul>
-                                <li>Direction du bureau, gestion budgétaire et organisation d'une <strong>vingtaine d'événements par an</strong>.</li>
-                                <li>Dégustations, visites de caves et de fermes, promotion du terroir français.</li>
+                                <li>Direction du bureau, gestion budgétaire, organisation d'une <strong>vingtaine d'événements/an</strong>.</li>
                             </ul>
                         </section>
                     </div>
