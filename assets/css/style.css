@@ -451,10 +451,10 @@ footer {
 .card-illustrated img {
   width: 40%;
   min-width: 140px;
-  max-height: 180px;
   object-fit: cover;
   border-radius: 8px;
   flex-shrink: 0;
+  align-self: stretch;
 }
 
 .card-illustrated .illustrated-text {
