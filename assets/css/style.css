@@ -56,9 +56,7 @@ header .logo {
 header .subtitle {
   font-size: 0.85rem;
   opacity: 0.75;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 1.5rem;
   line-height: 1.5;
 }
 
@@ -83,12 +81,11 @@ nav li {
 nav a {
   display: block;
   width: 100%;
-  padding: 0.5rem 0.25rem;
+  padding: 0.45rem 0;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 nav a:hover {
@@ -128,8 +125,6 @@ main > h1 {
   font-style: normal;
   color: #555;
   margin-bottom: 1.2rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid #e8e8e8;
 }
 
 .intro-block {
@@ -168,10 +163,22 @@ main > h1 {
   color: var(--color-primary-dark);
   text-transform: uppercase;
   font-weight: 700;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.35rem;
-  margin-top: 1.8rem;
+  margin-top: 2rem;
   margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.cv-main-content h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-dark);
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
 .cv-main-content h2:first-of-type {
@@ -219,19 +226,36 @@ main > h1 {
   margin-right: 0.4rem;
 }
 
-/* Items CV */
+/* Items CV - timeline */
 .cv-item {
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+  border-left: 1px solid #d0d0d0;
+  margin-left: 3px;
+}
+
+.cv-item::before {
+  content: '';
+  position: absolute;
+  left: -3.5px;
+  top: 0.45rem;
+  width: 6px;
+  height: 6px;
+  background: #bbb;
+  border-radius: 50%;
 }
 
 .cv-item:last-child {
-  border-bottom: none;
+  border-left-color: transparent;
 }
 
-.cv-item.cv-item-highlight {
-  /* pas de style spécial */
+.cv-item.cv-item-highlight::before {
+  background: var(--color-primary-dark);
+  width: 8px;
+  height: 8px;
+  left: -4.5px;
 }
 
 .cv-item h3 {
@@ -346,9 +370,7 @@ footer {
   font-size: 0.9rem;
   color: var(--color-primary-dark);
   font-weight: 600;
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 2px solid var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 .experience-grid {
@@ -410,9 +432,7 @@ footer {
   justify-content: space-between;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
 }
 
 .card-details-wrapper .location {
@@ -521,7 +541,6 @@ footer {
 
 .chips-footer {
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: auto;
   display: flex;
   flex-wrap: wrap;
@@ -619,7 +638,8 @@ footer {
   }
 
   .cv-item {
-    padding-left: 0;
+    padding-left: 1.2rem;
+    margin-left: 3px;
   }
 
   .card-content {
