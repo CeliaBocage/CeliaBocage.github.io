@@ -353,11 +353,11 @@ footer {
 
   display: flex;
   flex-direction: column;
-  
-  flex: 1 1 300px;
 
-  min-width: 280px; 
-  max-width: 100%;
+  flex: 1 1 calc(50% - 20px);
+
+  min-width: 280px;
+  max-width: calc(50% - 10px);
 }
 
 .experience-card:hover {
@@ -401,10 +401,11 @@ footer {
 
 .card-image {
     width: 100%;
-    height: 150px; /* Vous pouvez ajuster la hauteur selon vos besoins */
-    object-fit: cover; /* Permet de recadrer l'image proprement sans la déformer */
+    height: 150px;
+    object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    background: #fff;
 }
 
 .experience-card .card-description {
