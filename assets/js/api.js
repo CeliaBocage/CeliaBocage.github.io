@@ -85,6 +85,9 @@ async function loadPosts() {
   const container = document.getElementById('posts-grid');
   if (!container) return;
 
+  // If static post cards already exist, skip the API fetch
+  if (container.querySelectorAll('.post-card').length > 0) return;
+
   // Check if URL has a slug param
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
@@ -190,6 +193,20 @@ const TAG_CATEGORIES = {
     'Autonomie', 'Adaptation', 'Dynamisme', 'Rigueur', 'Organisation',
     'Gestion de stock', 'Stratégie'
   ],
+  'Data & Analytics': [
+    'Data', 'DataAnalytics', 'DataAnalysis', 'DataScience', 'DataDriven',
+    'DataQuality', 'DataPreparation', 'BusinessIntelligence', 'Analytics',
+    'AnalyseDeDonnées'
+  ],
+  'IA & Outils': [
+    'IA', 'VibeCoding', 'ClaudeAI', 'Anthropic', 'GoogleGemini',
+    'Cursor', 'DashPlotly', 'TechReview'
+  ],
+  'Thème': [
+    'Stage', 'Internship', 'Artmajeur', 'FutureOfWork', 'EPITA',
+    'SalonÉtudiant', 'Radio', 'Franceinfo', 'Restauration',
+    'Leadership', 'SoftSkills', 'JobÉtudiant'
+  ],
 };
 
 const CONTEXT_RULES = {
@@ -202,10 +219,10 @@ const CONTEXT_RULES = {
 
 function initCardFilters() {
   const filterContainer = document.getElementById('card-filters');
-  const grid = document.querySelector('.experience-grid');
+  const grid = document.querySelector('.experience-grid') || document.querySelector('.posts-grid');
   if (!filterContainer || !grid) return;
 
-  const cards = [...grid.querySelectorAll('.experience-card')];
+  const cards = [...grid.querySelectorAll('.experience-card, .post-card')];
   const allTags = new Set();
 
   cards.forEach(card => {

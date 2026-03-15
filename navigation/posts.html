@@ -48,6 +48,8 @@
         <div id="post-detail-content"></div>
       </div>
 
+      <div class="card-filters" id="card-filters"></div>
+
       <!-- ===== Grid view ===== -->
       <div class="posts-grid" id="posts-grid">
 
@@ -57,6 +59,14 @@
             <span class="post-date">7 mars 2026</span>
             <h2 class="post-title">Quand l'IA ferme une boucle 🔄</h2>
             <p class="post-summary">L'humain l'a créée pour gagner du temps face à la documentation. Aujourd'hui, elle-même ne cherche plus à la lire...</p>
+          </div>
+          <div class="chips-footer">
+            <span class="chip">IA</span>
+            <span class="chip">DataAnalytics</span>
+            <span class="chip">VibeCoding</span>
+            <span class="chip">ClaudeAI</span>
+            <span class="chip">Stage</span>
+            <span class="chip">DashPlotly</span>
           </div>
         </article>
 
@@ -68,6 +78,13 @@
             <h2 class="post-title">Quand tes courbes racontent une histoire… incomplète 📊</h2>
             <p class="post-summary">Un trou béant. Puis une explosion de données. Bienvenue dans la réalité des bases qui ont évolué au fil du temps.</p>
           </div>
+          <div class="chips-footer">
+            <span class="chip">Data</span>
+            <span class="chip">Analytics</span>
+            <span class="chip">Internship</span>
+            <span class="chip">BusinessIntelligence</span>
+            <span class="chip">DataQuality</span>
+          </div>
         </article>
 
         <!-- Post 6 -->
@@ -78,6 +95,12 @@
             <h2 class="post-title">Comment faire parler les chiffres 📊</h2>
             <p class="post-summary">Un résultat faible n'est pas forcément un résultat inutile. Parfois, ce n'est pas l'effet qui est petit, c'est le signal qui est noyé.</p>
           </div>
+          <div class="chips-footer">
+            <span class="chip">DataAnalysis</span>
+            <span class="chip">DataScience</span>
+            <span class="chip">AnalyseDeDonnées</span>
+            <span class="chip">DataDriven</span>
+          </div>
         </article>
 
         <!-- Post 5 -->
@@ -86,6 +109,13 @@
             <span class="post-date">Novembre 2025</span>
             <h2 class="post-title">Gemini 3 Pro : Un sprinter, pas un marathonien ? 🏃</h2>
             <p class="post-summary">J'ai testé la nouveauté de Google pour trouver une alternative plus économique à Claude. Voici mon retour terrain.</p>
+          </div>
+          <div class="chips-footer">
+            <span class="chip">VibeCoding</span>
+            <span class="chip">TechReview</span>
+            <span class="chip">DataAnalytics</span>
+            <span class="chip">GoogleGemini</span>
+            <span class="chip">Anthropic</span>
           </div>
         </article>
 
@@ -97,6 +127,12 @@
             <h2 class="post-title">La pire erreur en data ? Croire que l'analyse commence avec les chiffres 📊</h2>
             <p class="post-summary">Avant d'analyser quoi que ce soit, je me pose toujours les quatre mêmes questions...</p>
           </div>
+          <div class="chips-footer">
+            <span class="chip">DataAnalysis</span>
+            <span class="chip">DataScience</span>
+            <span class="chip">DataQuality</span>
+            <span class="chip">DataPreparation</span>
+          </div>
         </article>
 
         <!-- Post 3 -->
@@ -105,6 +141,14 @@
             <span class="post-date">Novembre 2025</span>
             <h2 class="post-title">Vibe Coding & IA : Et si on arrêtait de parler de "remplacement" ? 💻</h2>
             <p class="post-summary">Dans mon quotidien, je vois exactement l'inverse. L'IA ne remplace pas, elle transforme nos métiers.</p>
+          </div>
+          <div class="chips-footer">
+            <span class="chip">VibeCoding</span>
+            <span class="chip">IA</span>
+            <span class="chip">DataScience</span>
+            <span class="chip">FutureOfWork</span>
+            <span class="chip">Artmajeur</span>
+            <span class="chip">Cursor</span>
           </div>
         </article>
 
@@ -115,6 +159,12 @@
             <h2 class="post-title">Salon étudiant & atelier radio franceinfo 🎙️</h2>
             <p class="post-summary">Présente sur le stand EPITA, j'ai échangé avec de nombreux lycéens et participé à un atelier radio en direct.</p>
           </div>
+          <div class="chips-footer">
+            <span class="chip">EPITA</span>
+            <span class="chip">SalonÉtudiant</span>
+            <span class="chip">Radio</span>
+            <span class="chip">Franceinfo</span>
+          </div>
         </article>
 
         <!-- Post 1 -->
@@ -123,6 +173,12 @@
             <span class="post-date">Août 2025</span>
             <h2 class="post-title">Ce que j'ai appris en restauration 🍽️</h2>
             <p class="post-summary">"C'est juste un job d'étudiant", paraît-il. Pourtant, j'y ai appris à gérer le stress, prendre le lead, et ne jamais rester passif·ve.</p>
+          </div>
+          <div class="chips-footer">
+            <span class="chip">Restauration</span>
+            <span class="chip">Leadership</span>
+            <span class="chip">SoftSkills</span>
+            <span class="chip">JobÉtudiant</span>
           </div>
         </article>
 
@@ -499,10 +555,12 @@
 function showPost(id) {
   var grid = document.getElementById('posts-grid');
   var detail = document.getElementById('post-detail');
+  var filters = document.getElementById('card-filters');
   var source = document.getElementById(id);
   if (!source) return;
 
   grid.style.display = 'none';
+  if (filters) filters.style.display = 'none';
   detail.querySelector('#post-detail-content').innerHTML = source.innerHTML;
   detail.style.display = 'block';
   window.scrollTo(0, 0);
@@ -510,7 +568,9 @@ function showPost(id) {
 
 document.getElementById('back-to-posts').addEventListener('click', function(e) {
   e.preventDefault();
+  var filters = document.getElementById('card-filters');
   document.getElementById('posts-grid').style.display = '';
+  if (filters) filters.style.display = '';
   document.getElementById('post-detail').style.display = 'none';
   window.scrollTo(0, 0);
 });
