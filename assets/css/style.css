@@ -671,4 +671,260 @@ footer {
     flex: 1 1 100%;
     max-width: 100%;
   }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Posts ===== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.post-card {
+  background: var(--color-primary-dark);
+  border-radius: 6px;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.post-card-body {
+  flex: 1;
+}
+
+.post-date {
+  font-size: 0.82rem;
+  color: var(--color-accent-light);
+  font-weight: 600;
+}
+
+.post-title {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0.4rem 0 0.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.post-summary {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+.post-full-title {
+  font-size: 1.8rem;
+  color: var(--color-primary-dark);
+  margin: 0.5rem 0 1rem;
+  font-weight: 800;
+}
+
+.post-content {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.post-content p {
+  margin-bottom: 1rem;
+}
+
+.post-content pre {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.post-content code {
+  background: #eef;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.post-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.empty-state {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+/* ===== Formulaire de contact ===== */
+.contact-section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.contact-section h2 {
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.contact-section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-dark);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.contact-form-grid label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.contact-form-grid input,
+.contact-form-grid textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  background: #fafafa;
+  transition: border-color 0.15s;
+}
+
+.contact-form-grid input:focus,
+.contact-form-grid textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-dark);
+}
+
+.contact-form-grid textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-submit-btn {
+  background: var(--color-primary-dark);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.contact-submit-btn:hover {
+  background: var(--color-primary-medium);
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-feedback {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  min-height: 1.5em;
+}
+
+.contact-feedback.success {
+  color: #28a745;
+}
+
+.contact-feedback.error {
+  color: #dc3545;
+}
+
+/* ===== Filtres de cartes ===== */
+.card-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-chip {
+  font-size: 0.82rem;
+  border-radius: 4px;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+  background: #f2f6fb;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.filter-chip:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+.filter-chip.active {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* ===== Compteur de visites (footer) ===== */
+.visit-counter {
+  font-size: 0.78rem;
+  opacity: 0.5;
+  margin-top: 0.25rem;
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Célia Bocage – Posts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="site-wrapper">
+<header>
+    <div class="logo">Célia Bocage</div>
+    <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
+
+    <button id="menuButton" class="menu-toggle" aria-label="Menu">☰ Menu</button>
+
+    <nav>
+        <ul id="menuList">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="formations.html">Formations</a></li>
+            <li><a href="experiences.html">Expériences</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="vie-associative.html">Vie associative</a></li>
+            <li><a href="passions.html">Passions</a></li>
+            <li><a href="posts.html">Posts</a></li>
+        </ul>
+    </nav>
+</header>
+
+  <div class="content-area">
+    <main>
+      <h1>Posts</h1>
+
+      <div class="page-intro-details">
+        <p class="intro-summary">Ce que j'apprends au fil de mes projets — notes techniques, retours d'expérience et découvertes en vrac.</p>
+      </div>
+
+      <div id="post-detail" style="display: none;"></div>
+
+      <div class="posts-grid" id="posts-grid">
+        <p class="empty-state">Chargement...</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Célia Bocage - Tous droits réservés.</p>
+    </footer>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/api.js"></script>
+</body>
+</html>
