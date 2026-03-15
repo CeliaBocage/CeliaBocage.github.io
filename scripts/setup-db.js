@@ -1,5 +1,5 @@
 /**
- * Setup script: creates tables and seeds existing posts into Turso DB.
+ * Setup script: creates tables and seeds existing posts + cards into Turso DB.
  *
  * Usage:
  *   TURSO_DB_URL=libsql://... TURSO_DB_TOKEN=... node scripts/setup-db.js
@@ -41,10 +41,17 @@ async function migrate() {
       tags TEXT DEFAULT '[]',
       image_url TEXT,
       link_url TEXT,
+      featured INTEGER DEFAULT 0,
       sort_order INTEGER DEFAULT 0,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
+
+  // Add featured column for existing databases
+  try {
+    await db.execute('ALTER TABLE cards ADD COLUMN featured INTEGER DEFAULT 0');
+    console.log('Added featured column to cards.');
+  } catch { /* column already exists */ }
 
   await db.execute(`
     CREATE TABLE IF NOT EXISTS visits (
@@ -62,8 +69,8 @@ async function migrate() {
 const posts = [
   {
     slug: 'quand-ia-ferme-une-boucle',
-    title: 'Quand l\'IA ferme une boucle. \u{1F504}',
-    summary: 'L\'humain l\'a cr\u00E9\u00E9e pour gagner du temps face \u00E0 la documentation. Aujourd\'hui, elle-m\u00EAme ne cherche plus \u00E0 la lire...',
+    title: `Quand l'IA ferme une boucle. \u{1F504}`,
+    summary: `L'humain l'a cr\u00E9\u00E9e pour gagner du temps face \u00E0 la documentation. Aujourd'hui, elle-m\u00EAme ne cherche plus \u00E0 la lire...`,
     image_url: null,
     tags: '["IA","DataAnalytics","VibeCoding","ClaudeAI","Stage","DashPlotly"]',
     created_at: '2026-03-07',
@@ -95,8 +102,8 @@ Deuxi\u00E8me essai \u2192 dropdown <strong>EN-DESSOUS</strong> du tableau.</p>
   },
   {
     slug: 'courbes-histoire-incomplete',
-    title: 'Quand tes courbes racontent une histoire\u2026 incompl\u00E8te \u{1F4CA}',
-    summary: 'Un trou b\u00E9ant. Puis une explosion de donn\u00E9es. Bienvenue dans la r\u00E9alit\u00E9 des bases qui ont \u00E9volu\u00E9 au fil du temps.',
+    title: `Quand tes courbes racontent une histoire\u2026 incompl\u00E8te \u{1F4CA}`,
+    summary: `Un trou b\u00E9ant. Puis une explosion de donn\u00E9es. Bienvenue dans la r\u00E9alit\u00E9 des bases qui ont \u00E9volu\u00E9 au fil du temps.`,
     image_url: '/assets/Images/post_dashboard_timeline.jpg',
     tags: '["Data","Analytics","Internship","BusinessIntelligence","DataQuality"]',
     created_at: '2026-02-26',
@@ -132,8 +139,8 @@ C'est aussi comprendre ce qui manque.</strong></p>`,
   },
   {
     slug: 'faire-parler-les-chiffres',
-    title: 'Comment faire parler les chiffres pour mieux les interpr\u00E9ter\u00A0? \u{1F4CA}',
-    summary: 'Un r\u00E9sultat faible n\'est pas forc\u00E9ment un r\u00E9sultat inutile. Parfois, ce n\'est pas l\'effet qui est petit, c\'est le signal qui est noy\u00E9.',
+    title: `Comment faire parler les chiffres pour mieux les interpr\u00E9ter\u00A0? \u{1F4CA}`,
+    summary: `Un r\u00E9sultat faible n'est pas forc\u00E9ment un r\u00E9sultat inutile. Parfois, ce n'est pas l'effet qui est petit, c'est le signal qui est noy\u00E9.`,
     image_url: '/assets/Images/post_courbes_centiles.png',
     tags: '["DataAnalysis","DataScience","AnalyseDeDonnées","DataDriven"]',
     created_at: '2025-12-15',
@@ -198,8 +205,8 @@ Objectif\u00A0: r\u00E9duire le bruit et faire \u00E9merger les tendances r\u00E
   },
   {
     slug: 'gemini-3-pro-sprinter',
-    title: 'Gemini 3 Pro\u00A0: Un sprinter, pas un marathonien\u00A0? \u{1F3C3}',
-    summary: 'J\'ai test\u00E9 la nouveaut\u00E9 de Google pour trouver une alternative plus \u00E9conomique \u00E0 Claude. Voici mon retour terrain.',
+    title: `Gemini 3 Pro\u00A0: Un sprinter, pas un marathonien\u00A0? \u{1F3C3}`,
+    summary: `J'ai test\u00E9 la nouveaut\u00E9 de Google pour trouver une alternative plus \u00E9conomique \u00E0 Claude. Voici mon retour terrain.`,
     image_url: null,
     tags: '["VibeCoding","TechReview","DataAnalytics","GoogleGemini","Anthropic"]',
     created_at: '2025-11-20',
@@ -222,8 +229,8 @@ C'est le plus gros frein pour l'analyse de donn\u00E9es\u00A0: la confusion mult
   },
   {
     slug: 'pire-erreur-data',
-    title: 'La pire erreur en data\u00A0? Croire que l\'analyse commence avec les chiffres. \u{1F4CA}',
-    summary: 'Avant d\'analyser quoi que ce soit, je me pose toujours les quatre m\u00EAmes questions...',
+    title: `La pire erreur en data\u00A0? Croire que l'analyse commence avec les chiffres. \u{1F4CA}`,
+    summary: `Avant d'analyser quoi que ce soit, je me pose toujours les quatre m\u00EAmes questions...`,
     image_url: '/assets/Images/post_sets_diagram.png',
     tags: '["DataAnalysis","DataScience","DataQuality","DataPreparation"]',
     created_at: '2025-11-15',
@@ -264,8 +271,8 @@ Avant de les analyser, il faut d\u00E9j\u00E0 les d\u00E9finir.</p>
   },
   {
     slug: 'vibe-coding-ia-remplacement',
-    title: '\u{1F4BB} Vibe Coding & IA\u00A0: Et si on arr\u00EAtait de parler de "remplacement"\u00A0?',
-    summary: 'Dans mon quotidien, je vois exactement l\'inverse. L\'IA ne remplace pas, elle transforme nos m\u00E9tiers.',
+    title: `\u{1F4BB} Vibe Coding & IA\u00A0: Et si on arr\u00EAtait de parler de "remplacement"\u00A0?`,
+    summary: `Dans mon quotidien, je vois exactement l'inverse. L'IA ne remplace pas, elle transforme nos m\u00E9tiers.`,
     image_url: null,
     tags: '["VibeCoding","IA","DataScience","FutureOfWork","Artmajeur","Cursor"]',
     created_at: '2025-11-10',
@@ -313,8 +320,8 @@ C'est un levier. \u00C0 nous de le saisir.</strong></p>`,
   },
   {
     slug: 'salon-etudiant-radio-franceinfo',
-    title: 'Salon \u00E9tudiant & atelier radio franceinfo \u{1F399}\uFE0F',
-    summary: 'Pr\u00E9sente sur le stand EPITA, j\'ai \u00E9chang\u00E9 avec de nombreux lyc\u00E9ens et particip\u00E9 \u00E0 un atelier radio en direct.',
+    title: `Salon \u00E9tudiant & atelier radio franceinfo \u{1F399}\uFE0F`,
+    summary: `Pr\u00E9sente sur le stand EPITA, j'ai \u00E9chang\u00E9 avec de nombreux lyc\u00E9ens et particip\u00E9 \u00E0 un atelier radio en direct.`,
     image_url: null,
     tags: '["EPITA","SalonÉtudiant","Radio","Franceinfo"]',
     created_at: '2025-11-05',
@@ -326,8 +333,8 @@ C'est un levier. \u00C0 nous de le saisir.</strong></p>`,
   },
   {
     slug: 'ce-que-jai-appris-restauration',
-    title: '\u{1F37D}\uFE0F Ce que j\'ai appris apr\u00E8s quelques mois en restauration',
-    summary: '"C\'est juste un job d\'\u00E9tudiant", para\u00EEt-il. Pourtant, j\'y ai appris \u00E0 g\u00E9rer le stress, prendre le lead, et ne jamais rester passif\u00B7ve.',
+    title: `\u{1F37D}\uFE0F Ce que j'ai appris apr\u00E8s quelques mois en restauration`,
+    summary: `"C'est juste un job d'\u00E9tudiant", para\u00EEt-il. Pourtant, j'y ai appris \u00E0 g\u00E9rer le stress, prendre le lead, et ne jamais rester passif\u00B7ve.`,
     image_url: null,
     tags: '["Restauration","Leadership","SoftSkills","JobÉtudiant"]',
     created_at: '2025-08-01',
@@ -353,8 +360,7 @@ Mais cette exp\u00E9rience m'a appris des choses qu'aucune formation ne m'aurait
   },
 ];
 
-async function seed() {
-  // Check if posts already exist
+async function seedPosts() {
   const existing = await db.execute('SELECT COUNT(*) as cnt FROM posts');
   if (existing.rows[0].cnt > 0) {
     console.log(`Posts table already has ${existing.rows[0].cnt} rows. Skipping seed.`);
@@ -372,11 +378,428 @@ async function seed() {
   console.log('Posts seeded.');
 }
 
+// ── Seed cards ──────────────────────────────────────────────────────────────
+
+const cards = [
+  // === EXPERIENCES ===
+  {
+    page: 'experiences',
+    title: `Stage Data Science - <a href="https://www.artmajeur.com" target="_blank" style="color: inherit; text-decoration: underline;">ArtMajeur</a>`,
+    location: 'Levallois-Perret',
+    date_range: '10 mois',
+    image_url: '../assets/Images/ArtMajeur.jpeg',
+    link_url: 'https://www.artmajeur.com',
+    tags: '["Python","SQL","BERT","Data Science","Dash","Stratégie"]',
+    featured: 1,
+    sort_order: 0,
+    description: `<ul class="card-description">
+    <li><strong>Analyse de données comportementales</strong> sur une plateforme de ~3,5 millions d'œuvres et ~1 million de comptes (acheteurs et artistes), à l'aide de <strong>SQL</strong>, <strong>Python</strong> et de méthodes statistiques.</li>
+    <li><strong>Classification sémantique</strong> avec <strong>BERT</strong> des descriptions d'œuvres et des biographies d'artistes pour améliorer le référencement et la recherche.</li>
+    <li>Conception de <strong>dashboards interactifs</strong> avec <strong>Plotly/Dash</strong> et de cartographies de données pour les équipes produit, dev et communication.</li>
+    <li>Recherche et implémentation de nouvelles <strong>stratégies statistiques</strong> pour améliorer la pertinence des recommandations.</li>
+    <li>Conception de <strong>requêtes SQL complexes</strong> avec traitement des données directement dans la requête.</li>
+    <li>Utilisation d'un <strong>linter</strong> pour garantir la conformité du code lors du merge des projets sur la plateforme centralisant les dashboards.</li>
+    <li>Gestion, maintenance et optimisation de la <strong>base de données</strong> de la plateforme.</li>
+    <li>Réalisation d'une étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes — proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
+</ul>`,
+  },
+  {
+    page: 'experiences',
+    title: `Commis de salle - <a href="https://hoteleldoradoparis.com/" target="_blank" style="color: inherit; text-decoration: underline;">Hôtel Eldorado, 4*</a>`,
+    location: 'Paris 18',
+    date_range: '3 mois',
+    image_url: '../assets/Images/Eldorado.jpg',
+    link_url: 'https://hoteleldoradoparis.com/',
+    tags: '["Autonomie","Adaptation","Dynamisme"]',
+    featured: 0,
+    sort_order: 1,
+    description: `<ul class="card-description">
+    <li>Service de <strong>~75 couverts par service</strong> (salle de 40 places, 2 services par repas) dans un hôtel 4 étoiles parisien.</li>
+    <li>Mise en place <strong>autonome</strong> de la salle, gestion du service en toute polyvalence au contact d'une clientèle internationale.</li>
+</ul>
+<div class="card-illustrated right">
+    <ul class="illustrated-text">
+        <li>Réalisation du <strong>service en chambre</strong> avec attention au détail et respect des standards de l'établissement.</li>
+    </ul>
+    <img src="../assets/Images/HotelEldorado2.jpg" alt="Jardin de l'Hôtel Eldorado">
+</div>
+<ul class="card-description">
+    <li>Développement du sens du <strong>travail en équipe</strong> et de la gestion du stress en période d'affluence.</li>
+</ul>`,
+  },
+  {
+    page: 'experiences',
+    title: 'Réceptionniste - Pharmacie de Piquerouge',
+    location: 'Gaillac',
+    date_range: '7 mois',
+    image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
+    link_url: null,
+    tags: '["Rigueur","Organisation","Gestion de stock"]',
+    featured: 0,
+    sort_order: 2,
+    description: `<ul class="card-description">
+    <li>Réception des livraisons, <strong>gestion de stock</strong> et mise en rayon dans une pharmacie de grande envergure (~2/3 des références en parapharmacie).</li>
+    <li>Forte <strong>rigueur</strong> et rapidité d'exécution dans le respect des normes de traçabilité, avec un volume nécessitant depuis l'installation d'un robot de stockage.</li>
+    <li>Sens de l'<strong>organisation</strong> développé au contact d'un environnement professionnel réglementé et à fort volume.</li>
+</ul>`,
+  },
+
+  // === FORMATIONS ===
+  {
+    page: 'formations',
+    title: `3ème année - École d'ingénieurs EPITA`,
+    location: 'Villejuif',
+    date_range: '2023 - Présent',
+    image_url: null,
+    link_url: null,
+    tags: '["Informatique","Algorithmique","Mathématiques","C# / Python / C / Rust / Assembly","Projets"]',
+    featured: 1,
+    sort_order: 0,
+    description: `<ul class="card-description">
+    <li>Formation d'ingénieur généraliste en informatique, avec un tronc commun intensif en <strong>algorithmique</strong>, <strong>mathématiques</strong> et programmation.</li>
+    <li>Apprentissage approfondi des langages <strong>C</strong>, <strong>C#</strong>, <strong>Python</strong> et <strong>SQL</strong> à travers de nombreux travaux pratiques.</li>
+    <li>Réalisation de projets techniques majeurs chaque semestre : <strong>jeu vidéo 3D</strong> (S2), <strong>OCR par Machine Learning</strong> (S3).</li>
+    <li>Semestre d'échange international en <strong>Game Design</strong> en Irlande, renforçant autonomie et ouverture culturelle.</li>
+</ul>`,
+  },
+  {
+    page: 'formations',
+    title: `Semestre à l'étranger - Game Design`,
+    location: 'ATU Sligo, Irlande',
+    date_range: 'Janv. 2025 - Juin 2025',
+    image_url: null,
+    link_url: null,
+    tags: '["International","Game Design","Anglais","Projet","C# / SQL / LINQ / XAML","Photoshop / Maya"]',
+    featured: 0,
+    sort_order: 1,
+    description: `<ul class="card-description">
+    <li>Semestre d'échange dédié au <strong>Game Design</strong>, à la <strong>modélisation 3D</strong> et au développement logiciel.</li>
+    <li>Immersion anglophone complète pendant 6 mois, consolidant un <strong>niveau courant</strong> à l'oral et à l'écrit.</li>
+    <li>Conception et développement d'un <strong>logiciel de recettes de cuisine</strong> avec base de données relationnelle.</li>
+    <li>Création d'un <strong>jeu vidéo 3D</strong> complet sur <strong>Unreal Engine</strong>, de la modélisation au gameplay.</li>
+    <li>Apprentissage de <strong>Maya</strong> et <strong>Photoshop</strong> pour la création d'assets graphiques.</li>
+</ul>`,
+  },
+  {
+    page: 'formations',
+    title: 'BAFA',
+    location: 'Gaillac',
+    date_range: '2024',
+    image_url: null,
+    link_url: null,
+    tags: '["Animation","Responsabilité","Pédagogie"]',
+    featured: 0,
+    sort_order: 2,
+    description: `<ul class="card-description">
+    <li>Obtention du <strong>Brevet d'Aptitude aux Fonctions d'Animateur</strong>, diplôme national d'encadrement de mineurs.</li>
+    <li>Spécialisation <strong>accueil de scoutisme</strong> : encadrement de camps et de week-ends avec des jeunes de 8 à 11 ans.</li>
+    <li>Formation aux techniques d'animation, à la gestion de groupes et aux responsabilités de sécurité.</li>
+</ul>`,
+  },
+  {
+    page: 'formations',
+    title: 'Baccalauréat Général',
+    location: 'Lycée St Joseph, Gaillac',
+    date_range: '2023',
+    image_url: null,
+    link_url: null,
+    tags: '["Sciences","Mathématiques","Physique-Chimie"]',
+    featured: 0,
+    sort_order: 3,
+    description: `<ul class="card-description">
+    <li>Spécialités <strong>Mathématiques</strong> et <strong>Physique-Chimie</strong>, avec l'option <strong>Maths Expertes</strong>.</li>
+    <li>Profil scientifique solide ayant préparé l'entrée en école d'ingénieurs.</li>
+</ul>`,
+  },
+  {
+    page: 'formations',
+    title: 'Permis, Licences & Certificats',
+    location: null,
+    date_range: '2021 - 2025',
+    image_url: null,
+    link_url: null,
+    tags: '["Permis B","Permis A2","Bateau","PSC1","Prévention VSS"]',
+    featured: 0,
+    sort_order: 4,
+    description: `<ul class="card-description">
+    <li><strong>Permis B</strong> — Permis de conduire automobile.</li>
+    <li><strong>Permis A2</strong> — Permis moto (motocyclettes de puissance intermédiaire).</li>
+    <li><strong>Permis bateau fluvial & côtier</strong> — Navigation en eaux intérieures et en mer.</li>
+    <li><strong>Certificat de formation contre les VSS</strong> — Formation à la prévention et à la prise en charge des violences sexistes et sexuelles.</li>
+    <li><strong>PSC1</strong> — Prévention et Secours Civiques de niveau 1, formation aux premiers secours (massage cardiaque, PLS, gestion des hémorragies, etc.).</li>
+</ul>`,
+  },
+
+  // === PROJETS ===
+  {
+    page: 'projets',
+    title: 'Résolution de mots cachés par OCR (équipe de 4)',
+    location: 'EPITA',
+    date_range: '3e semestre',
+    image_url: null,
+    link_url: null,
+    tags: '["C","Machine Learning","Analyse d\'Image","GTK"]',
+    featured: 1,
+    sort_order: 0,
+    description: `<ul class="card-description">
+    <li>Développement d'un logiciel capable de <strong>détecter et résoudre des grilles de mots cachés</strong> à partir d'une image, grâce à la <strong>reconnaissance optique de caractères (OCR)</strong>.</li>
+    <li>Implémentation d'un <strong>réseau de neurones</strong> en <strong>C</strong> atteignant <strong>99,9 % de précision</strong> sur la reconnaissance de l'alphabet français.</li>
+    <li>Création d'une base de données d'entraînement et gestion du pipeline complet : prétraitement d'image, segmentation, reconnaissance et résolution.</li>
+    <li>Développement de l'interface graphique avec <strong>GTK</strong> et <strong>Glade</strong> pour permettre à l'utilisateur de charger une image et visualiser le résultat.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: 'Puzzle/Escape Game 3D - Godot (équipe de 5)',
+    location: 'EPITA',
+    date_range: '2e semestre',
+    image_url: null,
+    link_url: null,
+    tags: '["C#","Godot","Blender","JSON"]',
+    featured: 0,
+    sort_order: 1,
+    description: `<ul class="card-description">
+    <li>Escape game <strong>multijoueur</strong> dans un <strong>manoir</strong> : résolution d'énigmes en coopération tout en échappant à un fantôme doté d'un système de <strong>pathfinding</strong> (possibilité de se cacher pour le faire repartir).</li>
+    <li><strong>Modélisation 3D</strong> complète de l'environnement avec <strong>Blender</strong> (manoir, décors, éclairage).</li>
+    <li>Développement d'un système de <strong>configuration des contrôles</strong> en <strong>C#</strong>, avec sauvegarde/chargement dynamique via <strong>JSON</strong>.</li>
+    <li>Intégration de l'ensemble dans le moteur <strong>Godot</strong> : gameplay, physique, IA ennemie et interface utilisateur.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: 'FPS Solo - Unreal Engine (projet individuel)',
+    location: 'ATU Sligo, Irlande',
+    date_range: `Semestre à l'étranger`,
+    image_url: null,
+    link_url: null,
+    tags: '["Unreal Engine","C#","Maya","Game Design"]',
+    featured: 0,
+    sort_order: 2,
+    description: `<ul class="card-description">
+    <li>Réalisation <strong>individuelle</strong> complète d'un FPS solo sous <strong>Unreal Engine</strong>, de la conception au produit jouable.</li>
+    <li>Développement de la logique de jeu en <strong>C#</strong> : déplacements, tir, ennemis IA, conditions de victoire.</li>
+    <li>Création de la carte 3D, des textures et des assets visuels avec <strong>Maya</strong> et Paint.</li>
+    <li>Projet réalisé en contexte international, entièrement en anglais.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: 'Logiciel de recettes de cuisine',
+    location: 'ATU Sligo, Irlande',
+    date_range: `Semestre à l'étranger`,
+    image_url: null,
+    link_url: null,
+    tags: '["C#","SQL","XAML","LINQ"]',
+    featured: 0,
+    sort_order: 3,
+    description: `<ul class="card-description">
+    <li>Application desktop de gestion de recettes : ajout, suppression, recherche et <strong>filtrage par ingrédient</strong>.</li>
+    <li>Fonctionnalité de <strong>constraint programming</strong> : suggestion de recettes réalisables avec les ingrédients disponibles ("recettes à partir du frigo").</li>
+    <li>Calcul automatique des <strong>portions</strong> en fonction du nombre de convives.</li>
+    <li>Base de données <strong>MariaDB</strong>, requêtes <strong>SQL/LINQ</strong>, interface multi-pages en <strong>XAML</strong>.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `<a href="https://github.com/CeliaBocage/Projet-Preparation-Piscine-Avant-L-Ing-1" target="_blank" style="color: inherit; text-decoration: underline;">Préparation Piscine – Avant l'Ing 1</a>`,
+    location: 'EPITA',
+    date_range: 'Projet personnel',
+    image_url: null,
+    link_url: null,
+    tags: '["C","SQL","Makefile"]',
+    featured: 0,
+    sort_order: 4,
+    description: `<ul class="card-description">
+    <li>Projet de préparation à la <strong>piscine</strong> du cycle ingénieur : exploration des différents langages et concepts abordés pendant la piscine.</li>
+    <li>Réalisation d'une <strong>calculatrice en ligne de commande</strong> en <strong>C</strong> avec opérations arithmétiques (+, -, *, /, %), validation des arguments et fonctions d'affichage réimplémentées sans utiliser la bibliothèque standard.</li>
+    <li>Gestion du projet avec <strong>Makefile</strong> pour la compilation et l'organisation du code.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: 'Projet Personnel : Portfolio',
+    location: 'Le Kremlin-Bicêtre',
+    date_range: 'Continu',
+    image_url: null,
+    link_url: null,
+    tags: '["HTML","CSS","Web Design","Git"]',
+    featured: 0,
+    sort_order: 5,
+    description: `<ul class="card-description">
+    <li>Développement de ce site portfolio entièrement "from scratch", sans framework ni générateur de site.</li>
+    <li>Code source en <strong>HTML</strong>, <strong>CSS</strong> et <strong>JavaScript</strong> vanilla pour une maîtrise totale et des performances optimales.</li>
+    <li>Design <strong>responsive</strong> (mobile, tablette, desktop) avec un système de composants réutilisables (cartes, chips, grilles).</li>
+    <li>Hébergé sur <strong>GitHub Pages</strong> avec déploiement continu via Git.</li>
+</ul>`,
+  },
+
+  // === PASSIONS ===
+  {
+    page: 'passions',
+    title: `Apprentissage de la cybersécurité en autodidacte`,
+    location: 'Plateformes en ligne',
+    date_range: 'Continu',
+    image_url: null,
+    link_url: null,
+    tags: '["TryHackMe","HackTheBox","RootMe","HackThisSite"]',
+    featured: 1,
+    sort_order: 0,
+    description: `<ul class="card-description">
+    <li>Pratique régulière du <strong>pentest</strong> sur des environnements virtuels : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.</li>
+    <li>Participation à des <strong>CTF</strong> (Capture The Flag) pour développer mes compétences en sécurité offensive : cryptographie, stéganographie, forensics, web.</li>
+    <li>Résolution de challenges variés sur des plateformes spécialisées, avec une progression continue.</li>
+    <li>Veille active sur les dernières vulnérabilités (CVE) et les techniques d'attaque/défense.</li>
+    <li>Réalisation de <strong>petits projets personnels</strong> en informatique pour monter en compétences en dehors du cursus.</li>
+</ul>`,
+  },
+  {
+    page: 'passions',
+    title: 'Sports',
+    location: 'USOMC (Les Massives) & salle',
+    date_range: 'Pratique régulière',
+    image_url: null,
+    link_url: null,
+    tags: '["Esprit d\'équipe","Concentration","Implication"]',
+    featured: 0,
+    sort_order: 1,
+    description: `<ul class="card-description">
+    <li><strong>Rugby</strong> en club (USOMC – Les Massives) depuis 1 an, 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
+    <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
+    <li><strong>Running</strong> — courses régulières pour l'endurance et la gestion de l'effort.</li>
+</ul>`,
+  },
+  {
+    page: 'passions',
+    title: 'Voyage',
+    location: 'Localisations variées',
+    date_range: 'Continu',
+    image_url: null,
+    link_url: null,
+    tags: '["Ouverture culturelle","Amélioration du niveau des langues parlées"]',
+    featured: 0,
+    sort_order: 2,
+    description: `<ul class="card-description">
+    <li><strong>Tanzanie</strong> (Zanzibar) — découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
+    <li><strong>Irlande</strong> (Sligo, Galway, Dublin, Cork, Belfast…) — exploration approfondie pendant mon semestre d'échange.</li>
+    <li><strong>Indonésie</strong> (Jakarta, Yogyakarta, Ubud) — immersion dans la diversité culturelle et naturelle de l'archipel.</li>
+    <li><strong>Roumanie</strong> (Bucarest) — découverte du patrimoine historique d'Europe de l'Est.</li>
+</ul>`,
+  },
+  {
+    page: 'passions',
+    title: 'Œnologie',
+    location: 'EPITA - Le Kremlin-Bicêtre',
+    date_range: 'Depuis 2024',
+    image_url: null,
+    link_url: null,
+    tags: '[]',
+    featured: 0,
+    sort_order: 3,
+    description: `<ul class="card-description">
+    <li>Apprentissage des cépages, des terroirs et du processus de vinification, de la vigne à la bouteille.</li>
+    <li>Présidente de l'association <strong>La Cave</strong> à l'EPITA : organisation de dégustations et de visites de domaines.</li>
+    <li>Participation régulière à des dégustations commentées pour affiner le palais et la culture œnologique.</li>
+</ul>`,
+  },
+
+  // === VIE ASSOCIATIVE ===
+  {
+    page: 'vie-associative',
+    title: 'Animatrice (Bénévolat) - Scouts et Guides de France',
+    location: 'Gaillac',
+    date_range: '2023 - Présent',
+    image_url: null,
+    link_url: null,
+    tags: '["Leadership","Pédagogie","BAFA","Responsabilité"]',
+    featured: 0,
+    sort_order: 0,
+    description: `<ul class="card-description">
+    <li>Encadrement bénévole d'un groupe de <strong>30 jeunes</strong> (8-11 ans), au sein d'une unité d'environ 100 scouts.</li>
+    <li>Conception et animation d'activités éducatives lors de réunions hebdomadaires, week-ends et camps.</li>
+    <li>Responsabilité de la sécurité physique et morale des jeunes, en lien avec les familles.</li>
+    <li>Investissement de 5 à 15 h par mois, développant patience, pédagogie et sens des responsabilités.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: `Staff' Communication - EPITA`,
+    location: 'Le Kremlin-Bicêtre',
+    date_range: '2025 - Présent',
+    image_url: null,
+    link_url: null,
+    tags: '["Communication","Événementiel","Relationnel"]',
+    featured: 0,
+    sort_order: 1,
+    description: `<ul class="card-description">
+    <li>Représentation de l'EPITA sur <strong>3 JPO</strong>, <strong>10 salons étudiants</strong> et des présentations dans des lycées en France (Dunkerque…) et à l'étranger (Roumanie…). [Réalisés sur l'année 2025-2026]</li>
+    <li>Encadrement d'étudiants lors des événements, accueil et conseil personnalisé auprès des futurs candidats et de leurs familles.</li>
+    <li>Engagement régulier d'environ <strong>13 journées de mobilisation par an</strong>, renforçant aisance orale et sens du relationnel.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: 'Présidente de La Cave - Association du terroir (~50 membres)',
+    location: 'EPITA',
+    date_range: '2024 - Présent',
+    image_url: null,
+    link_url: null,
+    tags: '["Organisation","Logistique","Terroir","Management"]',
+    featured: 0,
+    sort_order: 2,
+    description: `<ul class="card-description">
+    <li><strong>Direction du bureau</strong> de l'association (~10 membres actifs) : gestion budgétaire, coordination de l'équipe et planification annuelle.</li>
+    <li>Organisation d'une <strong>vingtaine d'événements par an</strong> : dégustations de vins et de fromages, sorties culturelles.</li>
+    <li>Planification de visites de caves, de domaines viticoles et de fermes locales.</li>
+    <li>Promotion des produits du terroir français et sensibilisation à l'œnologie au sein de l'EPITA.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: 'Sentinelle - STOP VSS',
+    location: 'EPITA',
+    date_range: '2025 - Présent',
+    image_url: null,
+    link_url: null,
+    tags: '["Prévention","Sécurité","Écoute","Engagement"]',
+    featured: 0,
+    sort_order: 3,
+    description: `<ul class="card-description">
+    <li><strong>STOP VSS</strong> est une association de lutte contre les <strong>violences sexistes et sexuelles</strong> (VSS), c'est-à-dire l'ensemble des comportements allant du harcèlement de rue aux agressions sexuelles, en passant par les propos sexistes et les situations d'emprise.</li>
+    <li>Formée en tant que <strong>sentinelle</strong> : présence lors de soirées étudiantes pour veiller à la sécurité des participants et réalisation de <strong>maraudes</strong> afin de détecter et prévenir les situations à risque.</li>
+    <li>Intervention en cas d'<strong>agression sexuelle</strong> ou de comportement inapproprié : mise en sécurité de la victime, écoute et orientation vers les dispositifs d'aide adaptés.</li>
+    <li>Capacité à <strong>accompagner les victimes</strong> : écoute bienveillante, soutien moral et aide dans les démarches auprès des structures compétentes.</li>
+</ul>`,
+  },
+];
+
+async function seedCards() {
+  const existing = await db.execute('SELECT COUNT(*) as cnt FROM cards');
+  if (existing.rows[0].cnt > 0) {
+    console.log(`Cards table already has ${existing.rows[0].cnt} rows. Skipping seed.`);
+    return;
+  }
+
+  for (const card of cards) {
+    await db.execute({
+      sql: `INSERT INTO cards (page, title, subtitle, location, date_range, description, tags, image_url, link_url, featured, sort_order)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [
+        card.page, card.title, card.subtitle || null, card.location || null,
+        card.date_range || null, card.description, card.tags || '[]',
+        card.image_url || null, card.link_url || null, card.featured || 0, card.sort_order,
+      ],
+    });
+    console.log(`  + [${card.page}] ${card.title.substring(0, 50)}`);
+  }
+  console.log('Cards seeded.');
+}
+
 // ── Run ─────────────────────────────────────────────────────────────────────
 
 try {
   await migrate();
-  await seed();
+  await seedPosts();
+  await seedCards();
   console.log('Done!');
 } catch (err) {
   console.error('Setup failed:', err);

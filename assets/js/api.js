@@ -405,14 +405,67 @@ function initCardFilters() {
   }
 }
 
+// ===== Chargement dynamique des cartes =====
+async function loadCards(page, container) {
+  try {
+    const res = await fetch(`${API_BASE}/cards?page=${page}`);
+    const cards = await res.json();
+
+    if (!cards.length) {
+      container.innerHTML = '<p class="empty-state">Aucun contenu pour le moment.</p>';
+      return;
+    }
+
+    container.innerHTML = cards.map(card => {
+      const tags = JSON.parse(card.tags || '[]');
+      const featuredClass = card.featured ? ' featured full-width' : '';
+
+      const imageHtml = card.image_url
+        ? (card.link_url
+          ? `<a href="${card.link_url}" target="_blank"><img src="${card.image_url}" alt="" class="card-image"></a>`
+          : `<img src="${card.image_url}" alt="" class="card-image">`)
+        : '';
+
+      return `
+        <section class="experience-card${featuredClass}">
+          <div class="card-header">
+            <h2 class="card-title">${card.title}</h2>
+            ${imageHtml}
+            <div class="card-details-wrapper">
+              ${card.location ? `<span class="location">${card.location}</span>` : ''}
+              ${card.date_range ? `<span class="date">${card.date_range}</span>` : ''}
+            </div>
+          </div>
+          <div class="card-content">
+            ${card.description || ''}
+          </div>
+          ${tags.length ? `
+            <div class="chips-footer">
+              ${tags.map(t => `<span class="chip">${t}</span>`).join('')}
+            </div>
+          ` : ''}
+        </section>
+      `;
+    }).join('');
+
+    initCardFilters();
+  } catch {
+    container.innerHTML = '<p class="empty-state">Impossible de charger le contenu.</p>';
+  }
+}
+
 // ===== Init =====
 document.addEventListener('DOMContentLoaded', () => {
   trackVisit();
   initContactForm();
-  // loadPosts handles initCardFilters after cards are rendered
+
   const postsGrid = document.getElementById('posts-grid');
+  const cardsGrid = document.querySelector('[data-page]');
+
   if (postsGrid) {
     loadPosts();
+  } else if (cardsGrid) {
+    loadCards(cardsGrid.dataset.page, cardsGrid);
   } else {
     initCardFilters();
   }

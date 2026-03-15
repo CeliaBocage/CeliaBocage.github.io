@@ -14,7 +14,7 @@
 <header>
     <div class="logo">Célia Bocage</div>
     <div class="subtitle">Étudiante en ingénierie informatique – EPITA</div>
-    
+
     <button id="menuButton" class="menu-toggle" aria-label="Menu">☰ Menu</button>
 
     <nav>
@@ -38,103 +38,15 @@
         <p class="intro-summary">Au-delà du cursus, mes passions reflètent ma curiosité et mon envie d'apprendre en permanence — que ce soit en <strong>cybersécurité</strong> en autodidacte, à travers le <strong>sport</strong>, les <strong>voyages</strong> ou la découverte du <strong>terroir</strong>.</p>
       </div>
 
-      <div class="experience-grid" id="passions">
-        
-        <section class="experience-card featured full-width">
-            <div class="card-header">
-                <h2 class="card-title">Apprentissage de la cybersécurité en autodidacte</h2>
-                <div class="card-details-wrapper">
-                    <span class="location">Plateformes en ligne</span>
-                    <span class="date">Continu</span>
-                </div>
-            </div>
-            
-            <div class="card-content">
-                <ul class="card-description">
-                    <li>Pratique régulière du <strong>pentest</strong> sur des environnements virtuels : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.</li>
-                    <li>Participation à des <strong>CTF</strong> (Capture The Flag) pour développer mes compétences en sécurité offensive : cryptographie, stéganographie, forensics, web.</li>
-                    <li>Résolution de challenges variés sur des plateformes spécialisées, avec une progression continue.</li>
-                    <li>Veille active sur les dernières vulnérabilités (CVE) et les techniques d'attaque/défense.</li>
-                    <li>Réalisation de <strong>petits projets personnels</strong> en informatique pour monter en compétences en dehors du cursus.</li>
-                </ul>
-            </div>
-
-            <div class="chips-footer">
-                <span class="chip">TryHackMe</span>
-                <span class="chip">HackTheBox</span>
-                <span class="chip">RootMe</span>
-                <span class="chip">HackThisSite</span>
-            </div>
-        </section>
-
-        <section class="experience-card">
-            <div class="card-header">
-                <h2 class="card-title">Sports</h2>
-                <div class="card-details-wrapper">
-                    <span class="location">USOMC (Les Massives) & salle</span>
-                    <span class="date">Pratique régulière</span>
-                </div>
-            </div>
-            <div class="card-content">
-                <ul class="card-description">
-                    <li><strong>Rugby</strong> en club (USOMC – Les Massives) depuis 1 an, 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
-                    <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
-                    <li><strong>Running</strong> — courses régulières pour l'endurance et la gestion de l'effort.</li>
-                </ul>
-            </div>
-            <div class="chips-footer">
-                <span class="chip">Esprit d'équipe</span>
-                <span class="chip">Concentration</span>
-                <span class="chip">Implication</span>
-            </div>
-        </section>
-
-        <section class="experience-card">
-            <div class="card-header">
-                <h2 class="card-title">Voyage</h2>
-                <div class="card-details-wrapper">
-                    <span class="location">Localisations variées</span>
-                    <span class="date">Continu</span>
-                </div>
-            </div>
-            <div class="card-content">
-                <ul class="card-description">
-                    <li><strong>Tanzanie</strong> (Zanzibar) — découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
-                    <li><strong>Irlande</strong> (Sligo, Galway, Dublin, Cork, Belfast…) — exploration approfondie pendant mon semestre d'échange.</li>
-                    <li><strong>Indonésie</strong> (Jakarta, Yogyakarta, Ubud) — immersion dans la diversité culturelle et naturelle de l'archipel.</li>
-                    <li><strong>Roumanie</strong> (Bucarest) — découverte du patrimoine historique d'Europe de l'Est.</li>
-                </ul>
-            </div>
-            <div class="chips-footer">
-                <span class="chip">Ouverture culturelle</span>
-                <span class="chip">Amélioration du niveau des langues parlées</span>
-            </div>
-        </section>
-
-                <section class="experience-card">
-            <div class="card-header">
-                <h2 class="card-title">Œnologie</h2>
-                <div class="card-details-wrapper">
-                    <span class="location">EPITA - Le Kremlin-Bicêtre</span>
-                    <span class="date">Depuis 2024</span>
-                </div>
-            </div>
-            <div class="card-content">
-                <ul class="card-description">
-                    <li>Apprentissage des cépages, des terroirs et du processus de vinification, de la vigne à la bouteille.</li>
-                    <li>Présidente de l'association <strong>La Cave</strong> à l'EPITA : organisation de dégustations et de visites de domaines.</li>
-                    <li>Participation régulière à des dégustations commentées pour affiner le palais et la culture œnologique.</li>
-                </ul>
-            </div>
-        </section>
-
+      <div class="experience-grid" data-page="passions">
+        <p class="empty-state">Chargement...</p>
       </div>
     </main>
 
     <footer>
       <p>&copy; <span id="year"></span> Célia Bocage - Tous droits réservés.</p>
     </footer>
-  </div> 
+  </div>
 </div>
 
 <script src="../assets/js/main.js"></script>
