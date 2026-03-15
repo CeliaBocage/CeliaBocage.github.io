@@ -176,45 +176,50 @@ function navigateToPost(slug) {
   window.location.href = `posts.html?slug=${slug}`;
 }
 
-// ===== Filtrage des cartes par tag (multi-sélection, menus dépliants) =====
+// ===== Filtrage dynamique (multi-sélection, menus dépliants) =====
 
-const TAG_CATEGORIES = {
-  'Langages & Technologies': [
-    'C', 'C#', 'Python', 'SQL', 'HTML', 'CSS', 'JSON', 'XAML', 'LINQ',
-    'Makefile', 'Git', 'GTK', 'Godot', 'Blender', 'Maya', 'Unreal Engine',
-    'Dash', 'BERT'
-  ],
-  'Domaine': [
-    'Machine Learning', 'Analyse d\'Image', 'Game Design', 'Web Design',
-    'Data Science'
-  ],
-  'Compétences': [
-    'Autonomie', 'Adaptation', 'Dynamisme', 'Rigueur', 'Organisation',
-    'Gestion de stock', 'Stratégie'
-  ],
-  'Data & Analytics': [
-    'Data', 'DataAnalytics', 'DataAnalysis', 'DataScience', 'DataDriven',
-    'DataQuality', 'DataPreparation', 'BusinessIntelligence', 'Analytics',
-    'AnalyseDeDonnées'
-  ],
-  'IA & Outils': [
-    'IA', 'VibeCoding', 'ClaudeAI', 'Anthropic', 'GoogleGemini',
-    'Cursor', 'DashPlotly', 'TechReview'
-  ],
-  'Thème': [
-    'Stage', 'Internship', 'Artmajeur', 'FutureOfWork', 'EPITA',
-    'SalonÉtudiant', 'Radio', 'Franceinfo', 'Restauration',
-    'Leadership', 'SoftSkills', 'JobÉtudiant'
-  ],
-};
+const FILTER_DIMENSIONS = [
+  { name: 'Contexte', attr: 'context', isArray: false },
+  { name: 'Catégorie', attr: 'category', isArray: true },
+  { name: 'Langages', attr: 'languages', isArray: true },
+  { name: 'Outils', attr: 'tools', isArray: true },
+  { name: 'Bibliothèques', attr: 'libraries', isArray: true },
+];
 
-const CONTEXT_RULES = {
-  'EPITA': (loc) => loc.includes('EPITA'),
-  'International': (loc) => loc.includes('Irlande') || loc.includes('Sligo'),
-  'Personnel': (loc) => loc.includes('Kremlin') || loc.includes('Continu'),
-  'Professionnel': (loc) =>
-    loc.includes('Levallois') || loc.includes('Paris') || loc.includes('Gaillac'),
-};
+function buildStructuredCategories(cards) {
+  const categories = [];
+  for (const dim of FILTER_DIMENSIONS) {
+    const values = new Set();
+    cards.forEach(card => {
+      if (dim.isArray) {
+        JSON.parse(card.dataset[dim.attr] || '[]').forEach(v => values.add(v));
+      } else {
+        const val = card.dataset[dim.attr];
+        if (val) values.add(val);
+      }
+    });
+    if (values.size > 0) {
+      categories.push({
+        name: dim.name,
+        tags: [...values].sort(),
+        attr: dim.attr,
+        isArray: dim.isArray,
+      });
+    }
+  }
+  return categories;
+}
+
+function buildFlatTagCategories(cards) {
+  const allTags = new Set();
+  cards.forEach(card => {
+    card.querySelectorAll('.chips-footer .chip').forEach(chip => {
+      allTags.add(chip.textContent.trim().replace(/^#/, ''));
+    });
+  });
+  if (allTags.size === 0) return [];
+  return [{ name: 'Tags', tags: [...allTags].sort(), attr: null, isArray: false }];
+}
 
 function initCardFilters() {
   const filterContainer = document.getElementById('card-filters');
@@ -222,44 +227,17 @@ function initCardFilters() {
   if (!filterContainer || !grid) return;
 
   const cards = [...grid.querySelectorAll('.experience-card, .post-card')];
-  const allTags = new Set();
+  if (cards.length === 0) return;
 
-  cards.forEach(card => {
-    card.querySelectorAll('.chips-footer .chip').forEach(chip => {
-      allTags.add(chip.textContent.trim());
-    });
-  });
+  // Structured data (cards pages) vs flat tags (posts page)
+  const isStructured = cards[0].hasAttribute('data-context');
+  const categories = isStructured
+    ? buildStructuredCategories(cards)
+    : buildFlatTagCategories(cards);
 
-  if (allTags.size === 0) return;
+  if (categories.length === 0) return;
 
-  // Build tag-based categories (only include tags present on this page)
-  const categories = [];
-  for (const [catName, catTags] of Object.entries(TAG_CATEGORIES)) {
-    const present = catTags.filter(t => allTags.has(t));
-    if (present.length > 0) {
-      categories.push({ name: catName, tags: present, type: 'chip' });
-    }
-  }
-
-  // Build context category from location spans
-  const contextSet = new Set();
-  const cardContexts = new Map();
-  cards.forEach(card => {
-    const loc = card.querySelector('.location')?.textContent.trim() || '';
-    const matched = [];
-    for (const [ctx, matcher] of Object.entries(CONTEXT_RULES)) {
-      if (matcher(loc)) {
-        contextSet.add(ctx);
-        matched.push(ctx);
-      }
-    }
-    cardContexts.set(card, matched);
-  });
-  if (contextSet.size > 1) {
-    categories.push({ name: 'Contexte', tags: [...contextSet], type: 'context' });
-  }
-
-  // State: selected tags per category
+  // State: selected values per category
   const selections = {};
   categories.forEach(cat => { selections[cat.name] = new Set(); });
 
@@ -374,7 +352,6 @@ function initCardFilters() {
   }
 
   function applyFilters() {
-    // Check if any filters are active
     const hasAnySelection = Object.values(selections).some(s => s.size > 0);
     if (!hasAnySelection) {
       cards.forEach(card => { card.style.display = ''; });
@@ -382,23 +359,27 @@ function initCardFilters() {
     }
 
     cards.forEach(card => {
-      const cardTags = new Set();
-      card.querySelectorAll('.chips-footer .chip').forEach(c => {
-        cardTags.add(c.textContent.trim());
-      });
-      const cardCtx = cardContexts.get(card) || [];
-
-      // AND between categories, OR within a category
       let visible = true;
       for (const cat of categories) {
         if (selections[cat.name].size === 0) continue;
-        if (cat.type === 'context') {
-          const match = [...selections[cat.name]].some(ctx => cardCtx.includes(ctx));
-          if (!match) { visible = false; break; }
+
+        let cardValues;
+        if (cat.attr) {
+          // Structured mode (cards pages)
+          if (cat.isArray) {
+            cardValues = JSON.parse(card.dataset[cat.attr] || '[]');
+          } else {
+            const val = card.dataset[cat.attr];
+            cardValues = val ? [val] : [];
+          }
         } else {
-          const match = [...selections[cat.name]].some(tag => cardTags.has(tag));
-          if (!match) { visible = false; break; }
+          // Flat tag mode (posts page)
+          cardValues = [...card.querySelectorAll('.chips-footer .chip')]
+            .map(c => c.textContent.trim().replace(/^#/, ''));
         }
+
+        const match = [...selections[cat.name]].some(v => cardValues.includes(v));
+        if (!match) { visible = false; break; }
       }
       card.style.display = visible ? '' : 'none';
     });
@@ -418,6 +399,10 @@ async function loadCards(page, container) {
 
     container.innerHTML = cards.map(card => {
       const tags = JSON.parse(card.tags || '[]');
+      const catValues = JSON.parse(card.category || '[]');
+      const languages = JSON.parse(card.languages || '[]');
+      const tools = JSON.parse(card.tools || '[]');
+      const libs = JSON.parse(card.libraries || '[]');
       const featuredClass = card.featured ? ' featured full-width' : '';
 
       const imageHtml = card.image_url
@@ -426,8 +411,22 @@ async function loadCards(page, container) {
           : `<img src="${card.image_url}" alt="" class="card-image">`)
         : '';
 
+      // Build display chips
+      const chips = [];
+      if (card.context) chips.push(`<span class="chip chip-context">${card.context}</span>`);
+      catValues.forEach(c => chips.push(`<span class="chip chip-category">${c}</span>`));
+      languages.forEach(l => chips.push(`<span class="chip">${l}</span>`));
+      tools.forEach(t => chips.push(`<span class="chip">${t}</span>`));
+      libs.forEach(l => chips.push(`<span class="chip">${l}</span>`));
+      tags.forEach(t => chips.push(`<span class="chip chip-soft">${t}</span>`));
+
       return `
-        <section class="experience-card${featuredClass}">
+        <section class="experience-card${featuredClass}"
+          data-context="${card.context || ''}"
+          data-category='${card.category || '[]'}'
+          data-languages='${card.languages || '[]'}'
+          data-tools='${card.tools || '[]'}'
+          data-libraries='${card.libraries || '[]'}'>
           <div class="card-header">
             <h2 class="card-title">${card.title}</h2>
             ${imageHtml}
@@ -439,9 +438,9 @@ async function loadCards(page, container) {
           <div class="card-content">
             ${card.description || ''}
           </div>
-          ${tags.length ? `
+          ${chips.length ? `
             <div class="chips-footer">
-              ${tags.map(t => `<span class="chip">${t}</span>`).join('')}
+              ${chips.join('')}
             </div>
           ` : ''}
         </section>

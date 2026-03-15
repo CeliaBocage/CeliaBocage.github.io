@@ -47,11 +47,27 @@ async function migrate() {
     )
   `);
 
+  // Add columns for existing databases
+  for (const col of ['subtitle TEXT', 'date_range TEXT']) {
+    try { await db.execute(`ALTER TABLE cards ADD COLUMN ${col}`); } catch { /* already exists */ }
+  }
+
   // Add featured column for existing databases
   try {
     await db.execute('ALTER TABLE cards ADD COLUMN featured INTEGER DEFAULT 0');
     console.log('Added featured column to cards.');
   } catch { /* column already exists */ }
+
+  // Classification columns
+  for (const col of [
+    'context TEXT',
+    "category TEXT DEFAULT '[]'",
+    "languages TEXT DEFAULT '[]'",
+    "tools TEXT DEFAULT '[]'",
+    "libraries TEXT DEFAULT '[]'",
+  ]) {
+    try { await db.execute(`ALTER TABLE cards ADD COLUMN ${col}`); } catch { /* already exists */ }
+  }
 
   await db.execute(`
     CREATE TABLE IF NOT EXISTS visits (
@@ -389,7 +405,12 @@ const cards = [
     date_range: '10 mois',
     image_url: '../assets/Images/ArtMajeur.jpeg',
     link_url: 'https://www.artmajeur.com',
-    tags: '["Python","SQL","BERT","Data Science","Dash","Stratégie"]',
+    context: 'STAGE',
+    category: '["Data / IA"]',
+    languages: '["Python","SQL"]',
+    tools: '["Cursor","Claude Code"]',
+    libraries: '["BERT","Dash","Plotly"]',
+    tags: '["Stratégie"]',
     featured: 1,
     sort_order: 0,
     description: `<ul class="card-description">
@@ -410,6 +431,11 @@ const cards = [
     date_range: '3 mois',
     image_url: '../assets/Images/Eldorado.jpg',
     link_url: 'https://hoteleldoradoparis.com/',
+    context: 'CDD',
+    category: '["Hôtellerie-Restauration"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Autonomie","Adaptation","Dynamisme"]',
     featured: 0,
     sort_order: 1,
@@ -434,6 +460,11 @@ const cards = [
     date_range: '7 mois',
     image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
     link_url: null,
+    context: 'CDD',
+    category: '["Santé / Pharmacie"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Rigueur","Organisation","Gestion de stock"]',
     featured: 0,
     sort_order: 2,
@@ -452,7 +483,12 @@ const cards = [
     date_range: '2023 - Présent',
     image_url: null,
     link_url: null,
-    tags: '["Informatique","Algorithmique","Mathématiques","C# / Python / C / Rust / Assembly","Projets"]',
+    context: 'ÉCOLE',
+    category: '["Informatique"]',
+    languages: '["C","C#","Python","Rust","Assembly"]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Algorithmique","Mathématiques"]',
     featured: 1,
     sort_order: 0,
     description: `<ul class="card-description">
@@ -469,7 +505,12 @@ const cards = [
     date_range: 'Janv. 2025 - Juin 2025',
     image_url: null,
     link_url: null,
-    tags: '["International","Game Design","Anglais","Projet","C# / SQL / LINQ / XAML","Photoshop / Maya"]',
+    context: 'ÉCOLE',
+    category: '["Game Design","Informatique"]',
+    languages: '["C#","SQL","LINQ","XAML"]',
+    tools: '["Photoshop","Maya","Unreal Engine"]',
+    libraries: '[]',
+    tags: '["International","Anglais"]',
     featured: 0,
     sort_order: 1,
     description: `<ul class="card-description">
@@ -487,7 +528,12 @@ const cards = [
     date_range: '2024',
     image_url: null,
     link_url: null,
-    tags: '["Animation","Responsabilité","Pédagogie"]',
+    context: 'CERTIF',
+    category: '["Animation / Jeunesse"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Pédagogie","Responsabilité"]',
     featured: 0,
     sort_order: 2,
     description: `<ul class="card-description">
@@ -503,7 +549,12 @@ const cards = [
     date_range: '2023',
     image_url: null,
     link_url: null,
-    tags: '["Sciences","Mathématiques","Physique-Chimie"]',
+    context: 'ÉCOLE',
+    category: '["Sciences"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Mathématiques","Physique-Chimie"]',
     featured: 0,
     sort_order: 3,
     description: `<ul class="card-description">
@@ -518,6 +569,11 @@ const cards = [
     date_range: '2021 - 2025',
     image_url: null,
     link_url: null,
+    context: 'CERTIF',
+    category: '[]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Permis B","Permis A2","Bateau","PSC1","Prévention VSS"]',
     featured: 0,
     sort_order: 4,
@@ -538,7 +594,12 @@ const cards = [
     date_range: '3e semestre',
     image_url: null,
     link_url: null,
-    tags: '["C","Machine Learning","Analyse d\'Image","GTK"]',
+    context: 'ÉCOLE',
+    category: '["Informatique","Data / IA"]',
+    languages: '["C"]',
+    tools: '["GTK","Glade"]',
+    libraries: '[]',
+    tags: '["Machine Learning","Analyse d\'Image"]',
     featured: 1,
     sort_order: 0,
     description: `<ul class="card-description">
@@ -555,7 +616,12 @@ const cards = [
     date_range: '2e semestre',
     image_url: null,
     link_url: null,
-    tags: '["C#","Godot","Blender","JSON"]',
+    context: 'ÉCOLE',
+    category: '["Game Design","Informatique"]',
+    languages: '["C#","JSON"]',
+    tools: '["Godot","Blender"]',
+    libraries: '[]',
+    tags: '[]',
     featured: 0,
     sort_order: 1,
     description: `<ul class="card-description">
@@ -572,7 +638,12 @@ const cards = [
     date_range: `Semestre à l'étranger`,
     image_url: null,
     link_url: null,
-    tags: '["Unreal Engine","C#","Maya","Game Design"]',
+    context: 'ÉCOLE',
+    category: '["Game Design"]',
+    languages: '["C#"]',
+    tools: '["Unreal Engine","Maya"]',
+    libraries: '[]',
+    tags: '[]',
     featured: 0,
     sort_order: 2,
     description: `<ul class="card-description">
@@ -589,7 +660,12 @@ const cards = [
     date_range: `Semestre à l'étranger`,
     image_url: null,
     link_url: null,
-    tags: '["C#","SQL","XAML","LINQ"]',
+    context: 'ÉCOLE',
+    category: '["Informatique"]',
+    languages: '["C#","SQL","XAML","LINQ"]',
+    tools: '["MariaDB"]',
+    libraries: '[]',
+    tags: '[]',
     featured: 0,
     sort_order: 3,
     description: `<ul class="card-description">
@@ -606,7 +682,12 @@ const cards = [
     date_range: 'Projet personnel',
     image_url: null,
     link_url: null,
-    tags: '["C","SQL","Makefile"]',
+    context: 'PERSO',
+    category: '["Informatique"]',
+    languages: '["C","SQL","Makefile"]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '[]',
     featured: 0,
     sort_order: 4,
     description: `<ul class="card-description">
@@ -622,7 +703,12 @@ const cards = [
     date_range: 'Continu',
     image_url: null,
     link_url: null,
-    tags: '["HTML","CSS","Web Design","Git"]',
+    context: 'PERSO',
+    category: '["Informatique","Web"]',
+    languages: '["HTML","CSS","JavaScript"]',
+    tools: '["Git"]',
+    libraries: '[]',
+    tags: '[]',
     featured: 0,
     sort_order: 5,
     description: `<ul class="card-description">
@@ -641,7 +727,12 @@ const cards = [
     date_range: 'Continu',
     image_url: null,
     link_url: null,
-    tags: '["TryHackMe","HackTheBox","RootMe","HackThisSite"]',
+    context: 'PERSO',
+    category: '["Cybersécurité"]',
+    languages: '[]',
+    tools: '["TryHackMe","HackTheBox","RootMe","HackThisSite"]',
+    libraries: '[]',
+    tags: '[]',
     featured: 1,
     sort_order: 0,
     description: `<ul class="card-description">
@@ -659,6 +750,11 @@ const cards = [
     date_range: 'Pratique régulière',
     image_url: null,
     link_url: null,
+    context: 'PERSO',
+    category: '["Sport"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Esprit d\'équipe","Concentration","Implication"]',
     featured: 0,
     sort_order: 1,
@@ -675,7 +771,12 @@ const cards = [
     date_range: 'Continu',
     image_url: null,
     link_url: null,
-    tags: '["Ouverture culturelle","Amélioration du niveau des langues parlées"]',
+    context: 'PERSO',
+    category: '["Culture / Voyage"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Ouverture culturelle"]',
     featured: 0,
     sort_order: 2,
     description: `<ul class="card-description">
@@ -692,6 +793,11 @@ const cards = [
     date_range: 'Depuis 2024',
     image_url: null,
     link_url: null,
+    context: 'PERSO',
+    category: '["Culture / Voyage"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '[]',
     featured: 0,
     sort_order: 3,
@@ -710,6 +816,11 @@ const cards = [
     date_range: '2023 - Présent',
     image_url: null,
     link_url: null,
+    context: 'BÉNÉVOLAT',
+    category: '["Animation / Jeunesse","Engagement social"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Leadership","Pédagogie","BAFA","Responsabilité"]',
     featured: 0,
     sort_order: 0,
@@ -727,7 +838,12 @@ const cards = [
     date_range: '2025 - Présent',
     image_url: null,
     link_url: null,
-    tags: '["Communication","Événementiel","Relationnel"]',
+    context: 'ÉCOLE',
+    category: '["Communication"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Événementiel","Relationnel"]',
     featured: 0,
     sort_order: 1,
     description: `<ul class="card-description">
@@ -743,7 +859,12 @@ const cards = [
     date_range: '2024 - Présent',
     image_url: null,
     link_url: null,
-    tags: '["Organisation","Logistique","Terroir","Management"]',
+    context: 'ÉCOLE',
+    category: '["Culture / Voyage","Engagement social"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Organisation","Logistique","Management"]',
     featured: 0,
     sort_order: 2,
     description: `<ul class="card-description">
@@ -760,6 +881,11 @@ const cards = [
     date_range: '2025 - Présent',
     image_url: null,
     link_url: null,
+    context: 'ÉCOLE',
+    category: '["Engagement social"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
     tags: '["Prévention","Sécurité","Écoute","Engagement"]',
     featured: 0,
     sort_order: 3,
@@ -773,23 +899,22 @@ const cards = [
 ];
 
 async function seedCards() {
-  const existing = await db.execute('SELECT COUNT(*) as cnt FROM cards');
-  if (existing.rows[0].cnt > 0) {
-    console.log(`Cards table already has ${existing.rows[0].cnt} rows. Skipping seed.`);
-    return;
-  }
+  // Re-seed with classification columns
+  await db.execute('DELETE FROM cards');
 
   for (const card of cards) {
     await db.execute({
-      sql: `INSERT INTO cards (page, title, subtitle, location, date_range, description, tags, image_url, link_url, featured, sort_order)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      sql: `INSERT INTO cards (page, title, subtitle, location, date_range, description, tags, image_url, link_url, featured, sort_order, context, category, languages, tools, libraries)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [
         card.page, card.title, card.subtitle || null, card.location || null,
         card.date_range || null, card.description, card.tags || '[]',
         card.image_url || null, card.link_url || null, card.featured || 0, card.sort_order,
+        card.context || null, card.category || '[]', card.languages || '[]',
+        card.tools || '[]', card.libraries || '[]',
       ],
     });
-    console.log(`  + [${card.page}] ${card.title.substring(0, 50)}`);
+    console.log(`  + [${card.page}] ${card.title.replace(/<[^>]*>/g, '').substring(0, 50)}`);
   }
   console.log('Cards seeded.');
 }
