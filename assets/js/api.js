@@ -1,5 +1,5 @@
 // ===== Configuration =====
-const API_BASE = '/api';
+const API_BASE = 'https://celia-bocage-github-io.vercel.app/api';
 
 // ===== Compteur de visites =====
 function trackVisit() {
