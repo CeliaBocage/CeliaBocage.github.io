@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     }
 
     // List all published posts
-    let sql = 'SELECT id, slug, title, summary, tags, created_at FROM posts WHERE published = 1';
+    let sql = 'SELECT id, slug, title, summary, tags, image_url, created_at FROM posts WHERE published = 1';
     const args = [];
 
     sql += ' ORDER BY created_at DESC';

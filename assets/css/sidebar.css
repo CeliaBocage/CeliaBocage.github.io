@@ -1,0 +1,106 @@
+/* --- CV Sidebar --- */
+.cv-sidebar {
+  flex: 1;
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.cv-sidebar h2 {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.cv-sidebar h2:first-of-type {
+  margin-top: 0;
+}
+
+/* Contact Block */
+.contact-block {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.contact-block li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.contact-block li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.contact-block li a:hover {
+  text-decoration: underline;
+}
+
+.contact-block .contact-icon {
+  margin-right: 0.4rem;
+}
+
+/* Chips (Competences) */
+.cv-sidebar .chips-list {
+  margin-bottom: 1.2rem;
+}
+
+.cv-sidebar .chips-list h4 {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-sidebar .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.chip {
+  font-size: 0.82rem;
+  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+  background: #f2f6fb;
+}
+
+.cv-sidebar .chip {
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+/* Photo */
+.cv-photo-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.cv-photo {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1;
+}

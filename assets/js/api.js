@@ -85,10 +85,6 @@ async function loadPosts() {
   const container = document.getElementById('posts-grid');
   if (!container) return;
 
-  // If static post cards already exist, skip the API fetch
-  if (container.querySelectorAll('.post-card').length > 0) return;
-
-  // Check if URL has a slug param
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('slug');
 
@@ -104,7 +100,7 @@ async function loadPosts() {
     const posts = await res.json();
 
     if (!posts.length) {
-      container.innerHTML = '<p class="empty-state">Aucun post pour le moment. Revenez bientôt !</p>';
+      container.innerHTML = '<p class="empty-state">Aucune publication pour le moment.</p>';
       return;
     }
 
@@ -115,6 +111,7 @@ async function loadPosts() {
       });
       return `
         <article class="post-card" onclick="navigateToPost('${post.slug}')">
+          ${post.image_url ? `<img src="${post.image_url}" alt="" class="post-card-image">` : ''}
           <div class="post-card-body">
             <time class="post-date">${date}</time>
             <h2 class="post-title">${post.title}</h2>
@@ -128,14 +125,18 @@ async function loadPosts() {
         </article>
       `;
     }).join('');
+
+    // Init filters after cards are rendered
+    initCardFilters();
   } catch {
-    container.innerHTML = '<p class="empty-state">Impossible de charger les posts.</p>';
+    container.innerHTML = '<p class="empty-state">Impossible de charger les publications.</p>';
   }
 }
 
 async function loadSinglePost(slug) {
   const container = document.getElementById('posts-grid');
   const detail = document.getElementById('post-detail');
+  const filters = document.getElementById('card-filters');
   if (!detail) return;
 
   try {
@@ -149,27 +150,25 @@ async function loadSinglePost(slug) {
     });
 
     container.style.display = 'none';
+    if (filters) filters.style.display = 'none';
     detail.style.display = 'block';
-    detail.innerHTML = `
-      <a href="posts.html" class="back-link">&larr; Retour aux posts</a>
-      <article class="post-full">
-        <time class="post-date">${date}</time>
-        <h1 class="post-full-title">${post.title}</h1>
-        ${tags.length ? `
-          <div class="chips-footer" style="margin-bottom: 1.5rem;">
-            ${tags.map(t => `<span class="chip">${t}</span>`).join('')}
-          </div>
-        ` : ''}
-        <div class="post-content"><p>${miniMarkdown(post.content)}</p></div>
-      </article>
+    detail.querySelector('#post-detail-content').innerHTML = `
+      <span class="post-date">${date}</span>
+      <h1 class="post-full-title">${post.title}</h1>
+      <div class="post-content">${post.content}</div>
+      ${tags.length ? `
+        <div class="post-chips">
+          ${tags.map(t => `<span class="chip">#${t}</span>`).join('')}
+        </div>
+      ` : ''}
     `;
+    window.scrollTo(0, 0);
   } catch {
-    detail.style.display = 'block';
     container.style.display = 'none';
-    detail.innerHTML = `
-      <a href="posts.html" class="back-link">&larr; Retour aux posts</a>
-      <p class="empty-state">Post introuvable.</p>
-    `;
+    if (filters) filters.style.display = 'none';
+    detail.style.display = 'block';
+    detail.querySelector('#post-detail-content').innerHTML =
+      '<p class="empty-state">Publication introuvable.</p>';
   }
 }
 
@@ -410,6 +409,11 @@ function initCardFilters() {
 document.addEventListener('DOMContentLoaded', () => {
   trackVisit();
   initContactForm();
-  loadPosts();
-  initCardFilters();
+  // loadPosts handles initCardFilters after cards are rendered
+  const postsGrid = document.getElementById('posts-grid');
+  if (postsGrid) {
+    loadPosts();
+  } else {
+    initCardFilters();
+  }
 });

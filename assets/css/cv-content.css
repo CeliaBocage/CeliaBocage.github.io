@@ -1,0 +1,102 @@
+/* --- Structure interne du CV --- */
+.cv-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.cv-main-content {
+  flex: 2;
+  min-width: 0;
+  color: var(--color-text-dark);
+}
+
+/* Titres H2 internes */
+.cv-main-content h2 {
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.cv-main-content h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-dark);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.cv-main-content h2:first-of-type {
+  margin-top: 0;
+}
+
+/* Items CV - timeline */
+.cv-item {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+  border-left: 1px solid #d0d0d0;
+  margin-left: 3px;
+}
+
+.cv-item::before {
+  content: '';
+  position: absolute;
+  left: -3.5px;
+  top: 0.45rem;
+  width: 6px;
+  height: 6px;
+  background: #bbb;
+  border-radius: 50%;
+}
+
+.cv-item:last-child {
+  border-left-color: transparent;
+}
+
+.cv-item.cv-item-highlight::before {
+  background: var(--color-primary-dark);
+  width: 8px;
+  height: 8px;
+  left: -4.5px;
+}
+
+.cv-item h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.1rem;
+}
+
+.cv-item .item-details {
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+  font-size: 0.83rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.cv-item ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.cv-item ul li {
+  font-size: 0.88rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+  line-height: 1.55;
+}

@@ -1,0 +1,17 @@
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.82rem;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  margin-top: auto;
+  width: 100%;
+}
+
+/* ===== Compteur de visites (footer) ===== */
+.visit-counter {
+  font-size: 0.78rem;
+  opacity: 0.5;
+  margin-top: 0.25rem;
+}

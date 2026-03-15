@@ -1,0 +1,118 @@
+/* --- Responsive (Mobile / Tablette) --- */
+
+@media (max-width: 900px) {
+  .site-wrapper {
+    flex-direction: column;
+  }
+
+  header {
+    width: 100%;
+    height: auto;
+    position: static;
+    overflow-y: visible;
+    padding: 1.5rem;
+  }
+
+  .content-area {
+    padding: 0.5rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  main > h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .menu-toggle {
+    display: block;
+    width: 100%;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  nav ul.open {
+    display: flex !important;
+  }
+
+  nav li {
+    margin-bottom: 0;
+  }
+
+  nav a {
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .cv-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cv-sidebar {
+    order: -1;
+    margin-bottom: 1.5rem;
+  }
+
+  .cv-item {
+    padding-left: 1.2rem;
+    margin-left: 3px;
+  }
+
+  .card-content {
+    flex-direction: column;
+  }
+
+  .card-illustrated,
+  .card-illustrated.left,
+  .card-illustrated.right {
+    flex-direction: column;
+  }
+
+  .card-illustrated img {
+    width: 100%;
+    max-height: 180px;
+  }
+
+  .experience-card {
+    min-width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .cv-photo {
+    max-width: 140px;
+  }
+
+  .experience-card.full-width {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
