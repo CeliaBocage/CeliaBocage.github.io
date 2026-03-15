@@ -174,45 +174,219 @@ function navigateToPost(slug) {
   window.location.href = `posts.html?slug=${slug}`;
 }
 
-// ===== Filtrage des cartes par tag =====
+// ===== Filtrage des cartes par tag (multi-sélection, menus dépliants) =====
+
+const TAG_CATEGORIES = {
+  'Langages & Technologies': [
+    'C', 'C#', 'Python', 'SQL', 'HTML', 'CSS', 'JSON', 'XAML', 'LINQ',
+    'Makefile', 'Git', 'GTK', 'Godot', 'Blender', 'Maya', 'Unreal Engine',
+    'Dash', 'BERT'
+  ],
+  'Domaine': [
+    'Machine Learning', 'Analyse d\'Image', 'Game Design', 'Web Design',
+    'Data Science'
+  ],
+  'Compétences': [
+    'Autonomie', 'Adaptation', 'Dynamisme', 'Rigueur', 'Organisation',
+    'Gestion de stock', 'Stratégie'
+  ],
+};
+
+const CONTEXT_RULES = {
+  'EPITA': (loc) => loc.includes('EPITA'),
+  'International': (loc) => loc.includes('Irlande') || loc.includes('Sligo'),
+  'Personnel': (loc) => loc.includes('Kremlin') || loc.includes('Continu'),
+  'Professionnel': (loc) =>
+    loc.includes('Levallois') || loc.includes('Paris') || loc.includes('Gaillac'),
+};
+
 function initCardFilters() {
   const filterContainer = document.getElementById('card-filters');
   const grid = document.querySelector('.experience-grid');
   if (!filterContainer || !grid) return;
 
-  const cards = grid.querySelectorAll('.experience-card');
+  const cards = [...grid.querySelectorAll('.experience-card')];
   const allTags = new Set();
 
   cards.forEach(card => {
-    const chips = card.querySelectorAll('.chips-footer .chip');
-    chips.forEach(chip => allTags.add(chip.textContent.trim()));
+    card.querySelectorAll('.chips-footer .chip').forEach(chip => {
+      allTags.add(chip.textContent.trim());
+    });
   });
 
   if (allTags.size === 0) return;
 
+  // Build tag-based categories (only include tags present on this page)
+  const categories = [];
+  for (const [catName, catTags] of Object.entries(TAG_CATEGORIES)) {
+    const present = catTags.filter(t => allTags.has(t));
+    if (present.length > 0) {
+      categories.push({ name: catName, tags: present, type: 'chip' });
+    }
+  }
+
+  // Build context category from location spans
+  const contextSet = new Set();
+  const cardContexts = new Map();
+  cards.forEach(card => {
+    const loc = card.querySelector('.location')?.textContent.trim() || '';
+    const matched = [];
+    for (const [ctx, matcher] of Object.entries(CONTEXT_RULES)) {
+      if (matcher(loc)) {
+        contextSet.add(ctx);
+        matched.push(ctx);
+      }
+    }
+    cardContexts.set(card, matched);
+  });
+  if (contextSet.size > 1) {
+    categories.push({ name: 'Contexte', tags: [...contextSet], type: 'context' });
+  }
+
+  // State: selected tags per category
+  const selections = {};
+  categories.forEach(cat => { selections[cat.name] = new Set(); });
+
+  // Render filter bar
+  const barHTML = categories.map((cat, i) => `
+    <div class="filter-group" data-cat-index="${i}">
+      <button class="filter-group-toggle" type="button">
+        ${cat.name}
+        <span class="filter-badge" data-badge="${i}">0</span>
+        <span class="filter-arrow">▾</span>
+      </button>
+      <div class="filter-group-panel">
+        ${cat.tags.map(tag =>
+          `<button class="filter-chip" type="button" data-tag="${tag}" data-cat="${cat.name}">${tag}</button>`
+        ).join('')}
+      </div>
+    </div>
+  `).join('');
+
   filterContainer.innerHTML = `
-    <button class="filter-chip active" data-tag="all">Tout</button>
-    ${[...allTags].map(tag => `<button class="filter-chip" data-tag="${tag}">${tag}</button>`).join('')}
+    <div class="filter-bar">
+      ${barHTML}
+      <button class="filter-reset" type="button">Réinitialiser</button>
+    </div>
+    <div class="filter-active-tags" id="filter-active-tags"></div>
   `;
 
-  filterContainer.addEventListener('click', (e) => {
-    const btn = e.target.closest('.filter-chip');
-    if (!btn) return;
+  // Close panels when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.filter-group')) {
+      filterContainer.querySelectorAll('.filter-group').forEach(g => g.classList.remove('open'));
+    }
+  });
 
-    filterContainer.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const tag = btn.dataset.tag;
-    cards.forEach(card => {
-      if (tag === 'all') {
-        card.style.display = '';
-        return;
-      }
-      const chips = card.querySelectorAll('.chips-footer .chip');
-      const match = [...chips].some(c => c.textContent.trim() === tag);
-      card.style.display = match ? '' : 'none';
+  // Toggle panel open/close
+  filterContainer.querySelectorAll('.filter-group-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const group = btn.closest('.filter-group');
+      const wasOpen = group.classList.contains('open');
+      filterContainer.querySelectorAll('.filter-group').forEach(g => g.classList.remove('open'));
+      if (!wasOpen) group.classList.toggle('open');
     });
   });
+
+  // Chip click: toggle selection
+  filterContainer.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tag = chip.dataset.tag;
+      const catName = chip.dataset.cat;
+      if (selections[catName].has(tag)) {
+        selections[catName].delete(tag);
+        chip.classList.remove('active');
+      } else {
+        selections[catName].add(tag);
+        chip.classList.add('active');
+      }
+      updateBadges();
+      updateActiveTags();
+      applyFilters();
+    });
+  });
+
+  // Reset button
+  filterContainer.querySelector('.filter-reset').addEventListener('click', () => {
+    for (const catName of Object.keys(selections)) {
+      selections[catName].clear();
+    }
+    filterContainer.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    updateBadges();
+    updateActiveTags();
+    applyFilters();
+  });
+
+  function updateBadges() {
+    categories.forEach((cat, i) => {
+      const badge = filterContainer.querySelector(`[data-badge="${i}"]`);
+      const count = selections[cat.name].size;
+      badge.textContent = count;
+      badge.classList.toggle('visible', count > 0);
+    });
+  }
+
+  function updateActiveTags() {
+    const container = document.getElementById('filter-active-tags');
+    const allSelected = [];
+    for (const [catName, tags] of Object.entries(selections)) {
+      tags.forEach(tag => allSelected.push({ catName, tag }));
+    }
+    if (allSelected.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+    container.innerHTML = allSelected.map(({ catName, tag }) =>
+      `<span class="filter-active-tag" data-cat="${catName}" data-tag="${tag}">
+        ${tag} <span class="remove-tag">&times;</span>
+      </span>`
+    ).join('');
+    container.querySelectorAll('.filter-active-tag').forEach(el => {
+      el.addEventListener('click', () => {
+        const catName = el.dataset.cat;
+        const tag = el.dataset.tag;
+        selections[catName].delete(tag);
+        const chip = filterContainer.querySelector(`.filter-chip[data-tag="${tag}"][data-cat="${catName}"]`);
+        if (chip) chip.classList.remove('active');
+        updateBadges();
+        updateActiveTags();
+        applyFilters();
+      });
+    });
+  }
+
+  function applyFilters() {
+    // Check if any filters are active
+    const hasAnySelection = Object.values(selections).some(s => s.size > 0);
+    if (!hasAnySelection) {
+      cards.forEach(card => { card.style.display = ''; });
+      return;
+    }
+
+    cards.forEach(card => {
+      const cardTags = new Set();
+      card.querySelectorAll('.chips-footer .chip').forEach(c => {
+        cardTags.add(c.textContent.trim());
+      });
+      const cardCtx = cardContexts.get(card) || [];
+
+      // AND between categories, OR within a category
+      let visible = true;
+      for (const cat of categories) {
+        if (selections[cat.name].size === 0) continue;
+        if (cat.type === 'context') {
+          const match = [...selections[cat.name]].some(ctx => cardCtx.includes(ctx));
+          if (!match) { visible = false; break; }
+        } else {
+          const match = [...selections[cat.name]].some(tag => cardTags.has(tag));
+          if (!match) { visible = false; break; }
+        }
+      }
+      card.style.display = visible ? '' : 'none';
+    });
+  }
 }
 
 // ===== Init =====

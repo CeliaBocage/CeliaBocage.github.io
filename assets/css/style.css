@@ -895,21 +895,100 @@ footer {
 /* ===== Filtres de cartes ===== */
 .card-filters {
   display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.filter-bar {
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.filter-group {
+  position: relative;
+}
+
+.filter-group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+  background: #f2f6fb;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.filter-group-toggle:hover {
+  background: #e4edf7;
+}
+
+.filter-group-toggle .filter-arrow {
+  font-size: 0.65rem;
+  transition: transform 0.2s;
+}
+
+.filter-group.open .filter-group-toggle .filter-arrow {
+  transform: rotate(180deg);
+}
+
+.filter-group-toggle .filter-badge {
+  display: none;
+  background: var(--color-primary-dark);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 1.15rem;
+  height: 1.15rem;
+  line-height: 1.15rem;
+  text-align: center;
+}
+
+.filter-group-toggle .filter-badge.visible {
+  display: inline-block;
+}
+
+.filter-group-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  min-width: 200px;
+  max-width: 340px;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.filter-group.open .filter-group-panel {
+  display: flex;
 }
 
 .filter-chip {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   border-radius: 4px;
-  padding: 0.3rem 0.75rem;
+  padding: 0.25rem 0.6rem;
   border: 1px solid var(--color-primary-dark);
   color: var(--color-primary-dark);
   background: #f2f6fb;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.15s;
+  white-space: nowrap;
 }
 
 .filter-chip:hover {
@@ -920,6 +999,54 @@ footer {
 .filter-chip.active {
   background: var(--color-primary-dark);
   color: #fff;
+}
+
+.filter-reset {
+  font-size: 0.78rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #c0c0c0;
+  color: #666;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.filter-reset:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.filter-active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.filter-active-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.filter-active-tag:hover {
+  opacity: 0.8;
+}
+
+.filter-active-tag .remove-tag {
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
 /* ===== Compteur de visites (footer) ===== */
