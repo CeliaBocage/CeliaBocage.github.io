@@ -767,6 +767,77 @@ footer {
   padding: 0;
 }
 
+.post-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.75rem 0;
+}
+
+.post-content li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.post-content li::before {
+  content: '•';
+  position: absolute;
+  left: 0.3rem;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.post-content img {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.post-card-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.post-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+
+.post-chips .chip {
+  font-size: 0.78rem;
+  background: #e8f0fe;
+  color: #0077b5;
+  border: 1px solid #c2d9f0;
+}
+
+.linkedin-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0077b5;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+
+.linkedin-cta:hover {
+  background: #005e93;
+  color: #fff;
+}
+
 .back-link {
   display: inline-block;
   color: var(--color-primary-dark);

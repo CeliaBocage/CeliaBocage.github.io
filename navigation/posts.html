@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Célia Bocage – Posts</title>
+  <title>Célia Bocage – Posts LinkedIn</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,16 +32,458 @@
 
   <div class="content-area">
     <main>
-      <h1>Posts</h1>
+      <h1>Posts LinkedIn</h1>
 
       <div class="page-intro-details">
-        <p class="intro-summary">Ce que j'apprends au fil de mes projets — notes techniques, retours d'expérience et découvertes en vrac.</p>
+        <p class="intro-summary">Retours d'expérience, réflexions sur la data et l'IA, et leçons apprises au fil de mes projets et stages.</p>
+        <a href="https://www.linkedin.com/in/c%C3%A9lia-bocage-549b082ab/" target="_blank" rel="noopener" class="linkedin-cta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Voir mon profil LinkedIn
+        </a>
       </div>
 
-      <div id="post-detail" style="display: none;"></div>
+      <!-- ===== Detail view (hidden by default) ===== -->
+      <div id="post-detail" style="display: none;">
+        <a href="#" class="back-link" id="back-to-posts">&larr; Retour aux posts</a>
+        <div id="post-detail-content"></div>
+      </div>
 
+      <!-- ===== Grid view ===== -->
       <div class="posts-grid" id="posts-grid">
-        <p class="empty-state">Chargement...</p>
+
+        <!-- Post 8 -->
+        <article class="post-card" onclick="showPost('post-8')">
+          <div class="post-card-body">
+            <span class="post-date">7 mars 2026</span>
+            <h2 class="post-title">Quand l'IA ferme une boucle 🔄</h2>
+            <p class="post-summary">L'humain l'a créée pour gagner du temps face à la documentation. Aujourd'hui, elle-même ne cherche plus à la lire...</p>
+          </div>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="post-card" onclick="showPost('post-7')">
+          <img src="../assets/Images/post_dashboard_timeline.jpg" alt="Dashboard avec timeline cumulative" class="post-card-image">
+          <div class="post-card-body">
+            <span class="post-date">26 février 2026</span>
+            <h2 class="post-title">Quand tes courbes racontent une histoire… incomplète 📊</h2>
+            <p class="post-summary">Un trou béant. Puis une explosion de données. Bienvenue dans la réalité des bases qui ont évolué au fil du temps.</p>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="post-card" onclick="showPost('post-6')">
+          <img src="../assets/Images/post_courbes_centiles.png" alt="Courbes performants vs non-performants avec centiles" class="post-card-image">
+          <div class="post-card-body">
+            <span class="post-date">Décembre 2025</span>
+            <h2 class="post-title">Comment faire parler les chiffres 📊</h2>
+            <p class="post-summary">Un résultat faible n'est pas forcément un résultat inutile. Parfois, ce n'est pas l'effet qui est petit, c'est le signal qui est noyé.</p>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="post-card" onclick="showPost('post-5')">
+          <div class="post-card-body">
+            <span class="post-date">Novembre 2025</span>
+            <h2 class="post-title">Gemini 3 Pro : Un sprinter, pas un marathonien ? 🏃</h2>
+            <p class="post-summary">J'ai testé la nouveauté de Google pour trouver une alternative plus économique à Claude. Voici mon retour terrain.</p>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post-card" onclick="showPost('post-4')">
+          <img src="../assets/Images/post_sets_diagram.png" alt="Diagramme des sets de données" class="post-card-image">
+          <div class="post-card-body">
+            <span class="post-date">Novembre 2025</span>
+            <h2 class="post-title">La pire erreur en data ? Croire que l'analyse commence avec les chiffres 📊</h2>
+            <p class="post-summary">Avant d'analyser quoi que ce soit, je me pose toujours les quatre mêmes questions...</p>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card" onclick="showPost('post-3')">
+          <div class="post-card-body">
+            <span class="post-date">Novembre 2025</span>
+            <h2 class="post-title">Vibe Coding & IA : Et si on arrêtait de parler de "remplacement" ? 💻</h2>
+            <p class="post-summary">Dans mon quotidien, je vois exactement l'inverse. L'IA ne remplace pas, elle transforme nos métiers.</p>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card" onclick="showPost('post-2')">
+          <div class="post-card-body">
+            <span class="post-date">Novembre 2025</span>
+            <h2 class="post-title">Salon étudiant & atelier radio franceinfo 🎙️</h2>
+            <p class="post-summary">Présente sur le stand EPITA, j'ai échangé avec de nombreux lycéens et participé à un atelier radio en direct.</p>
+          </div>
+        </article>
+
+        <!-- Post 1 -->
+        <article class="post-card" onclick="showPost('post-1')">
+          <div class="post-card-body">
+            <span class="post-date">Août 2025</span>
+            <h2 class="post-title">Ce que j'ai appris en restauration 🍽️</h2>
+            <p class="post-summary">"C'est juste un job d'étudiant", paraît-il. Pourtant, j'y ai appris à gérer le stress, prendre le lead, et ne jamais rester passif·ve.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ===== Hidden full post contents ===== -->
+      <div style="display:none" id="posts-data">
+
+        <!-- POST 8 -->
+        <div id="post-8">
+          <span class="post-date">7 mars 2026</span>
+          <h1 class="post-full-title">Quand l'IA ferme une boucle. 🔄</h1>
+          <div class="post-content">
+            <p>L'humain l'a créée pour gagner du temps face à la documentation.<br>
+            Aujourd'hui, elle-même ne cherche plus à la lire.</p>
+
+            <p>Hier, pendant mon stage chez <strong>ArtMajeur</strong>, je demande à Claude Code d'ajouter un dropdown dans une data table Dash Plotly. Simple, non ?</p>
+
+            <p>Premier essai → dropdown <strong>AU-DESSUS</strong> du tableau.<br>
+            Deuxième essai → dropdown <strong>EN-DESSOUS</strong> du tableau.</p>
+
+            <p>En plus d'être moche, c'est tout sauf intuitif quand tu développes un dashboard pour une équipe non-tech.</p>
+
+            <p>Je reformule mon prompt. Parce qu'un mauvais prompt = une mauvaise réponse. C'est le principe de base du vibe coding : ce n'est pas l'IA qui est nulle, c'est la demande qui manque de précision.</p>
+
+            <p>Troisième essai : Claude comprend enfin ce que je veux… et m'affirme que <strong>c'est impossible</strong>.</p>
+
+            <p>Je perds patience. Je cherche sur internet. Premier lien : la doc officielle de Dash Plotly. Tout y est expliqué, clairement.</p>
+
+            <p><strong>Résultat : 30 minutes perdues</strong> à me débattre avec une IA pour une tâche que j'ai finie seule en quelques minutes.</p>
+
+            <p><strong>La leçon ?</strong></p>
+
+            <p>L'IA est un accélérateur incroyable. Claude Code m'a fait gagner un temps considérable tout au long de mon stage, et c'est un outil que je recommande à quiconque travaille dans la tech.</p>
+
+            <p>Mais elle ne remplace pas la compétence. Elle ne remplace pas le réflexe d'aller lire la doc. Et surtout, elle ne remplace pas le sens critique de savoir quand arrêter de prompter et reprendre la main.</p>
+
+            <p><strong>L'IA est un outil. Pas une béquille.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#IA</span>
+              <span class="chip">#DataAnalytics</span>
+              <span class="chip">#VibeCoding</span>
+              <span class="chip">#ClaudeAI</span>
+              <span class="chip">#Stage</span>
+              <span class="chip">#DashPlotly</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 7 -->
+        <div id="post-7">
+          <span class="post-date">26 février 2026</span>
+          <h1 class="post-full-title">Quand tes courbes racontent une histoire… incomplète 📊</h1>
+          <div class="post-content">
+            <p>En stage data, il y a ce moment qu'on connaît tous :</p>
+
+            <p>Tu construis ton dashboard.<br>
+            Tu lances ta requête.<br>
+            Tu traces la courbe.</p>
+
+            <p>Et là…<br>
+            <strong>Un trou béant. Puis une explosion de données.</strong></p>
+
+            <img src="../assets/Images/post_dashboard_timeline.jpg" alt="Dashboard avec timeline cumulative montrant un trou puis une explosion de données">
+
+            <p>Bienvenue dans la réalité des bases qui ont évolué au fil du temps.</p>
+
+            <p>Des événements ont eu lieu avant la mise en place du tracking.<br>
+            On sait que des choses se sont passées.<br>
+            On en voit les traces indirectes.<br>
+            Mais on n'a pas la granularité pour raconter l'histoire correctement.</p>
+
+            <p>C'est frustrant.<br>
+            Mais c'est aussi ce qui rend le travail intéressant.</p>
+
+            <p>Ça oblige à se poser les bonnes questions :</p>
+
+            <p>→ Comment interpréter une métrique avec un historique incomplet ?<br>
+            → Comment éviter des conclusions biaisées ?<br>
+            → Comment s'assurer que demain, on mesure mieux qu'hier ?</p>
+
+            <p><strong>Parce que la data, ce n'est pas seulement des chiffres.<br>
+            C'est aussi comprendre ce qui manque.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#Data</span>
+              <span class="chip">#Analytics</span>
+              <span class="chip">#Internship</span>
+              <span class="chip">#BusinessIntelligence</span>
+              <span class="chip">#DataQuality</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 6 -->
+        <div id="post-6">
+          <span class="post-date">Décembre 2025</span>
+          <h1 class="post-full-title">Comment faire parler les chiffres pour mieux les interpréter ? 📊</h1>
+          <div class="post-content">
+            <p>Depuis le début de mon stage en data analysis chez <strong>ArtMajeur</strong>, je me rends compte d'une chose : les chiffres ne mentent pas… mais ils peuvent se révéler difficiles à comprendre.</p>
+
+            <p>Une fois les chiffres extraits des bons jeux de données (sets performants vs non performants, en excluant l'irrelevant), l'étude peut commencer.</p>
+
+            <p>👉 Et là, trois cas de figure.</p>
+
+            <p><strong>1. Résultats très polarisés</strong> (uplift fortement positif ou négatif)</p>
+
+            <p>→ L'étude est probablement robuste. Mais une vérification reste indispensable :</p>
+            <ul>
+              <li>Est-ce cohérent avec l'hypothèse initiale ?</li>
+              <li>Est-ce que ça fait sens métier ?</li>
+            </ul>
+
+            <p>Si ça ne colle pas du tout :</p>
+            <ul>
+              <li>soit notre intuition était mauvaise,</li>
+              <li>soit la méthode ou les jeux de données ne sont pas les bons.</li>
+            </ul>
+
+            <p>👉 Dans ce cas, pendant mon stage, j'ai appris qu'il faut changer d'angle d'analyse : refaire l'étude sur d'autres sets, ou utiliser une autre méthode pour confirmer (ou invalider) le résultat.</p>
+
+            <p><strong>2. Résultats faibles</strong> (un +2 % qui semble insignifiant)</p>
+
+            <p>Deux possibilités :</p>
+            <ul>
+              <li>On ne peut rien conclure</li>
+              <li>Ou ce +2 % cache un effet plus important sur une partie spécifique des données (ex : +15 % sur certains profils)</li>
+            </ul>
+
+            <p>Comment lever l'ambiguïté ?</p>
+
+            <p>👉 <strong>En traitant les valeurs extrêmes</strong></p>
+
+            <p>On retire le premier et le dernier centile (ou décile).<br>
+            Objectif : réduire le bruit et faire émerger les tendances réelles. C'est une approche que j'utilise régulièrement dans mes analyses de stage.</p>
+
+            <img src="../assets/Images/post_courbes_centiles.png" alt="Courbes performants vs non-performants avec centiles C1 et C99">
+
+            <p><strong>💡 Méthode concrète</strong></p>
+
+            <p>On trace deux courbes : non performante et performante, en fonction de la variable étudiée.</p>
+
+            <p>Deux scénarios :</p>
+
+            <p><strong>1 — Les courbes se confondent</strong><br>
+            → on choisit les centiles/déciles qui suppriment les valeurs aberrantes<br>
+            → on conserve : le minimum du premier centile/décile et le maximum du dernier centile/décile</p>
+
+            <p><strong>2 — Les courbes sont clairement séparées</strong> (non performante très basse, performante très haute ou l'inverse)</p>
+
+            <p>➡️ Ce cas correspond en général à des résultats déjà polarisés. Mais lorsqu'il est noyé parmi des résultats faibles, on affine en sélectionnant les centiles de la non-performante qui convergent vers la performante.</p>
+
+            <p><strong>Conclusion :</strong></p>
+
+            <p>Ce que j'apprends chez ArtMajeur : un résultat faible n'est pas forcément un résultat inutile.</p>
+
+            <p><strong>Parfois, ce n'est pas l'effet qui est petit, c'est le signal qui est noyé.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#DataAnalysis</span>
+              <span class="chip">#DataScience</span>
+              <span class="chip">#AnalyseDeDonnées</span>
+              <span class="chip">#DataDriven</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 5 -->
+        <div id="post-5">
+          <span class="post-date">Novembre 2025</span>
+          <h1 class="post-full-title">Gemini 3 Pro : Un sprinter, pas un marathonien ? 🏃</h1>
+          <div class="post-content">
+            <p>Durant mon stage chez <strong>ArtMajeur</strong>, j'utilise intensivement Cursor. On le sait, les modèles comme Claude Opus ou Sonnet de chez Anthropic sont des monstres, mais ils coûtent cher en tokens sur des contextes longs.</p>
+
+            <p>J'ai donc testé la nouveauté de Google, <strong>Gemini 3 Pro</strong>, pour trouver une alternative plus économique.</p>
+
+            <p><strong>📉 La réalité du terrain :</strong></p>
+
+            <p><strong>1️⃣ Le démarrage :</strong> Très fort. Il surclasse clairement un modèle léger comme Haiku sur des tâches simples.</p>
+
+            <p><strong>2️⃣ L'endurance :</strong> C'est la chute. Son contexte sature vite. Il devient "bête" après quelques échanges, là où Claude reste stable et cohérent. Et surtout ça le rend très vite plus cher en tokens.</p>
+
+            <p><strong>3️⃣ Le bug qui tue le flow (Data Viz) :</strong><br>
+            C'est le plus gros frein pour l'analyse de données : la confusion multimodale. Si je lui demande de modifier une couleur sur un graphique de sortie d'un script python, il ne touche pas à mon code... Il m'envoie une image générée du résultat espéré !</p>
+
+            <p>C'est joli, mais inutilisable dans mon pipeline.</p>
+
+            <p><strong>Conclusion :</strong> Le prix est attractif, mais pour bosser sérieusement sur de la Data, Claude garde sa couronne. 👑</p>
+
+            <div class="post-chips">
+              <span class="chip">#VibeCoding</span>
+              <span class="chip">#TechReview</span>
+              <span class="chip">#DataAnalytics</span>
+              <span class="chip">#GoogleGemini</span>
+              <span class="chip">#Anthropic</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 4 -->
+        <div id="post-4">
+          <span class="post-date">Novembre 2025</span>
+          <h1 class="post-full-title">La pire erreur en data ? Croire que l'analyse commence avec les chiffres. 📊</h1>
+          <div class="post-content">
+            <p>En réalité… tout se joue avant même de lancer la première requête.</p>
+
+            <p>Avant d'analyser quoi que ce soit, je me pose toujours les quatre mêmes questions :</p>
+            <p>➡️ Quelle population je veux vraiment analyser ?<br>
+            ➡️ Dans quel set je range la donnée ?<br>
+            ➡️ Avec quel set je la compare ?<br>
+            ➡️ Existe-t-il un set qu'il faut retirer pour éviter le bruit ?</p>
+
+            <p>Pendant mon stage chez <strong>ArtMajeur</strong>, je travaille presque toujours avec trois ensembles :</p>
+            <ul>
+              <li><strong>Set performant</strong> — ce qui marche vraiment : la donnée positive.</li>
+              <li><strong>Set non performant</strong> — ce qui freine, sous-performe, ou tire les résultats vers le bas : la donnée négative.</li>
+              <li><strong>Set irrelevant / inexploitable</strong> — ce qu'on décide d'exclure car ça n'apporte rien… ou fausse tout.</li>
+            </ul>
+
+            <img src="../assets/Images/post_sets_diagram.png" alt="Diagramme : DB → Irrelevant Set (poubelle), Performant Set et Non performant Set → Analyse Graphiques/Insights">
+
+            <p><strong>C'est là que se joue 80% de la qualité d'une analyse.</strong></p>
+
+            <p>Se tromper à la fin n'est pas grave : on ajuste un graphique, on reformule un insight, on affine une comparaison.</p>
+
+            <p>❌ <strong>Mais se tromper au début ?</strong><br>
+            Mal définir les sets, mélanger les populations, garder des données bruyantes…<br>
+            → Et c'est toute l'analyse qu'il faut recommencer : extraction, nettoyage, filtres, visu, conclusions.<br>
+            Résultat : 2 à 3 jours de travail qu'il faut reprendre de zéro.</p>
+
+            <p>Et honnêtement :<br>
+            📉 Se jeter directement sur les chiffres, c'est aller trop vite.<br>
+            Avant de les analyser, il faut déjà les définir.</p>
+
+            <p>C'est comme comparer la température de deux années… mais dans deux zones différentes : le chiffre a l'air cohérent, mais il ne veut rien dire.</p>
+
+            <p><strong>Une bonne analyse ne commence pas avec les données.<br>
+            👉 Elle commence avec le cadre que l'on pose dès le départ.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#DataAnalysis</span>
+              <span class="chip">#DataScience</span>
+              <span class="chip">#DataQuality</span>
+              <span class="chip">#DataPreparation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 3 -->
+        <div id="post-3">
+          <span class="post-date">Novembre 2025</span>
+          <h1 class="post-full-title">💻 Vibe Coding & IA : Et si on arrêtait de parler de "remplacement" ?</h1>
+          <div class="post-content">
+            <p>Durant mon stage, je travaille sur un projet d'analyse sémantique des descriptions d'œuvres sur <strong>Artmajeur</strong>. Une expérience qui me fait repenser totalement ma façon de coder… et le rôle de l'IA dans nos métiers.</p>
+
+            <p>🔥 On parle beaucoup du remplacement des développeurs par l'IA.<br>
+            Dans mon quotidien, je vois exactement l'inverse.</p>
+
+            <p>💭 <strong>Le débat habituel :</strong> "L'IA va remplacer les développeurs/data scientists/analystes…"<br>
+            <strong>Ma conviction :</strong> L'IA ne remplace pas, elle transforme nos métiers. Bienvenue dans l'ère du Vibe Coding.</p>
+
+            <p><strong>❓ Concrètement, ça change quoi ?</strong></p>
+
+            <p><strong>Avant :</strong> je passais 30 minutes voire 1 heure à écrire une requête SQL complexe, à l'appeler dans un script python, à débugger, à optimiser…</p>
+
+            <p><strong>Maintenant :</strong> avec des outils comme Cursor, j'écris un bon prompt, l'IA génère la requête, et je passe ce temps à faire ce qui a vraiment de la valeur :</p>
+            <ul>
+              <li>Lire et comprendre le code produit</li>
+              <li>Valider la logique</li>
+              <li>Ajuster selon le contexte métier</li>
+              <li>Itérer rapidement sur plusieurs approches</li>
+              <li>Approfondir l'analyse au lieu de rester coincée sur des obstacles techniques</li>
+            </ul>
+
+            <p><strong>💡 La vraie compétence aujourd'hui ?</strong><br>
+            Poser les bonnes questions. Formuler précisément ce que l'on veut.<br>
+            C'est bien plus rapide de lire, comprendre et modifier du code que de le produire from scratch.<br>
+            L'IA devient mon pair programmer, pas mon remplaçant.</p>
+
+            <p>✨ <strong>L'IA accélère le <em>comment</em>, mais elle ne comprend pas le <em>pourquoi</em>.</strong><br>
+            Et c'est dans ce <em>pourquoi</em> que se crée la valeur.</p>
+
+            <p><strong>⚡ Le vrai gain ?</strong><br>
+            Quand on vous demande des résultats rapidement, vous gagnez un temps précieux sur l'exécution technique pour le réinvestir là où vous faites la différence : l'analyse approfondie, l'interprétation, la stratégie.</p>
+
+            <p><strong>📊 Sur mon stage chez ArtMajeur :</strong><br>
+            J'analyse comment les descriptions d'œuvres impactent les ventes. Grâce au vibe coding et à Cursor, je peux tester 10 hypothèses dans le temps où j'en aurais codé 2 manuellement. Mon cerveau reste concentré sur l'essentiel : comprendre les patterns, questionner les données, extraire du sens.</p>
+
+            <p><strong>🎯 Le métier évolue :</strong><br>
+            De "celui qui code" à "celui qui orchestre, comprend et décide".<br>
+            Et c'est passionnant.</p>
+
+            <p><strong>L'IA n'est pas une menace.<br>
+            C'est un levier. À nous de le saisir.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#VibeCoding</span>
+              <span class="chip">#IA</span>
+              <span class="chip">#DataScience</span>
+              <span class="chip">#FutureOfWork</span>
+              <span class="chip">#Artmajeur</span>
+              <span class="chip">#Cursor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 2 -->
+        <div id="post-2">
+          <span class="post-date">Novembre 2025</span>
+          <h1 class="post-full-title">Salon étudiant & atelier radio franceinfo 🎙️</h1>
+          <div class="post-content">
+            <p>Présente vendredi et dimanche sur le stand <strong>EPITA</strong>, j'ai pu échanger avec de nombreux lycéens curieux de découvrir les études en informatique.</p>
+
+            <p>🎙️ J'ai aussi participé à un <strong>atelier radio en direct avec franceinfo</strong>, aux côtés d'un journaliste et de Lina Godefroy. Une belle expérience pour apprendre à prendre la parole de façon claire et structurée… tout en présentant notre école !</p>
+
+            <p><strong>Une immersion intense mais très enrichissante.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#EPITA</span>
+              <span class="chip">#SalonÉtudiant</span>
+              <span class="chip">#Radio</span>
+              <span class="chip">#Franceinfo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POST 1 -->
+        <div id="post-1">
+          <span class="post-date">Août 2025</span>
+          <h1 class="post-full-title">🍽️ Ce que j'ai appris après quelques mois en restauration</h1>
+          <div class="post-content">
+            <p><em>"C'est juste un job d'étudiant", paraît-il. Pourtant, j'y ai appris à gérer le stress, prendre le lead, et ne jamais rester passif·ve.</em></p>
+
+            <p>Travailler en restauration, c'est intense. Vraiment intense.</p>
+
+            <p>J'y ai découvert que :</p>
+
+            <p>🔹 Anticiper un maximum de choses permet d'éviter la confusion pendant le service<br>
+            🔹 Le travail d'équipe est essentiel – si une personne décroche, tout le service en souffre<br>
+            🔹 Il faut savoir garder son calme, même quand la salle est pleine et que tout s'accélère<br>
+            🔹 Il y a toujours quelque chose à faire : ranger des verres, nettoyer le passe au vinaigre, trier les couverts…<br>
+            🔹 À moins de choisir consciemment de faire une pause, on n'en prend pas<br>
+            🔹 Et surtout : quand la pression monte, quelqu'un doit prendre le lead</p>
+
+            <p>J'ai appris à le faire. Pas en criant plus fort, mais en gardant une vue d'ensemble, en annonçant les commandes, en redistribuant les tâches, en rassurant les autres.</p>
+
+            <p>Ce n'est peut-être pas le métier que je vise à long terme.<br>
+            Mais cette expérience m'a appris des choses qu'aucune formation ne m'aurait transmises aussi vite.</p>
+
+            <p><strong>Et franchement : tout le monde devrait passer par là au moins une fois.</strong></p>
+
+            <div class="post-chips">
+              <span class="chip">#Restauration</span>
+              <span class="chip">#Leadership</span>
+              <span class="chip">#SoftSkills</span>
+              <span class="chip">#JobÉtudiant</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -53,5 +495,25 @@
 
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/api.js"></script>
+<script>
+function showPost(id) {
+  var grid = document.getElementById('posts-grid');
+  var detail = document.getElementById('post-detail');
+  var source = document.getElementById(id);
+  if (!source) return;
+
+  grid.style.display = 'none';
+  detail.querySelector('#post-detail-content').innerHTML = source.innerHTML;
+  detail.style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+document.getElementById('back-to-posts').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('posts-grid').style.display = '';
+  document.getElementById('post-detail').style.display = 'none';
+  window.scrollTo(0, 0);
+});
+</script>
 </body>
 </html>
