@@ -1,57 +1,110 @@
-/* ===== Posts ===== */
+/* ===== Posts Grid ===== */
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
   margin-top: 1.5rem;
 }
 
+/* ===== Post Card ===== */
 .post-card {
-  background: linear-gradient(160deg, #0d3050 0%, var(--color-primary-dark) 100%);
-  border-radius: 10px;
+  background: #fff;
+  border-radius: 12px;
   padding: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: 1px solid rgba(165, 208, 243, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #e2e8f0;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-accent-light));
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  border-color: rgba(165, 208, 243, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(11, 40, 69, 0.12);
+  border-color: #cbd5e1;
 }
 
+.post-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Card Image ===== */
+.post-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* ===== Card Body ===== */
 .post-card-body {
   flex: 1;
-  padding: 1.5rem 1.5rem 0.75rem;
+  padding: 1.25rem 1.5rem 0.75rem;
 }
 
 .post-date {
   display: inline-block;
-  font-size: 0.78rem;
-  color: var(--color-accent-light);
+  font-size: 0.75rem;
+  color: var(--color-primary-dark);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
 }
 
 .post-title {
-  font-size: 1.15rem;
-  color: #fff;
-  margin: 0.5rem 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+  margin: 0.5rem 0 0.6rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .post-summary {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  color: #64748b;
   line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* ===== Card Tags ===== */
+.post-card .chips-footer {
+  padding: 0.75rem 1.5rem 1.25rem;
+  margin-top: auto;
+  border-top: 1px solid #f1f5f9;
+}
+
+.post-card .chips-footer .chip {
+  font-size: 0.72rem;
+  background: #f1f5f9;
+  color: var(--color-primary-dark);
+  border: 1px solid #e2e8f0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Detail View ===== */
 .post-full-title {
   font-size: 1.8rem;
   color: var(--color-primary-dark);
@@ -104,7 +157,7 @@
 }
 
 .post-content li::before {
-  content: '•';
+  content: '\2022';
   position: absolute;
   left: 0.3rem;
   color: var(--color-primary-dark);
@@ -119,18 +172,7 @@
   margin: 1rem 0;
 }
 
-.post-card-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  margin: 0;
-  border-radius: 0;
-}
-
-.post-card .chips-footer {
-  padding: 0 1.5rem 1.25rem;
-}
-
+/* ===== Detail tags ===== */
 .post-chips {
   display: flex;
   flex-wrap: wrap;
@@ -140,11 +182,12 @@
 
 .post-chips .chip {
   font-size: 0.78rem;
-  background: #e8f0fe;
-  color: #0077b5;
-  border: 1px solid #c2d9f0;
+  background: #f1f5f9;
+  color: var(--color-primary-dark);
+  border: 1px solid #e2e8f0;
 }
 
+/* ===== LinkedIn CTA ===== */
 .linkedin-cta {
   display: inline-flex;
   align-items: center;
@@ -166,6 +209,7 @@
   text-decoration: underline;
 }
 
+/* ===== Back Link ===== */
 .back-link {
   display: inline-block;
   color: var(--color-primary-dark);
@@ -179,8 +223,9 @@
   text-decoration: underline;
 }
 
+/* ===== Empty State ===== */
 .empty-state {
-  color: rgba(255, 255, 255, 0.6);
+  color: #94a3b8;
   font-style: italic;
   text-align: center;
   padding: 3rem 1rem;
