@@ -118,22 +118,41 @@ async function loadPosts() {
 
     container.innerHTML = posts.map(post => {
       const tags = JSON.parse(post.tags || '[]');
+      const catValues = JSON.parse(post.category || '[]');
+      const languages = JSON.parse(post.languages || '[]');
+      const tools = JSON.parse(post.tools || '[]');
+      const libs = JSON.parse(post.libraries || '[]');
       const date = new Date(post.created_at).toLocaleDateString('fr-FR', {
         day: 'numeric', month: 'long', year: 'numeric'
       });
+
+      // Build display chips (same structure as cards)
+      const chips = [];
+      if (post.context) chips.push(`<span class="chip chip-context">${post.context}</span>`);
+      catValues.forEach(c => chips.push(`<span class="chip chip-category">${c}</span>`));
+      languages.forEach(l => chips.push(`<span class="chip">${l}</span>`));
+      tools.forEach(t => chips.push(`<span class="chip">${t}</span>`));
+      libs.forEach(l => chips.push(`<span class="chip">${l}</span>`));
+      tags.forEach(t => chips.push(`<span class="chip chip-soft">${t}</span>`));
+
       return `
-        <article class="post-card${post.featured ? ' post-featured' : ''}" onclick="navigateToPost('${post.slug}')">
+        <article class="post-card${post.featured ? ' post-featured' : ''}"
+          data-context="${post.context || ''}"
+          data-category='${post.category || '[]'}'
+          data-languages='${post.languages || '[]'}'
+          data-tools='${post.tools || '[]'}'
+          data-libraries='${post.libraries || '[]'}'
+          onclick="navigateToPost('${post.slug}')">
           ${post.featured ? '<span class="featured-badge">★</span>' : ''}
           ${post.image_url ? `<img src="${post.image_url}" alt="" class="post-card-image">` : ''}
           <div class="post-card-body">
             <time class="post-date">${date}</time>
-            ${post.category ? `<span class="post-category">${post.category}</span>` : ''}
             <h2 class="post-title">${post.title}</h2>
             ${post.summary ? `<p class="post-summary">${post.summary}</p>` : ''}
           </div>
-          ${tags.length ? `
+          ${chips.length ? `
             <div class="chips-footer">
-              ${tags.map(t => `<span class="chip">${t}</span>`).join('')}
+              ${chips.join('')}
             </div>
           ` : ''}
         </article>

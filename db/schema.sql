@@ -57,10 +57,20 @@ CREATE TABLE IF NOT EXISTS posts (
   content TEXT NOT NULL,
   tags TEXT,
   image_url TEXT,
+  context TEXT,
   category TEXT,
+  languages TEXT,
+  tools TEXT,
+  libraries TEXT,
   featured INTEGER DEFAULT 0,
   sort_order INTEGER DEFAULT 0,
   published INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now'))
 );
+
+-- Migration pour ajouter les colonnes structurées aux posts existants
+-- ALTER TABLE posts ADD COLUMN context TEXT;
+-- ALTER TABLE posts ADD COLUMN languages TEXT;
+-- ALTER TABLE posts ADD COLUMN tools TEXT;
+-- ALTER TABLE posts ADD COLUMN libraries TEXT;

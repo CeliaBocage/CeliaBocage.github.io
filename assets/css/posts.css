@@ -104,6 +104,26 @@
   letter-spacing: 0.01em;
 }
 
+.post-card .chips-footer .chip-context {
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-color: var(--color-primary-dark);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+}
+
+.post-card .chips-footer .chip-category {
+  background: #e8f4fd;
+  color: var(--color-primary-dark);
+  border-color: #b8ddf5;
+}
+
+.post-card .chips-footer .chip-soft {
+  opacity: 0.65;
+  font-style: italic;
+}
+
 /* ===== Featured Post ===== */
 .post-featured {
   border-color: var(--color-accent-light);

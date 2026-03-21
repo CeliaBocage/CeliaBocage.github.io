@@ -1,5 +1,9 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const toggleButton = document.querySelector('.menu-toggle');
