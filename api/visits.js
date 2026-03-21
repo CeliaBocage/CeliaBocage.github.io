@@ -1,5 +1,25 @@
 import { getDb } from '../lib/db.js';
 
+async function getOrCreateSessionId(db, session_code) {
+  if (!session_code) return null;
+
+  const existing = await db.execute({
+    sql: 'SELECT id FROM sessions WHERE session_code = ?',
+    args: [session_code],
+  });
+
+  if (existing.rows.length > 0) {
+    return existing.rows[0].id;
+  }
+
+  const result = await db.execute({
+    sql: 'INSERT INTO sessions (session_code) VALUES (?)',
+    args: [session_code],
+  });
+
+  return Number(result.lastInsertRowid);
+}
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -12,19 +32,21 @@ export default async function handler(req, res) {
     const db = getDb();
 
     if (req.method === 'POST') {
+      const session_id = await getOrCreateSessionId(db, session_code);
+
       await db.execute({
-        sql: 'INSERT INTO visits (page, session_code) VALUES (?, ?)',
-        args: [page, session_code],
+        sql: 'INSERT INTO visits (page, session_id, session_code) VALUES (?, ?, ?)',
+        args: [page, session_id, session_code],
       });
 
       // Upsert page_views: increment view_count or create new row
       if (session_code) {
         await db.execute({
-          sql: `INSERT INTO page_views (session_code, page, view_count, first_visit, last_visit)
-                VALUES (?, ?, 1, datetime('now'), datetime('now'))
+          sql: `INSERT INTO page_views (session_id, session_code, page, view_count, first_visit, last_visit)
+                VALUES (?, ?, ?, 1, datetime('now'), datetime('now'))
                 ON CONFLICT(session_code, page)
                 DO UPDATE SET view_count = view_count + 1, last_visit = datetime('now')`,
-          args: [session_code, page],
+          args: [session_id, session_code, page],
         });
       }
 

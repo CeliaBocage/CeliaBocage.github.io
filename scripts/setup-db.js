@@ -24,8 +24,16 @@ async function migrate() {
       content TEXT,
       tags TEXT DEFAULT '[]',
       image_url TEXT,
+      context TEXT,
+      category TEXT,
+      languages TEXT DEFAULT '[]',
+      tools TEXT DEFAULT '[]',
+      libraries TEXT DEFAULT '[]',
+      featured INTEGER DEFAULT 0,
+      sort_order INTEGER DEFAULT 0,
       published INTEGER DEFAULT 1,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
 
@@ -63,6 +71,10 @@ async function migrate() {
     'category TEXT',
     'featured INTEGER DEFAULT 0',
     'sort_order INTEGER DEFAULT 0',
+    'context TEXT',
+    "languages TEXT DEFAULT '[]'",
+    "tools TEXT DEFAULT '[]'",
+    "libraries TEXT DEFAULT '[]'",
   ]) {
     try { await db.execute(`ALTER TABLE posts ADD COLUMN ${col}`); } catch { /* already exists */ }
   }
@@ -79,25 +91,131 @@ async function migrate() {
   }
 
   await db.execute(`
+    CREATE TABLE IF NOT EXISTS sessions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      session_code TEXT UNIQUE NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  await db.execute(`
     CREATE TABLE IF NOT EXISTS visits (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       page TEXT NOT NULL,
+      session_id INTEGER,
       session_code TEXT,
-      visited_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      visited_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (session_id) REFERENCES sessions(id)
     )
   `);
 
   await db.execute(`
     CREATE TABLE IF NOT EXISTS page_views (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      session_id INTEGER,
       session_code TEXT NOT NULL,
       page TEXT NOT NULL,
       view_count INTEGER DEFAULT 1,
       first_visit DATETIME DEFAULT CURRENT_TIMESTAMP,
       last_visit DATETIME DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE(session_code, page)
+      UNIQUE(session_code, page),
+      FOREIGN KEY (session_id) REFERENCES sessions(id)
     )
   `);
+
+  // Migration: add session_code and session_id columns to existing tables
+  for (const table of ['visits', 'page_views', 'messages']) {
+    try { await db.execute(`ALTER TABLE ${table} ADD COLUMN session_code TEXT`); } catch { /* already exists */ }
+    try { await db.execute(`ALTER TABLE ${table} ADD COLUMN session_id INTEGER`); } catch { /* already exists */ }
+  }
+
+  // Backfill: create sessions for existing session_codes and update session_id
+  const existingCodes = await db.execute(
+    `SELECT DISTINCT session_code FROM visits WHERE session_code IS NOT NULL AND session_id IS NULL`
+  );
+  for (const row of existingCodes.rows) {
+    await db.execute({
+      sql: `INSERT OR IGNORE INTO sessions (session_code) VALUES (?)`,
+      args: [row.session_code],
+    });
+    const sess = await db.execute({
+      sql: `SELECT id FROM sessions WHERE session_code = ?`,
+      args: [row.session_code],
+    });
+    const sid = sess.rows[0].id;
+    for (const table of ['visits', 'page_views', 'messages']) {
+      await db.execute({
+        sql: `UPDATE ${table} SET session_id = ? WHERE session_code = ? AND session_id IS NULL`,
+        args: [sid, row.session_code],
+      });
+    }
+  }
+
+  // Backfill: set structured metadata on existing posts
+  const postsMeta = [
+    {
+      slug: 'quand-ia-ferme-une-boucle',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '["Python"]', tools: '["Claude Code","Dash Plotly"]', libraries: '["Dash","Plotly"]',
+      featured: 1, sort_order: 1,
+    },
+    {
+      slug: 'courbes-histoire-incomplete',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 2,
+    },
+    {
+      slug: 'faire-parler-les-chiffres',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 3,
+    },
+    {
+      slug: 'gemini-3-pro-sprinter',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '["Python"]', tools: '["Cursor","Gemini 3 Pro","Claude"]', libraries: '[]',
+      featured: 0, sort_order: 4,
+    },
+    {
+      slug: 'pire-erreur-data',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 5,
+    },
+    {
+      slug: 'vibe-coding-ia-remplacement',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '["Python","SQL"]', tools: '["Cursor"]', libraries: '[]',
+      featured: 1, sort_order: 6,
+    },
+    {
+      slug: 'salon-etudiant-radio-franceinfo',
+      context: 'ÉCOLE', category: '["Communication"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 7,
+    },
+    {
+      slug: 'ce-que-jai-appris-restauration',
+      context: 'CDD', category: '["Hôtellerie-Restauration","Service"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 8,
+    },
+    {
+      slug: 'data-inspecteur-anomalies',
+      context: 'STAGE', category: '["Data / IA"]',
+      languages: '[]', tools: '[]', libraries: '[]',
+      featured: 0, sort_order: 9,
+    },
+  ];
+
+  for (const p of postsMeta) {
+    await db.execute({
+      sql: `UPDATE posts SET context = ?, category = ?, languages = ?, tools = ?, libraries = ?, featured = ?, sort_order = ?
+            WHERE slug = ? AND context IS NULL`,
+      args: [p.context, p.category, p.languages, p.tools, p.libraries, p.featured, p.sort_order, p.slug],
+    });
+  }
 
   console.log('Tables created.');
 }
@@ -396,6 +514,45 @@ Mais cette exp\u00E9rience m'a appris des choses qu'aucune formation ne m'aurait
 
 <p><strong>Et franchement\u00A0: tout le monde devrait passer par l\u00E0 au moins une fois.</strong></p>`,
   },
+  {
+    slug: 'data-inspecteur-anomalies',
+    title: `\u{1F50D} Travailler dans la Data, parfois c'est \u00EAtre inspecteur.`,
+    summary: `Tu ouvres ton dashboard, tu rep\u00E8res une anomalie. Et personne ne sait pourquoi. Alors tu enfiles ta casquette d'enqu\u00EAtrice.`,
+    image_url: null,
+    tags: '["DataAnalysis","DataScience","Organisation","Artmajeur"]',
+    created_at: '2025-11-20',
+    content: `<p>Tu ouvres ton dashboard, tu rep\u00E8res une anomalie.</p>
+
+<p>Un pic de ventes ici.<br>
+Une chute de trafic l\u00E0.</p>
+
+<p>Et personne ne sait pourquoi.</p>
+
+<p>Alors tu enfiles ta casquette d'enqu\u00EAtrice.<br>
+Tu poses des questions. Tu fouilles dans les mails, les souvenirs des uns et des autres.</p>
+
+<p><em>\u00AB\u00A0Il y avait pas une promo ce jour-l\u00E0\u00A0?\u00A0\u00BB</em></p>
+
+<p><em>\u00AB\u00A0On avait chang\u00E9 un truc sur le site non\u00A0?\u00A0\u00BB</em></p>
+
+<p><em>\u00AB\u00A0Ah si, je crois qu'une newsletter avait \u00E9t\u00E9 envoy\u00E9e\u2026\u00A0\u00BB</em></p>
+
+<p>Et tu finis par reconstituer le puzzle. Avec des bouts de m\u00E9moire collective.</p>
+
+<p>Le probl\u00E8me\u00A0? Cette information, elle n'existe nulle part. Elle est dans la t\u00EAte de 4 personnes diff\u00E9rentes, r\u00E9parties entre la com', la tech, le commerce et la compta.</p>
+
+<p>Alors \u00E9videmment, en tant que profil Data, tu ne laisses pas la chose en l'\u00E9tat.</p>
+
+<p>Tu proposes une base simple, claire, accessible \u00E0 tous. Un endroit unique o\u00F9 chaque \u00E9quipe pourrait renseigner ses \u00E9v\u00E9nements\u00A0: une campagne marketing, une mise en prod, un changement de prix, un test A/B.</p>
+
+<p>Pas besoin d'\u00EAtre technique pour y contribuer. C'est justement tout l'int\u00E9r\u00EAt.</p>
+
+<p>Parce qu'au fond, le vrai travail de la Data ce n'est pas juste analyser des chiffres.</p>
+
+<p><strong>C'est structurer l'information qui n'existait pas encore pour que ceux qui viendront apr\u00E8s n'aient plus \u00E0 jouer les d\u00E9tectives.</strong></p>
+
+<p>\u{1F4A1} <strong>La donn\u00E9e la plus pr\u00E9cieuse d'une entreprise est parfois celle qui n'a jamais \u00E9t\u00E9 enregistr\u00E9e.</strong></p>`,
+  },
 ];
 
 async function seedPosts() {
@@ -454,7 +611,7 @@ const cards = [
     image_url: '../assets/Images/Eldorado.jpg',
     link_url: 'https://hoteleldoradoparis.com/',
     context: 'CDD',
-    category: '["Hôtellerie-Restauration"]',
+    category: '["Hôtellerie-Restauration","Service"]',
     languages: '[]',
     tools: '[]',
     libraries: '[]',

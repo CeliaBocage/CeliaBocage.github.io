@@ -388,6 +388,9 @@ function initCardFilters() {
     const hasAnySelection = Object.values(selections).some(s => s.size > 0);
     if (!hasAnySelection) {
       cards.forEach(card => { card.style.display = ''; });
+      // Reset to default DOM order (by date)
+      const parent = grid;
+      cards.forEach(card => parent.appendChild(card));
       return;
     }
 
@@ -416,6 +419,14 @@ function initCardFilters() {
       }
       card.style.display = visible ? '' : 'none';
     });
+
+    // When filters active: featured cards first among visible ones
+    const parent = grid;
+    const visible = cards.filter(c => c.style.display !== 'none');
+    const featured = visible.filter(c => c.classList.contains('post-featured') || c.classList.contains('featured'));
+    const rest = visible.filter(c => !c.classList.contains('post-featured') && !c.classList.contains('featured'));
+    const hidden = cards.filter(c => c.style.display === 'none');
+    [...featured, ...rest, ...hidden].forEach(card => parent.appendChild(card));
   }
 }
 

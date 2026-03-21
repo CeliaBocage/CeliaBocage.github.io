@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     let sql = 'SELECT id, slug, title, summary, tags, image_url, context, category, languages, tools, libraries, featured, sort_order, created_at FROM posts WHERE published = 1';
     const args = [];
 
-    sql += ' ORDER BY featured DESC, sort_order ASC, created_at DESC';
+    sql += ' ORDER BY created_at DESC';
 
     const result = await db.execute({ sql, args });
     let posts = result.rows;

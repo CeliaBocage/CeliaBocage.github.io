@@ -1,5 +1,25 @@
 import { getDb } from '../lib/db.js';
 
+async function getOrCreateSessionId(db, session_code) {
+  if (!session_code) return null;
+
+  const existing = await db.execute({
+    sql: 'SELECT id FROM sessions WHERE session_code = ?',
+    args: [session_code],
+  });
+
+  if (existing.rows.length > 0) {
+    return existing.rows[0].id;
+  }
+
+  const result = await db.execute({
+    sql: 'INSERT INTO sessions (session_code) VALUES (?)',
+    args: [session_code],
+  });
+
+  return Number(result.lastInsertRowid);
+}
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -22,9 +42,11 @@ export default async function handler(req, res) {
 
   try {
     const db = getDb();
+    const session_id = await getOrCreateSessionId(db, session_code);
+
     await db.execute({
-      sql: 'INSERT INTO messages (session_code, nom, email, sujet, message) VALUES (?, ?, ?, ?, ?)',
-      args: [session_code || null, nom, email, sujet || null, message],
+      sql: 'INSERT INTO messages (session_id, session_code, nom, email, sujet, message) VALUES (?, ?, ?, ?, ?, ?)',
+      args: [session_id, session_code || null, nom, email, sujet || null, message],
     });
     return res.status(200).json({ success: true, message: 'Message envoyé !' });
   } catch (err) {

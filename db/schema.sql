@@ -1,34 +1,47 @@
 -- Exécuter dans le shell Turso : turso db shell portfolio
 -- Ou copier-coller chaque CREATE TABLE une par une
 
+-- Table des sessions (ID incrémental pour identifier chaque visiteur)
+CREATE TABLE IF NOT EXISTS sessions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_code TEXT UNIQUE NOT NULL,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
 -- Table des messages du formulaire de contact
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id INTEGER,
   session_code TEXT,
   nom TEXT NOT NULL,
   email TEXT NOT NULL,
   sujet TEXT,
   message TEXT NOT NULL,
-  created_at TEXT DEFAULT (datetime('now'))
+  created_at TEXT DEFAULT (datetime('now')),
+  FOREIGN KEY (session_id) REFERENCES sessions(id)
 );
 
 -- Log de visites par page et session
 CREATE TABLE IF NOT EXISTS visits (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   page TEXT NOT NULL,
+  session_id INTEGER,
   session_code TEXT,
-  visited_at TEXT DEFAULT (datetime('now'))
+  visited_at TEXT DEFAULT (datetime('now')),
+  FOREIGN KEY (session_id) REFERENCES sessions(id)
 );
 
 -- Résumé des pages vues par visiteur (session)
 CREATE TABLE IF NOT EXISTS page_views (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id INTEGER,
   session_code TEXT NOT NULL,
   page TEXT NOT NULL,
   view_count INTEGER DEFAULT 1,
   first_visit TEXT DEFAULT (datetime('now')),
   last_visit TEXT DEFAULT (datetime('now')),
-  UNIQUE(session_code, page)
+  UNIQUE(session_code, page),
+  FOREIGN KEY (session_id) REFERENCES sessions(id)
 );
 
 -- Cartes dynamiques pour chaque page (formations, experiences, projets, etc.)
