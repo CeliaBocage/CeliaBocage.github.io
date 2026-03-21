@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v2';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 heure en ms
 
 const PRECACHE_URLS = [
@@ -46,10 +46,14 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch : cache-first avec expiration d'1 heure
+// Fetch : network-first pour l'API, cache-first pour les assets statiques
 self.addEventListener('fetch', (event) => {
     // Ignorer les requetes non-GET
     if (event.request.method !== 'GET') return;
+
+    // Ne pas cacher les appels API — toujours aller au reseau
+    const url = new URL(event.request.url);
+    if (url.hostname !== location.hostname) return;
 
     event.respondWith(
         caches.open(CACHE_NAME).then(async (cache) => {
