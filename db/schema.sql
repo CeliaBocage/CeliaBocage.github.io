@@ -4,6 +4,7 @@
 -- Table des messages du formulaire de contact
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_code TEXT,
   nom TEXT NOT NULL,
   email TEXT NOT NULL,
   sujet TEXT,
@@ -11,10 +12,23 @@ CREATE TABLE IF NOT EXISTS messages (
   created_at TEXT DEFAULT (datetime('now'))
 );
 
--- Compteur de visites par page
+-- Log de visites par page et session
 CREATE TABLE IF NOT EXISTS visits (
-  page TEXT PRIMARY KEY,
-  count INTEGER DEFAULT 0
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  page TEXT NOT NULL,
+  session_code TEXT,
+  visited_at TEXT DEFAULT (datetime('now'))
+);
+
+-- Résumé des pages vues par visiteur (session)
+CREATE TABLE IF NOT EXISTS page_views (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_code TEXT NOT NULL,
+  page TEXT NOT NULL,
+  view_count INTEGER DEFAULT 1,
+  first_visit TEXT DEFAULT (datetime('now')),
+  last_visit TEXT DEFAULT (datetime('now')),
+  UNIQUE(session_code, page)
 );
 
 -- Cartes dynamiques pour chaque page (formations, experiences, projets, etc.)
@@ -42,6 +56,10 @@ CREATE TABLE IF NOT EXISTS posts (
   summary TEXT,
   content TEXT NOT NULL,
   tags TEXT,
+  image_url TEXT,
+  category TEXT,
+  featured INTEGER DEFAULT 0,
+  sort_order INTEGER DEFAULT 0,
   published INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now'))

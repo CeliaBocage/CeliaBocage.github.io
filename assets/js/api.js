@@ -1,6 +1,16 @@
 // ===== Configuration =====
 const API_BASE = 'https://celia-bocage-github-io.vercel.app/api';
 
+// ===== Code session anonyme =====
+function getSessionCode() {
+  let code = sessionStorage.getItem('session_code');
+  if (!code) {
+    code = Math.random().toString(36).substring(2, 10);
+    sessionStorage.setItem('session_code', code);
+  }
+  return code;
+}
+
 // ===== Compteur de visites =====
 function trackVisit() {
   const path = window.location.pathname;
@@ -12,7 +22,8 @@ function trackVisit() {
   else if (path.includes('passions')) page = 'passions';
   else if (path.includes('posts')) page = 'posts';
 
-  fetch(`${API_BASE}/visits?page=${page}`, { method: 'POST' })
+  const session = getSessionCode();
+  fetch(`${API_BASE}/visits?page=${page}&session=${session}`, { method: 'POST' })
     .then(r => r.json())
     .then(data => {
       const el = document.getElementById('visit-count');
@@ -40,6 +51,7 @@ function initContactForm() {
       email: form.email.value.trim(),
       sujet: form.sujet.value.trim(),
       message: form.message.value.trim(),
+      session_code: getSessionCode(),
     };
 
     try {
@@ -110,10 +122,12 @@ async function loadPosts() {
         day: 'numeric', month: 'long', year: 'numeric'
       });
       return `
-        <article class="post-card" onclick="navigateToPost('${post.slug}')">
+        <article class="post-card${post.featured ? ' post-featured' : ''}" onclick="navigateToPost('${post.slug}')">
+          ${post.featured ? '<span class="featured-badge">★</span>' : ''}
           ${post.image_url ? `<img src="${post.image_url}" alt="" class="post-card-image">` : ''}
           <div class="post-card-body">
             <time class="post-date">${date}</time>
+            ${post.category ? `<span class="post-category">${post.category}</span>` : ''}
             <h2 class="post-title">${post.title}</h2>
             ${post.summary ? `<p class="post-summary">${post.summary}</p>` : ''}
           </div>

@@ -58,6 +58,15 @@ async function migrate() {
     console.log('Added featured column to cards.');
   } catch { /* column already exists */ }
 
+  // Posts: add sort/display columns for existing databases
+  for (const col of [
+    'category TEXT',
+    'featured INTEGER DEFAULT 0',
+    'sort_order INTEGER DEFAULT 0',
+  ]) {
+    try { await db.execute(`ALTER TABLE posts ADD COLUMN ${col}`); } catch { /* already exists */ }
+  }
+
   // Classification columns
   for (const col of [
     'context TEXT',
@@ -73,7 +82,20 @@ async function migrate() {
     CREATE TABLE IF NOT EXISTS visits (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       page TEXT NOT NULL,
-      count INTEGER DEFAULT 0
+      session_code TEXT,
+      visited_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS page_views (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      session_code TEXT NOT NULL,
+      page TEXT NOT NULL,
+      view_count INTEGER DEFAULT 1,
+      first_visit DATETIME DEFAULT CURRENT_TIMESTAMP,
+      last_visit DATETIME DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE(session_code, page)
     )
   `);
 

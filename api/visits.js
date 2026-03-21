@@ -6,26 +6,47 @@ export default async function handler(req, res) {
   }
 
   const page = req.query.page || 'home';
+  const session_code = req.query.session || null;
 
   try {
     const db = getDb();
 
     if (req.method === 'POST') {
       await db.execute({
-        sql: `INSERT INTO visits (page, count) VALUES (?, 1)
-              ON CONFLICT(page) DO UPDATE SET count = count + 1`,
-        args: [page],
+        sql: 'INSERT INTO visits (page, session_code) VALUES (?, ?)',
+        args: [page, session_code],
       });
+
+      // Upsert page_views: increment view_count or create new row
+      if (session_code) {
+        await db.execute({
+          sql: `INSERT INTO page_views (session_code, page, view_count, first_visit, last_visit)
+                VALUES (?, ?, 1, datetime('now'), datetime('now'))
+                ON CONFLICT(session_code, page)
+                DO UPDATE SET view_count = view_count + 1, last_visit = datetime('now')`,
+          args: [session_code, page],
+        });
+      }
+
       const result = await db.execute({
-        sql: 'SELECT count FROM visits WHERE page = ?',
+        sql: 'SELECT COUNT(*) as count FROM visits WHERE page = ?',
         args: [page],
       });
       return res.status(200).json({ page, count: result.rows[0]?.count || 1 });
     }
 
     if (req.method === 'GET') {
+      // If ?history=1&session=xxx, return pages viewed by this session
+      if (req.query.history === '1' && session_code) {
+        const result = await db.execute({
+          sql: 'SELECT page, view_count, first_visit, last_visit FROM page_views WHERE session_code = ? ORDER BY last_visit DESC',
+          args: [session_code],
+        });
+        return res.status(200).json({ session: session_code, pages: result.rows });
+      }
+
       const result = await db.execute({
-        sql: 'SELECT count FROM visits WHERE page = ?',
+        sql: 'SELECT COUNT(*) as count FROM visits WHERE page = ?',
         args: [page],
       });
       return res.status(200).json({ page, count: result.rows[0]?.count || 0 });
