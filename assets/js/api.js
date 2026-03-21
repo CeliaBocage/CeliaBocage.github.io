@@ -447,7 +447,7 @@ async function loadCards(page, container) {
       const languages = JSON.parse(card.languages || '[]');
       const tools = JSON.parse(card.tools || '[]');
       const libs = JSON.parse(card.libraries || '[]');
-      const featuredClass = card.featured ? ' featured full-width' : '';
+      const featuredClass = card.featured ? ' featured' : '';
 
       const imageHtml = card.image_url
         ? (card.link_url

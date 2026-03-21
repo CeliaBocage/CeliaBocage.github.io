@@ -93,19 +93,12 @@
     max-height: 180px;
   }
 
-  .experience-card {
-    min-width: 100%;
-    max-width: 100%;
-    flex: 1 1 100%;
+  .experience-grid {
+    grid-template-columns: 1fr;
   }
 
   .cv-photo {
     max-width: 140px;
-  }
-
-  .experience-card.full-width {
-    flex: 1 1 100%;
-    max-width: 100%;
   }
 
   .posts-grid {
