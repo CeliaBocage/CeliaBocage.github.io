@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       sql += ' WHERE ' + conditions.join(' AND ');
     }
 
-    sql += ' ORDER BY sort_order ASC, created_at DESC';
+    sql += ` ORDER BY CASE WHEN end_date IS NULL THEN 0 ELSE 1 END, COALESCE(end_date, start_date) DESC, start_date DESC`;
 
     const result = await db.execute({ sql, args });
     let cards = result.rows;

@@ -51,12 +51,14 @@ async function migrate() {
       link_url TEXT,
       featured INTEGER DEFAULT 0,
       sort_order INTEGER DEFAULT 0,
+      start_date TEXT,
+      end_date TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
 
   // Add columns for existing databases
-  for (const col of ['subtitle TEXT', 'date_range TEXT']) {
+  for (const col of ['subtitle TEXT', 'date_range TEXT', 'start_date TEXT', 'end_date TEXT']) {
     try { await db.execute(`ALTER TABLE cards ADD COLUMN ${col}`); } catch { /* already exists */ }
   }
 
@@ -592,6 +594,8 @@ const cards = [
     tags: '["Stratégie"]',
     featured: 1,
     sort_order: 0,
+    start_date: '2025-06',
+    end_date: null,
     description: `<ul class="card-description">
     <li><strong>Analyse de données comportementales</strong> sur une plateforme de ~3,5 millions d'œuvres et ~1 million de comptes (acheteurs et artistes), à l'aide de <strong>SQL</strong>, <strong>Python</strong> et de méthodes statistiques.</li>
     <li><strong>Classification sémantique</strong> avec <strong>BERT</strong> des descriptions d'œuvres et des biographies d'artistes pour améliorer le référencement et la recherche.</li>
@@ -601,6 +605,7 @@ const cards = [
     <li>Utilisation d'un <strong>linter</strong> pour garantir la conformité du code lors du merge des projets sur la plateforme centralisant les dashboards.</li>
     <li>Gestion, maintenance et optimisation de la <strong>base de données</strong> de la plateforme.</li>
     <li>Réalisation d'une étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes — proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
+    <li>Mission actuelle sur l'<strong>AI Governor</strong> de l'entreprise : rôle technique de management des différents pôles de citizen developers, avec vérification qu'il n'y aura pas de problèmes de <strong>sécurité</strong> dans les solutions développées.</li>
 </ul>`,
   },
   {
@@ -618,6 +623,8 @@ const cards = [
     tags: '["Autonomie","Adaptation","Dynamisme"]',
     featured: 0,
     sort_order: 1,
+    start_date: '2025-05',
+    end_date: '2025-07',
     description: `<ul class="card-description">
     <li>Service de <strong>~75 couverts par service</strong> (salle de 40 places, 2 services par repas) dans un hôtel 4 étoiles parisien.</li>
     <li>Mise en place <strong>autonome</strong> de la salle, gestion du service en toute polyvalence au contact d'une clientèle internationale.</li>
@@ -636,7 +643,7 @@ const cards = [
     page: 'experiences',
     title: 'Réceptionniste - Pharmacie de Piquerouge',
     location: 'Gaillac',
-    date_range: '7 mois',
+    date_range: '4 mois',
     image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
     link_url: null,
     context: 'CDD',
@@ -647,6 +654,31 @@ const cards = [
     tags: '["Rigueur","Organisation","Gestion de stock"]',
     featured: 0,
     sort_order: 2,
+    start_date: '2023-05',
+    end_date: '2023-08',
+    description: `<ul class="card-description">
+    <li>Réception des livraisons, <strong>gestion de stock</strong> et mise en rayon dans une pharmacie de grande envergure (~2/3 des références en parapharmacie).</li>
+    <li>Forte <strong>rigueur</strong> et rapidité d'exécution dans le respect des normes de traçabilité, avec un volume nécessitant depuis l'installation d'un robot de stockage.</li>
+    <li>Sens de l'<strong>organisation</strong> développé au contact d'un environnement professionnel réglementé et à fort volume.</li>
+</ul>`,
+  },
+  {
+    page: 'experiences',
+    title: 'Réceptionniste - Pharmacie de Piquerouge',
+    location: 'Gaillac',
+    date_range: '3 mois',
+    image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
+    link_url: null,
+    context: 'CDD',
+    category: '["Santé / Pharmacie"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Rigueur","Organisation","Gestion de stock"]',
+    featured: 0,
+    sort_order: 3,
+    start_date: '2024-06',
+    end_date: '2024-08',
     description: `<ul class="card-description">
     <li>Réception des livraisons, <strong>gestion de stock</strong> et mise en rayon dans une pharmacie de grande envergure (~2/3 des références en parapharmacie).</li>
     <li>Forte <strong>rigueur</strong> et rapidité d'exécution dans le respect des normes de traçabilité, avec un volume nécessitant depuis l'installation d'un robot de stockage.</li>
@@ -670,6 +702,8 @@ const cards = [
     tags: '["Algorithmique","Mathématiques"]',
     featured: 1,
     sort_order: 0,
+    start_date: '2023-09',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Formation d'ingénieur généraliste en informatique, avec un tronc commun intensif en <strong>algorithmique</strong>, <strong>mathématiques</strong> et programmation.</li>
     <li>Apprentissage approfondi des langages <strong>C</strong>, <strong>C#</strong>, <strong>Python</strong> et <strong>SQL</strong> à travers de nombreux travaux pratiques.</li>
@@ -692,6 +726,8 @@ const cards = [
     tags: '["International","Anglais"]',
     featured: 0,
     sort_order: 1,
+    start_date: '2025-01',
+    end_date: '2025-06',
     description: `<ul class="card-description">
     <li>Semestre d'échange dédié au <strong>Game Design</strong>, à la <strong>modélisation 3D</strong> et au développement logiciel.</li>
     <li>Immersion anglophone complète pendant 6 mois, consolidant un <strong>niveau courant</strong> à l'oral et à l'écrit.</li>
@@ -715,6 +751,8 @@ const cards = [
     tags: '["Pédagogie","Responsabilité"]',
     featured: 0,
     sort_order: 2,
+    start_date: '2024-04',
+    end_date: '2024-04',
     description: `<ul class="card-description">
     <li>Obtention du <strong>Brevet d'Aptitude aux Fonctions d'Animateur</strong>, diplôme national d'encadrement de mineurs.</li>
     <li>Spécialisation <strong>accueil de scoutisme</strong> : encadrement de camps et de week-ends avec des jeunes de 8 à 11 ans.</li>
@@ -736,6 +774,8 @@ const cards = [
     tags: '["Mathématiques","Physique-Chimie"]',
     featured: 0,
     sort_order: 3,
+    start_date: '2020-09',
+    end_date: '2023-08',
     description: `<ul class="card-description">
     <li>Spécialités <strong>Mathématiques</strong> et <strong>Physique-Chimie</strong>, avec l'option <strong>Maths Expertes</strong>.</li>
     <li>Profil scientifique solide ayant préparé l'entrée en école d'ingénieurs.</li>
@@ -756,6 +796,8 @@ const cards = [
     tags: '["Permis B","Permis A2","Bateau","PSC1","Prévention VSS"]',
     featured: 0,
     sort_order: 4,
+    start_date: '2021-01',
+    end_date: '2025-12',
     description: `<ul class="card-description">
     <li><strong>Permis B</strong> — Permis de conduire automobile.</li>
     <li><strong>Permis A2</strong> — Permis moto (motocyclettes de puissance intermédiaire).</li>
@@ -781,6 +823,8 @@ const cards = [
     tags: '["Machine Learning","Analyse d\'Image"]',
     featured: 1,
     sort_order: 0,
+    start_date: '2024-09',
+    end_date: '2025-01',
     description: `<ul class="card-description">
     <li>Développement d'un logiciel capable de <strong>détecter et résoudre des grilles de mots cachés</strong> à partir d'une image, grâce à la <strong>reconnaissance optique de caractères (OCR)</strong>.</li>
     <li>Implémentation d'un <strong>réseau de neurones</strong> en <strong>C</strong> atteignant <strong>99,9 % de précision</strong> sur la reconnaissance de l'alphabet français.</li>
@@ -803,6 +847,8 @@ const cards = [
     tags: '[]',
     featured: 0,
     sort_order: 1,
+    start_date: '2023-09',
+    end_date: '2024-06',
     description: `<ul class="card-description">
     <li>Escape game <strong>multijoueur</strong> dans un <strong>manoir</strong> : résolution d'énigmes en coopération tout en échappant à un fantôme doté d'un système de <strong>pathfinding</strong> (possibilité de se cacher pour le faire repartir).</li>
     <li><strong>Modélisation 3D</strong> complète de l'environnement avec <strong>Blender</strong> (manoir, décors, éclairage).</li>
@@ -825,6 +871,8 @@ const cards = [
     tags: '[]',
     featured: 0,
     sort_order: 2,
+    start_date: '2025-01',
+    end_date: '2025-06',
     description: `<ul class="card-description">
     <li>Réalisation <strong>individuelle</strong> complète d'un FPS solo sous <strong>Unreal Engine</strong>, de la conception au produit jouable.</li>
     <li>Développement de la logique de jeu en <strong>C#</strong> : déplacements, tir, ennemis IA, conditions de victoire.</li>
@@ -847,6 +895,8 @@ const cards = [
     tags: '[]',
     featured: 0,
     sort_order: 3,
+    start_date: '2025-01',
+    end_date: '2025-06',
     description: `<ul class="card-description">
     <li>Application desktop de gestion de recettes : ajout, suppression, recherche et <strong>filtrage par ingrédient</strong>.</li>
     <li>Fonctionnalité de <strong>constraint programming</strong> : suggestion de recettes réalisables avec les ingrédients disponibles ("recettes à partir du frigo").</li>
@@ -864,15 +914,42 @@ const cards = [
     context: 'PERSO',
     category: '["Informatique"]',
     languages: '["C","SQL","Makefile"]',
-    tools: '[]',
+    tools: '["PostgreSQL"]',
     libraries: '[]',
     tags: '[]',
     featured: 0,
     sort_order: 4,
+    start_date: '2026-02',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Projet de préparation à la <strong>piscine</strong> du cycle ingénieur : exploration des différents langages et concepts abordés pendant la piscine.</li>
     <li>Réalisation d'une <strong>calculatrice en ligne de commande</strong> en <strong>C</strong> avec opérations arithmétiques (+, -, *, /, %), validation des arguments et fonctions d'affichage réimplémentées sans utiliser la bibliothèque standard.</li>
     <li>Gestion du projet avec <strong>Makefile</strong> pour la compilation et l'organisation du code.</li>
+    <li>Exercices <strong>SQL</strong> sur une base de données de marché de l'art : requêtes de sélection, jointures, agrégations et sous-requêtes.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: 'How-to-SCRAP',
+    location: 'Projet personnel',
+    date_range: 'Continu',
+    image_url: null,
+    link_url: null,
+    context: 'PERSO',
+    category: '["Informatique","Data"]',
+    languages: '["Python"]',
+    tools: '[]',
+    libraries: '["BeautifulSoup4","requests"]',
+    tags: '["Web Scraping","Automatisation"]',
+    featured: 0,
+    sort_order: 5,
+    start_date: '2026-02',
+    end_date: null,
+    description: `<ul class="card-description">
+    <li>Projet éducatif de <strong>web scraping</strong> en Python : cours théoriques (TD) et exercices pratiques (TP) pour apprendre les techniques de scraping.</li>
+    <li>Scraping du site books.toscrape.com : extraction de titres, prix, notes et liens sur <strong>50 pages</strong> de résultats avec gestion de la pagination.</li>
+    <li>Utilisation de <strong>BeautifulSoup4</strong> et <strong>requests</strong> pour le parsing HTML et les requêtes HTTP, avec <strong>export CSV</strong> des données.</li>
+    <li>Mise en place d'un environnement virtuel Python, respect des bonnes pratiques (rate-limiting, délais entre requêtes).</li>
 </ul>`,
   },
   {
@@ -889,7 +966,9 @@ const cards = [
     libraries: '[]',
     tags: '[]',
     featured: 0,
-    sort_order: 5,
+    sort_order: 6,
+    start_date: '2025-10',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Développement de ce site portfolio entièrement "from scratch", sans framework ni générateur de site.</li>
     <li>Code source en <strong>HTML</strong>, <strong>CSS</strong> et <strong>JavaScript</strong> vanilla pour une maîtrise totale et des performances optimales.</li>
@@ -914,6 +993,8 @@ const cards = [
     tags: '[]',
     featured: 1,
     sort_order: 0,
+    start_date: '2024-03',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Pratique régulière du <strong>pentest</strong> sur des environnements virtuels : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.</li>
     <li>Participation à des <strong>CTF</strong> (Capture The Flag) pour développer mes compétences en sécurité offensive : cryptographie, stéganographie, forensics, web.</li>
@@ -937,6 +1018,8 @@ const cards = [
     tags: '["Esprit d\'équipe","Concentration","Implication"]',
     featured: 0,
     sort_order: 1,
+    start_date: '2025-09',
+    end_date: null,
     description: `<ul class="card-description">
     <li><strong>Rugby</strong> en club (USOMC – Les Massives) depuis 1 an, 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
     <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
@@ -958,6 +1041,8 @@ const cards = [
     tags: '["Ouverture culturelle"]',
     featured: 0,
     sort_order: 2,
+    start_date: '2023-01',
+    end_date: null,
     description: `<ul class="card-description">
     <li><strong>Tanzanie</strong> (Zanzibar) — découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
     <li><strong>Irlande</strong> (Sligo, Galway, Dublin, Cork, Belfast…) — exploration approfondie pendant mon semestre d'échange.</li>
@@ -980,6 +1065,8 @@ const cards = [
     tags: '[]',
     featured: 0,
     sort_order: 3,
+    start_date: '2024-01',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Apprentissage des cépages, des terroirs et du processus de vinification, de la vigne à la bouteille.</li>
     <li>Présidente de l'association <strong>La Cave</strong> à l'EPITA : organisation de dégustations et de visites de domaines.</li>
@@ -990,9 +1077,32 @@ const cards = [
   // === VIE ASSOCIATIVE ===
   {
     page: 'vie-associative',
-    title: 'Animatrice (Bénévolat) - Scouts et Guides de France',
+    title: 'Scoute - Scouts et Guides de France',
     location: 'Gaillac',
-    date_range: '2023 - Présent',
+    date_range: '2013 - 2022',
+    image_url: null,
+    link_url: null,
+    context: 'BÉNÉVOLAT',
+    category: '["Animation / Jeunesse","Engagement social"]',
+    languages: '[]',
+    tools: '[]',
+    libraries: '[]',
+    tags: '["Esprit d\'équipe","Autonomie","Vie en plein air"]',
+    featured: 0,
+    sort_order: 0,
+    start_date: '2013-09',
+    end_date: '2022-08',
+    description: `<ul class="card-description">
+    <li><strong>9 ans de scoutisme</strong> au sein des Scouts et Guides de France, de la branche cadette à la branche aînée.</li>
+    <li>Participation régulière à des réunions hebdomadaires, week-ends et <strong>camps</strong> d'été.</li>
+    <li>Développement de l'<strong>autonomie</strong>, du sens du collectif et du goût pour la vie en plein air.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: 'Cheftaine (Bénévolat) - Scouts et Guides de France',
+    location: 'Gaillac',
+    date_range: '2022 - 2024',
     image_url: null,
     link_url: null,
     context: 'BÉNÉVOLAT',
@@ -1002,7 +1112,9 @@ const cards = [
     libraries: '[]',
     tags: '["Leadership","Pédagogie","BAFA","Responsabilité"]',
     featured: 0,
-    sort_order: 0,
+    sort_order: 1,
+    start_date: '2022-09',
+    end_date: '2024-08',
     description: `<ul class="card-description">
     <li>Encadrement bénévole d'un groupe de <strong>30 jeunes</strong> (8-11 ans), au sein d'une unité d'environ 100 scouts.</li>
     <li>Conception et animation d'activités éducatives lors de réunions hebdomadaires, week-ends et camps.</li>
@@ -1024,7 +1136,9 @@ const cards = [
     libraries: '[]',
     tags: '["Événementiel","Relationnel"]',
     featured: 0,
-    sort_order: 1,
+    sort_order: 2,
+    start_date: '2025-09',
+    end_date: null,
     description: `<ul class="card-description">
     <li>Représentation de l'EPITA sur <strong>3 JPO</strong>, <strong>10 salons étudiants</strong> et des présentations dans des lycées en France (Dunkerque…) et à l'étranger (Roumanie…). [Réalisés sur l'année 2025-2026]</li>
     <li>Encadrement d'étudiants lors des événements, accueil et conseil personnalisé auprès des futurs candidats et de leurs familles.</li>
@@ -1045,7 +1159,9 @@ const cards = [
     libraries: '[]',
     tags: '["Organisation","Logistique","Management"]',
     featured: 0,
-    sort_order: 2,
+    sort_order: 3,
+    start_date: '2024-11',
+    end_date: null,
     description: `<ul class="card-description">
     <li><strong>Direction du bureau</strong> de l'association (~10 membres actifs) : gestion budgétaire, coordination de l'équipe et planification annuelle.</li>
     <li>Organisation d'une <strong>vingtaine d'événements par an</strong> : dégustations de vins et de fromages, sorties culturelles.</li>
@@ -1067,7 +1183,9 @@ const cards = [
     libraries: '[]',
     tags: '["Prévention","Sécurité","Écoute","Engagement"]',
     featured: 0,
-    sort_order: 3,
+    sort_order: 4,
+    start_date: '2025-09',
+    end_date: null,
     description: `<ul class="card-description">
     <li><strong>STOP VSS</strong> est une association de lutte contre les <strong>violences sexistes et sexuelles</strong> (VSS), c'est-à-dire l'ensemble des comportements allant du harcèlement de rue aux agressions sexuelles, en passant par les propos sexistes et les situations d'emprise.</li>
     <li>Formée en tant que <strong>sentinelle</strong> : présence lors de soirées étudiantes pour veiller à la sécurité des participants et réalisation de <strong>maraudes</strong> afin de détecter et prévenir les situations à risque.</li>
@@ -1083,12 +1201,13 @@ async function seedCards() {
 
   for (const card of cards) {
     await db.execute({
-      sql: `INSERT INTO cards (page, title, subtitle, location, date_range, description, tags, image_url, link_url, featured, sort_order, context, category, languages, tools, libraries)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      sql: `INSERT INTO cards (page, title, subtitle, location, date_range, description, tags, image_url, link_url, featured, sort_order, start_date, end_date, context, category, languages, tools, libraries)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [
         card.page, card.title, card.subtitle || null, card.location || null,
         card.date_range || null, card.description, card.tags || '[]',
         card.image_url || null, card.link_url || null, card.featured || 0, card.sort_order,
+        card.start_date || null, card.end_date || null,
         card.context || null, card.category || '[]', card.languages || '[]',
         card.tools || '[]', card.libraries || '[]',
       ],
