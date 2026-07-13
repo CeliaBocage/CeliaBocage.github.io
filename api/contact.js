@@ -1,4 +1,5 @@
 import { getDb } from '../lib/db.js';
+import { isAdmin } from '../lib/auth.js';
 
 async function getOrCreateSessionId(db, session_code) {
   if (!session_code) return null;
@@ -23,6 +24,23 @@ async function getOrCreateSessionId(db, session_code) {
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+
+  // Vue admin : liste des messages reçus (protégée par mot de passe)
+  if (req.method === 'GET') {
+    if (!isAdmin(req)) {
+      return res.status(401).json({ error: 'Non autorisé' });
+    }
+    try {
+      const db = getDb();
+      const result = await db.execute(
+        'SELECT id, nom, email, sujet, message, session_code, created_at FROM messages ORDER BY created_at DESC'
+      );
+      return res.status(200).json(result.rows);
+    } catch (err) {
+      console.error('Erreur contact (list):', err);
+      return res.status(500).json({ error: 'Erreur serveur' });
+    }
   }
 
   if (req.method !== 'POST') {
