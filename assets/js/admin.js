@@ -333,6 +333,14 @@ async function loadMessages() {
 // ---- Init -------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // Empêche le remplissage automatique du navigateur : champ en lecture seule
+  // tant que l'utilisatrice ne clique pas dedans, et vidé au chargement.
+  const pwInput = document.getElementById('login-pw');
+  pwInput.value = '';
+  const unlock = () => pwInput.removeAttribute('readonly');
+  pwInput.addEventListener('focus', unlock);
+  pwInput.addEventListener('mousedown', unlock);
+
   document.getElementById('login-form').addEventListener('submit', doLogin);
   document.getElementById('logout-btn').addEventListener('click', logout);
   document.getElementById('editor-form').addEventListener('submit', saveForm);
