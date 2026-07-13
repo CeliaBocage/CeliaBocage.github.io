@@ -56,6 +56,20 @@ Ce site est statique. Pour le visualiser localement :
     ```
 2.  Ouvrir le fichier `index.html` dans votre navigateur.
 
+## 🔐 Espace admin
+
+Un tableau de bord privé permet de gérer le contenu sans toucher au code :
+
+* **URL :** `/navigation/admin.html`
+* **Fonctions :** créer / modifier / supprimer les **publications** et les **cartes**, consulter les **statistiques de visites** et les **messages de contact**.
+* **Accès :** protégé par mot de passe (variable d'environnement `ADMIN_PASSWORD`, définie dans Vercel — jamais dans le code). Sans ce mot de passe, toute écriture est refusée.
+
+Les modifications sont écrites directement dans la base Turso et apparaissent sur le site **sans redéploiement**.
+
+### Variables d'environnement
+
+Voir [`.env.example`](.env.example). À définir dans Vercel : `TURSO_DB_URL`, `TURSO_DB_TOKEN`, `ADMIN_PASSWORD`.
+
 ## 📧 Contact
 
 Pour toute opportunité de stage ou question :

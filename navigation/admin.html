@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin – Célia Bocage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+
+  <!-- ===== Écran de connexion ===== -->
+  <div id="login-screen" class="login-screen">
+    <form id="login-form" class="login-box">
+      <h1>Administration</h1>
+      <p>Espace privé — mot de passe requis.</p>
+      <input type="password" id="login-pw" placeholder="Mot de passe" autocomplete="current-password" required>
+      <button type="submit">Se connecter</button>
+      <div id="login-error" class="login-error"></div>
+    </form>
+  </div>
+
+  <!-- ===== Application ===== -->
+  <div id="app" class="app" style="display:none;">
+    <header class="admin-header">
+      <div class="admin-logo">Célia Bocage · Admin</div>
+      <div class="admin-header-right">
+        <a href="../index.html" class="link-site">↗ Voir le site</a>
+        <button id="logout-btn" class="btn-ghost">Déconnexion</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="posts">Publications</button>
+      <button class="tab-btn" data-tab="cards">Cartes</button>
+      <button class="tab-btn" data-tab="visits">Visites</button>
+      <button class="tab-btn" data-tab="messages">Messages</button>
+    </nav>
+
+    <main class="admin-main">
+      <!-- Posts -->
+      <section id="tab-posts" class="tab-panel">
+        <div class="panel-head">
+          <h2>Publications</h2>
+          <button id="new-post-btn" class="btn-primary">+ Nouveau post</button>
+        </div>
+        <div id="posts-list" class="item-list"></div>
+      </section>
+
+      <!-- Cartes -->
+      <section id="tab-cards" class="tab-panel" style="display:none;">
+        <div class="panel-head">
+          <h2>Cartes (formations, expériences, projets…)</h2>
+          <button id="new-card-btn" class="btn-primary">+ Nouvelle carte</button>
+        </div>
+        <div id="cards-list" class="item-list"></div>
+      </section>
+
+      <!-- Visites -->
+      <section id="tab-visits" class="tab-panel" style="display:none;">
+        <h2>Statistiques de visites</h2>
+        <div id="visits-content"></div>
+      </section>
+
+      <!-- Messages -->
+      <section id="tab-messages" class="tab-panel" style="display:none;">
+        <h2>Messages de contact</h2>
+        <div id="messages-content"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== Éditeur (modal) ===== -->
+  <div id="editor" class="editor" style="display:none;">
+    <form id="editor-form" class="editor-box">
+      <h2 id="form-title">Éditer</h2>
+      <div id="form-fields"></div>
+      <div class="editor-actions">
+        <button type="button" id="editor-cancel" class="btn-ghost">Annuler</button>
+        <button type="submit" class="btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
