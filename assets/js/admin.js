@@ -44,21 +44,37 @@ function toast(msg, isError = false) {
 
 async function checkAuth() {
   if (!getPw()) return false;
-  const res = await api('/posts?all=1');
-  return res.ok;
+  try {
+    const res = await api('/posts?authcheck=1');
+    if (!res.ok) return false;
+    const data = await res.json();
+    return data.authenticated === true;
+  } catch { return false; }
 }
 
 async function doLogin(e) {
   e.preventDefault();
+  const err = document.getElementById('login-error');
+  err.textContent = '';
   const pw = document.getElementById('login-pw').value;
   setPw(pw);
-  const err = document.getElementById('login-error');
-  const res = await api('/posts?all=1');
-  if (res.ok) {
-    showApp();
-  } else {
+  try {
+    const res = await api('/posts?authcheck=1');
+    if (!res.ok) {
+      clearPw();
+      err.textContent = `Erreur serveur (${res.status}).`;
+      return;
+    }
+    const data = await res.json();
+    if (data.authenticated === true) {
+      showApp();
+    } else {
+      clearPw();
+      err.textContent = 'Mot de passe incorrect.';
+    }
+  } catch {
     clearPw();
-    err.textContent = 'Mot de passe incorrect.';
+    err.textContent = 'Impossible de contacter le serveur (réseau/CORS).';
   }
 }
 
