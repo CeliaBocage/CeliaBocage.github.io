@@ -31,6 +31,23 @@ export default async function handler(req, res) {
         });
       }
 
+      // Diagnostic (admin) : liste les colonnes réelles de chaque table pour
+      // repérer un schéma déployé désynchronisé. Lecture seule, ne modifie rien.
+      if (req.query.schema) {
+        if (!admin) return res.status(401).json({ error: 'Non autorisé' });
+        const tables = ['posts', 'cards', 'visits', 'sessions', 'page_views', 'messages'];
+        const out = {};
+        for (const t of tables) {
+          try {
+            const info = await db.execute(`PRAGMA table_info(${t})`);
+            out[t] = info.rows.map(r => r.name);
+          } catch (e) {
+            out[t] = `erreur: ${e.message}`;
+          }
+        }
+        return res.status(200).json(out);
+      }
+
       // Un post précis par slug
       if (slug) {
         // L'admin peut voir un brouillon (non publié) ; le public non.
