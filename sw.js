@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-v2';
+const CACHE_NAME = 'portfolio-v3';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 heure en ms
 
 const PRECACHE_URLS = [
@@ -54,6 +54,12 @@ self.addEventListener('fetch', (event) => {
     // Ne pas cacher les appels API — toujours aller au reseau
     const url = new URL(event.request.url);
     if (url.hostname !== location.hostname) return;
+
+    // Meme domaine : les appels /api/ ne doivent jamais etre caches (donnees fraiches)
+    if (url.pathname.startsWith('/api/')) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
 
     event.respondWith(
         caches.open(CACHE_NAME).then(async (cache) => {
