@@ -22,6 +22,15 @@ export default async function handler(req, res) {
       const { slug, tag, all } = req.query;
       const admin = isAdmin(req);
 
+      // Diagnostic : indique si ADMIN_PASSWORD est configuré côté serveur et si
+      // le header fourni correspond. Ne révèle jamais le mot de passe lui-même.
+      if (req.query.authcheck) {
+        return res.status(200).json({
+          admin_configured: Boolean(process.env.ADMIN_PASSWORD),
+          authenticated: admin,
+        });
+      }
+
       // Un post précis par slug
       if (slug) {
         // L'admin peut voir un brouillon (non publié) ; le public non.
