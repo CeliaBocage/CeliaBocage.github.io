@@ -36,13 +36,28 @@ export default async function handler(req, res) {
       if (req.query.schema) {
         if (!admin) return res.status(401).json({ error: 'Non autorisé' });
         const tables = ['posts', 'cards', 'visits', 'sessions', 'page_views', 'messages'];
-        const out = {};
+        const out = { columns: {}, probes: {} };
         for (const t of tables) {
           try {
             const info = await db.execute(`PRAGMA table_info(${t})`);
-            out[t] = info.rows.map(r => r.name);
+            out.columns[t] = info.rows.map(r => r.name);
           } catch (e) {
-            out[t] = `erreur: ${e.message}`;
+            out.columns[t] = `erreur: ${e.message}`;
+          }
+        }
+        // Exécute les requêtes réelles qui plantent, pour capturer l'erreur exacte.
+        const probes = {
+          posts_public: `SELECT id, slug, title, summary, tags, image_url, context, category, languages, tools, libraries, featured, sort_order, created_at FROM posts WHERE published = 1 ORDER BY created_at DESC`,
+          posts_all: `SELECT * FROM posts ORDER BY created_at DESC`,
+          visits_bypage: `SELECT page, COUNT(*) as count FROM visits GROUP BY page ORDER BY count DESC`,
+          visits_recent: `SELECT page, session_code, visited_at FROM visits ORDER BY visited_at DESC LIMIT 50`,
+        };
+        for (const [name, sql] of Object.entries(probes)) {
+          try {
+            const r = await db.execute(sql);
+            out.probes[name] = { ok: true, rows: r.rows.length };
+          } catch (e) {
+            out.probes[name] = { ok: false, error: e.message };
           }
         }
         return res.status(200).json(out);
