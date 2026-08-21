@@ -84,6 +84,10 @@ function logout() {
 }
 
 function showApp() {
+  // Ce navigateur est celui de l'administratrice : ses propres passages sur le
+  // site ne doivent pas gonfler les statistiques. Le drapeau est lu par
+  // assets/js/api.js, et se retire avec ?notrack=0 sur n'importe quelle page.
+  try { localStorage.setItem('no_track', '1'); } catch { /* stockage refusé : tant pis */ }
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   switchTab('posts');
@@ -315,20 +319,38 @@ async function loadVisits() {
   const d = await res.json();
   container.innerHTML = `
     <div class="stat-cards">
-      <div class="stat-card"><span class="stat-num">${d.total_visits}</span><span class="stat-label">visites totales</span></div>
-      <div class="stat-card"><span class="stat-num">${d.total_sessions}</span><span class="stat-label">visiteurs (sessions)</span></div>
+      <div class="stat-card"><span class="stat-num">${d.visiteurs_30j}</span><span class="stat-label">visiteurs (30 jours)</span></div>
+      <div class="stat-card"><span class="stat-num">${d.visites_30j}</span><span class="stat-label">vues (30 jours)</span></div>
+      <div class="stat-card"><span class="stat-num">${d.total_visiteurs}</span><span class="stat-label">visiteurs au total</span></div>
+      <div class="stat-card"><span class="stat-num">${d.total_visits}</span><span class="stat-label">vues au total</span></div>
     </div>
+    <h3>Par mois</h3>
+    ${d.months.length ? `<table class="data-table"><thead><tr><th>Mois</th><th>Visiteurs</th><th>Vues</th></tr></thead><tbody>
+      ${d.months.map(m => `<tr><td>${escapeHtml(m.mois)}</td><td>${m.visiteurs}</td><td>${m.vues}</td></tr>`).join('')}
+    </tbody></table>` : '<p>Aucune visite enregistrée pour le moment.</p>'}
     <h3>Vues par page</h3>
-    <table class="data-table"><thead><tr><th>Page</th><th>Vues</th></tr></thead><tbody>
-      ${d.pages.map(p => `<tr><td>${escapeHtml(p.page)}</td><td>${p.count}</td></tr>`).join('')}
+    <table class="data-table"><thead><tr><th>Page</th><th>Visiteurs</th><th>Vues</th><th>Dernière</th></tr></thead><tbody>
+      ${d.pages.map(p => `<tr><td>${escapeHtml(p.page)}</td><td>${p.visiteurs}</td><td>${p.count}</td><td>${escapeHtml(p.derniere || '')}</td></tr>`).join('')}
     </tbody></table>
     <h3>50 dernières visites</h3>
     <table class="data-table"><thead><tr><th>Date</th><th>Page</th><th>Session</th></tr></thead><tbody>
       ${d.recent.map(r => `<tr><td>${escapeHtml(r.visited_at)}</td><td>${escapeHtml(r.page)}</td><td>${escapeHtml(r.session_code || '')}</td></tr>`).join('')}
-    </tbody></table>`;
+    </tbody></table>
+    <p class="stat-note">Vos propres visites ne sont plus comptées depuis ce navigateur.
+    ${d.legacy_visits ? `Avant le passage au journal daté, l'ancien compteur totalisait ${d.legacy_visits} vues, sans dates ni visiteurs distincts.` : ''}
+    ${d.total_sessions ? `${d.total_sessions} sessions ont été enregistrées au total, dont beaucoup avant cette correction : ce chiffre n'est pas comparable aux visiteurs ci-dessus.` : ''}</p>`;
 }
 
 // ---- Messages ---------------------------------------------------------------
+
+// Ce que devient l'email d'alerte, message par message. « disabled » n'est pas
+// une erreur : c'est un message reçu alors que Resend n'était pas configuré.
+const MAIL_LABELS = {
+  sent: ['Email envoyé', 'ok'],
+  failed: ["Échec de l'envoi", 'ko'],
+  pending: ['Envoi en cours', 'wait'],
+  disabled: ['Sans alerte email', 'off'],
+};
 
 async function loadMessages() {
   const container = document.getElementById('messages-content');
@@ -337,13 +359,30 @@ async function loadMessages() {
   if (!res.ok) { container.innerHTML = 'Erreur de chargement.'; return; }
   const msgs = await res.json();
   if (!msgs.length) { container.innerHTML = '<p>Aucun message.</p>'; return; }
-  container.innerHTML = msgs.map(m => `
+  container.innerHTML = msgs.map(m => {
+    const [label, cls] = MAIL_LABELS[m.mail_status] || ['Sans alerte email', 'off'];
+    return `
     <div class="msg-card">
       <div class="msg-head"><strong>${escapeHtml(m.nom)}</strong> · <a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a>
         <span class="msg-date">${escapeHtml(m.created_at)}</span></div>
       ${m.sujet ? `<div class="msg-subject">${escapeHtml(m.sujet)}</div>` : ''}
       <div class="msg-body">${escapeHtml(m.message)}</div>
-    </div>`).join('');
+      <div class="msg-mail ${cls}">${label}${m.mail_error ? ` : ${escapeHtml(m.mail_error)}` : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+async function testEmail() {
+  const btn = document.getElementById('test-email-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+  try {
+    const res = await api('/contact?test_email=1');
+    const d = await res.json().catch(() => ({}));
+    toast(d.message || d.error || 'Réponse inattendue.', !res.ok || d.status !== 'sent');
+  } catch {
+    toast('Impossible de contacter le serveur.', true);
+  }
+  if (btn) { btn.disabled = false; btn.textContent = "Tester l'envoi d'email"; }
 }
 
 // ---- Init -------------------------------------------------------------------
@@ -358,6 +397,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   pwInput.addEventListener('mousedown', unlock);
 
   document.getElementById('login-form').addEventListener('submit', doLogin);
+  document.getElementById('test-email-btn')?.addEventListener('click', testEmail);
   document.getElementById('logout-btn').addEventListener('click', logout);
   document.getElementById('editor-form').addEventListener('submit', saveForm);
   document.getElementById('editor-cancel').addEventListener('click', closeEditor);

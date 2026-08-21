@@ -64,11 +64,29 @@ Un tableau de bord privé permet de gérer le contenu sans toucher au code :
 * **Fonctions :** créer / modifier / supprimer les **publications** et les **cartes**, consulter les **statistiques de visites** et les **messages de contact**.
 * **Accès :** protégé par mot de passe (variable d'environnement `ADMIN_PASSWORD`, définie dans Vercel, jamais dans le code). Sans ce mot de passe, toute écriture est refusée.
 
+### Statistiques de visites
+
+Chaque vue est enregistrée dans la table `visits` avec sa date, ce qui permet un suivi par mois et par page. Deux points à connaître :
+
+* Le **code de session** vit dans le `localStorage` du navigateur : un visiteur reste le même visiteur d'une visite à l'autre. Avant, il était en `sessionStorage` et chaque onglet comptait pour une personne différente.
+* **Vos propres visites ne sont pas comptées.** Le drapeau est posé automatiquement à la connexion à l'espace admin. Pour le poser ou le retirer à la main sur un appareil : ouvrir n'importe quelle page avec `?notrack=1` ou `?notrack=0`.
+
+L'ancien compteur sans dates est conservé sous `visits_legacy` et affiché à part : ses 48 vues cumulées ne sont pas comparables aux chiffres du journal.
+
+### Alerte email des messages
+
+Chaque message du formulaire de contact est **écrit en base d'abord, envoyé par email ensuite** (via [Resend](https://resend.com)). Si l'envoi échoue ou n'est pas configuré, le message reste consultable dans l'espace admin, qui affiche l'état de l'envoi (`sent`, `failed`, `pending`, `disabled`) et le bouton **Tester l'envoi d'email** pour vérifier la configuration sans attendre un vrai message.
+
+Sans `RESEND_API_KEY` ni `CONTACT_TO_EMAIL`, tout fonctionne : il n'y a simplement pas d'alerte email.
+
 Les modifications sont écrites directement dans la base Turso et apparaissent sur le site **sans redéploiement**.
 
 ### Variables d'environnement
 
-Voir [`.env.example`](.env.example). À définir dans Vercel : `TURSO_DB_URL`, `TURSO_DB_TOKEN`, `ADMIN_PASSWORD`.
+Voir [`.env.example`](.env.example). À définir dans Vercel :
+
+* Obligatoires : `TURSO_DB_URL`, `TURSO_DB_TOKEN`, `ADMIN_PASSWORD`.
+* Pour l'alerte email : `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, et `MAIL_FROM` si le domaine d'envoi est vérifié dans Resend.
 
 ## 📧 Contact
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-v3';
+const CACHE_NAME = 'portfolio-v4';
 const CACHE_DURATION = 60 * 60 * 1000; // 1 heure en ms
 
 const PRECACHE_URLS = [

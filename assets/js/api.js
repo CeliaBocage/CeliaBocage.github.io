@@ -2,13 +2,37 @@
 const API_BASE = 'https://celia-bocage-github-io.vercel.app/api';
 
 // ===== Code session anonyme =====
+// Stocké en localStorage et non en sessionStorage : sessionStorage est vidé à
+// la fermeture de l'onglet, donc chaque onglet comptait pour un visiteur
+// différent. En localStorage, le même navigateur garde le même code, et
+// « visiteur » veut enfin dire quelque chose.
+const SESSION_KEY = 'session_code';
+const NO_TRACK_KEY = 'no_track';
+
 function getSessionCode() {
-  let code = sessionStorage.getItem('session_code');
+  let code = localStorage.getItem(SESSION_KEY);
   if (!code) {
-    code = Math.random().toString(36).substring(2, 10);
-    sessionStorage.setItem('session_code', code);
+    // Reprise du code déjà attribué à cet onglet, pour ne pas créer un
+    // nouveau visiteur au moment du passage à localStorage.
+    code = sessionStorage.getItem(SESSION_KEY) || Math.random().toString(36).substring(2, 10);
+    localStorage.setItem(SESSION_KEY, code);
   }
   return code;
+}
+
+// ===== Exclusion de ses propres visites =====
+// Le drapeau est posé automatiquement à la connexion à l'espace admin, et
+// peut être posé ou retiré à la main avec ?notrack=1 ou ?notrack=0 sur
+// n'importe quelle page. Il vit dans le navigateur : rien à configurer côté
+// serveur, et chaque appareil se règle séparément.
+function applyNoTrackParam() {
+  const value = new URLSearchParams(window.location.search).get('notrack');
+  if (value === '1') localStorage.setItem(NO_TRACK_KEY, '1');
+  else if (value === '0') localStorage.removeItem(NO_TRACK_KEY);
+}
+
+function isNoTrack() {
+  try { return localStorage.getItem(NO_TRACK_KEY) === '1'; } catch { return false; }
 }
 
 // ===== Compteur de visites =====
@@ -22,13 +46,24 @@ function trackVisit() {
   else if (path.includes('passions')) page = 'passions';
   else if (path.includes('posts')) page = 'posts';
 
+  applyNoTrackParam();
+
+  const showCount = (data) => {
+    const el = document.getElementById('visit-count');
+    if (el && typeof data.count === 'number') el.textContent = data.count;
+  };
+
+  // Visite exclue : on lit le compteur au lieu de l'incrémenter. Aucune
+  // session n'est créée, donc rien de tout ça n'entre dans les statistiques.
+  if (isNoTrack()) {
+    fetch(`${API_BASE}/visits?page=${page}`).then(r => r.json()).then(showCount).catch(() => {});
+    return;
+  }
+
   const session = getSessionCode();
   fetch(`${API_BASE}/visits?page=${page}&session=${session}`, { method: 'POST' })
     .then(r => r.json())
-    .then(data => {
-      const el = document.getElementById('visit-count');
-      if (el) el.textContent = data.count;
-    })
+    .then(showCount)
     .catch(() => {});
 }
 

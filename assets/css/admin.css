@@ -89,3 +89,13 @@ button.danger:hover { background: #fecaca; }
   .item-row { flex-direction: column; align-items: stretch; }
   .item-actions { justify-content: flex-end; }
 }
+
+/* ===== Etat d'envoi des emails et notes ===== */
+.msg-mail { margin-top: .5rem; font-size: .78rem; }
+.msg-mail.ok { color: #15803d; }
+.msg-mail.ko { color: #b91c1c; }
+.msg-mail.wait { color: #b45309; }
+.msg-mail.off { color: #999; }
+.panel-note { color: #666; font-size: .85rem; margin: 0 0 .75rem; max-width: 60ch; }
+#test-email-btn { margin-bottom: 1.2rem; }
+.stat-note { color: #666; font-size: .8rem; margin-top: 1.2rem; max-width: 80ch; line-height: 1.5; }
