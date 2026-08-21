@@ -836,6 +836,34 @@ const cards = [
   // === PROJETS ===
   {
     page: 'projets',
+    title: `DB360 — Base d'événements 360`,
+    location: `Weborama, Levallois-Perret`,
+    date_range: `Mai - Août 2026`,
+    image_url: null,
+    link_url: null,
+    context: `STAGE`,
+    category: `["Data / IA","Informatique"]`,
+    languages: `["JavaScript","SQL"]`,
+    tools: `["MongoDB","Docker","Railway","Grafana","MCP"]`,
+    libraries: `["Node.js","API REST"]`,
+    tags: `["Traçabilité","Data Engineering","IA agentique","Mise en production"]`,
+    featured: 1,
+    sort_order: 0,
+    start_date: `2026-05`,
+    end_date: `2026-08`,
+    description: `<ul class="card-description">
+    <li><strong>Mon initiative</strong>, portée du constat au déploiement en production : identification du besoin, conception du modèle, développement et mise en production.</li>
+    <li><strong>Le problème :</strong> l'analytics montre <em>que</em> quelque chose s'est passé, jamais <em>pourquoi</em>. Les causes — campagnes, releases, incidents, actualité extérieure, décisions de réunion — ne sont écrites nulle part : elles vivent dans la mémoire de deux ou trois personnes.</li>
+    <li><strong>La réponse :</strong> un <strong>journal d'événements horodatés</strong>, internes et externes, corrélable aux métriques, pour que la cause d'un écart de trafic soit interrogeable au lieu d'être recollée à l'oral.</li>
+    <li><strong>La chaîne complète, de A à Z :</strong> conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — aucune saisie manuelle.</li>
+    <li>L'alimentation passe par une instance de <strong>Kōan</strong> (agent IA autonome) à laquelle on confie des missions précises : j'ai <strong>raccordé l'agent à la base via MCP</strong>. C'est exactement le sujet des architectures agentiques actuelles, sur un système réel.</li>
+    <li><strong>MongoDB</strong>, Node.js, API REST, conteneurisation <strong>Docker</strong>, déploiement <strong>Railway</strong>, exposition en source de données <strong>Grafana</strong>.</li>
+    <li>Besoin né de mes analyses chez <strong>ArtMajeur</strong> ; conception et mise en production pendant le stage Tech chez <strong>Weborama</strong>.</li>
+    <li>La compétence de fond : <strong>traçabilité et mémoire organisationnelle</strong> — cousine directe de la démarche de journalisation et d'audit en sécurité.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
     title: `<a href="https://github.com/CeliaBocage/villa-d-audenge" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge — Site vitrine multilingue</a>`,
     location: `Projet personnel`,
     date_range: `Continu`,
@@ -848,7 +876,7 @@ const cards = [
     libraries: `["React 19","@libsql/client"]`,
     tags: `["i18n","Full-stack","Analytics","RGPD"]`,
     featured: 0,
-    sort_order: 0,
+    sort_order: 1,
     start_date: `2026-08`,
     end_date: null,
     description: `<ul class="card-description">
@@ -857,30 +885,6 @@ const cards = [
     <li><strong>Next.js 15</strong> / <strong>React 19</strong> / <strong>TypeScript</strong>, <strong>Tailwind CSS 4</strong>, base <strong>Turso/libSQL</strong>, images redimensionnées et ré-encodées côté navigateur avant envoi, déploiement <strong>Vercel</strong>.</li>
     <li>Analytics maison avec <strong>salage des identifiants</strong> plutôt qu'un traceur tiers, et pages mentions légales / confidentialité conformes.</li>
     <li><strong>Aucun contenu inventé :</strong> capacité, équipements, distances, tarifs et conditions sont transcrits de l'annonce et des échanges avec la propriétaire, centralisés dans un seul fichier de contenu.</li>
-</ul>`,
-  },
-  {
-    page: 'projets',
-    title: `CV &amp; lettres de motivation — Chaîne LaTeX ATS-friendly`,
-    location: `Projet personnel`,
-    date_range: `Continu`,
-    image_url: null,
-    link_url: null,
-    context: `PERSO`,
-    category: `["Informatique"]`,
-    languages: `["LaTeX","Bash","JSON"]`,
-    tools: `["Git","pdflatex"]`,
-    libraries: `[]`,
-    tags: `["Automatisation","Documentation"]`,
-    featured: 0,
-    sort_order: 1,
-    start_date: `2026-08`,
-    end_date: null,
-    description: `<ul class="card-description">
-    <li>Chaîne de génération de mes CV et lettres de motivation en <strong>LaTeX</strong>, <strong>ATS-friendly</strong> (une colonne, police standard, texte réellement parsable par les robots de recrutement).</li>
-    <li>Un <strong>CV de base</strong> versionné en FR et EN comme unique référence, et <strong>une candidature = un dossier</strong> généré par script, adapté au poste visé et volontairement hors du dépôt.</li>
-    <li><strong>Base de connaissances en JSON</strong> : savoirs techniques, projets et histoires réutilisables, avec une règle stricte — tout ce qui y figure doit être défendable en entretien, le reste va dans <code>a_verifier</code>.</li>
-    <li>Style commun factorisé dans un paquet <code>.sty</code> ; compilation et ouverture du PDF en une commande.</li>
 </ul>`,
   },
   {
@@ -1007,34 +1011,6 @@ const cards = [
   },
   {
     page: 'projets',
-    title: `DB360 — Base d'événements 360`,
-    location: `Weborama, Levallois-Perret`,
-    date_range: `Mai - Août 2026`,
-    image_url: null,
-    link_url: null,
-    context: `STAGE`,
-    category: `["Data / IA","Informatique"]`,
-    languages: `["JavaScript","SQL"]`,
-    tools: `["MongoDB","Docker","Railway","Grafana","MCP"]`,
-    libraries: `["Node.js","API REST"]`,
-    tags: `["Traçabilité","Data Engineering","IA agentique","Mise en production"]`,
-    featured: 1,
-    sort_order: 7,
-    start_date: `2026-05`,
-    end_date: `2026-08`,
-    description: `<ul class="card-description">
-    <li><strong>Mon initiative</strong>, portée du constat au déploiement en production : identification du besoin, conception du modèle, développement et mise en production.</li>
-    <li><strong>Le problème :</strong> l'analytics montre <em>que</em> quelque chose s'est passé, jamais <em>pourquoi</em>. Les causes — campagnes, releases, incidents, actualité extérieure, décisions de réunion — ne sont écrites nulle part : elles vivent dans la mémoire de deux ou trois personnes.</li>
-    <li><strong>La réponse :</strong> un <strong>journal d'événements horodatés</strong>, internes et externes, corrélable aux métriques, pour que la cause d'un écart de trafic soit interrogeable au lieu d'être recollée à l'oral.</li>
-    <li><strong>La chaîne complète, de A à Z :</strong> conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — aucune saisie manuelle.</li>
-    <li>L'alimentation passe par une instance de <strong>Kōan</strong> (agent IA autonome) à laquelle on confie des missions précises : j'ai <strong>raccordé l'agent à la base via MCP</strong>. C'est exactement le sujet des architectures agentiques actuelles, sur un système réel.</li>
-    <li><strong>MongoDB</strong>, Node.js, API REST, conteneurisation <strong>Docker</strong>, déploiement <strong>Railway</strong>, exposition en source de données <strong>Grafana</strong>.</li>
-    <li>Besoin né de mes analyses chez <strong>ArtMajeur</strong> ; conception et mise en production pendant le stage Tech chez <strong>Weborama</strong>.</li>
-    <li>La compétence de fond : <strong>traçabilité et mémoire organisationnelle</strong> — cousine directe de la démarche de journalisation et d'audit en sécurité.</li>
-</ul>`,
-  },
-  {
-    page: 'projets',
     title: `FPS Solo - Unreal Engine (projet individuel)`,
     location: `ATU Sligo, Irlande`,
     date_range: `Semestre à l'étranger`,
@@ -1047,7 +1023,7 @@ const cards = [
     libraries: `[]`,
     tags: `[]`,
     featured: 0,
-    sort_order: 8,
+    sort_order: 7,
     start_date: `2025-01`,
     end_date: `2025-06`,
     description: `<ul class="card-description">
@@ -1071,7 +1047,7 @@ const cards = [
     libraries: `[]`,
     tags: `[]`,
     featured: 0,
-    sort_order: 9,
+    sort_order: 8,
     start_date: `2025-01`,
     end_date: `2025-06`,
     description: `<ul class="card-description">
@@ -1095,7 +1071,7 @@ const cards = [
     libraries: `[]`,
     tags: `["Machine Learning","Analyse d'Image"]`,
     featured: 1,
-    sort_order: 10,
+    sort_order: 9,
     start_date: `2024-09`,
     end_date: `2025-01`,
     description: `<ul class="card-description">
@@ -1119,7 +1095,7 @@ const cards = [
     libraries: `[]`,
     tags: `[]`,
     featured: 0,
-    sort_order: 11,
+    sort_order: 10,
     start_date: `2023-09`,
     end_date: `2024-06`,
     description: `<ul class="card-description">

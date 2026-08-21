@@ -294,10 +294,10 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
   },
   {
     slug: 'ce-qui-nest-pas-ecrit-nexiste-pas',
-    title: `Le pic que personne ne savait expliquer. 🇺🇦`,
-    summary: `Un pic d'achats inexpliqué, cinq personnes à interroger, et aucune date retrouvable. L'histoire qui m'a convaincue que la traçabilité n'est pas un sujet de documentation, mais de mémoire.`,
+    title: `La variation que personne ne savait expliquer. 🕰️`,
+    summary: `Une variation forte restée inexpliquée, cinq personnes à interroger, et aucune date retrouvable. L'histoire qui m'a convaincue que la traçabilité n'est pas un sujet de documentation, mais de mémoire.`,
     image_url: null,
-    tags: '["Data","Traçabilité","Analyse","ArtMajeur","DB360","Post-mortem"]',
+    tags: '["Data","Traçabilité","Analyse","DB360","Post-mortem"]',
     created_at: '2026-08-04',
     context: `STAGE`,
     category: '["Data / IA"]',
@@ -306,15 +306,13 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
     libraries: '["pandas"]',
     featured: 1,
     sort_order: 0,
-    content: `<p>Chez <strong>ArtMajeur</strong>, une plateforme qui réunit des milliers d'artistes, je tombe un jour sur une anomalie dans les données : un <strong>pic d'achats d'œuvres ukrainiennes</strong>, environ cinq mois après le début de la guerre en Ukraine.</p>
+    content: `<p>Chez <strong>ArtMajeur</strong>, une plateforme qui réunit des milliers d'artistes, je tombe un jour sur une anomalie dans les données : une <strong>variation forte sur un segment du catalogue</strong>, sans explication dans les chiffres. 📊</p>
 
-<p>Aucune explication dans les chiffres. 📊</p>
-
-<p>Alors je fais ce qu'on fait dans ce cas : je demande. Une personne, puis deux, puis cinq. Et petit à petit, une hypothèse se reconstitue : la plateforme, accusée publiquement d'un positionnement pro-russe, avait lancé une campagne <strong>mettant en avant des œuvres ukrainiennes</strong> — d'où le pic.</p>
+<p>Alors je fais ce qu'on fait dans ce cas : je demande. Une personne, puis deux, puis <strong>cinq</strong>. Et petit à petit, une hypothèse se reconstitue — une opération passée, dont plus personne n'a la date exacte.</p>
 
 <p>Une hypothèse. Reconstituée à l'oral. Et surtout : <strong>impossible de dater l'événement.</strong></p>
 
-<p>La campagne n'était écrite nulle part. Elle n'existait que dans la mémoire de deux personnes.</p>
+<p>L'opération n'était écrite nulle part. Elle n'existait que dans la mémoire de deux personnes.</p>
 
 <p><strong>C'est là que le déclic s'est produit.</strong> 💡</p>
 
@@ -330,7 +328,7 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p><strong>Ce qui n'est pas écrit n'existe pas. Je n'ai plus jamais regardé un dashboard de la même façon. 🕰️</strong></p>
 
-<p><em>Une précision d'honnêteté : la date exacte de cette campagne, je ne l'ai jamais retrouvée. C'est tout le sujet de l'histoire.</em></p>`,
+<p><em>Une précision d'honnêteté : la date exacte de cette opération, je ne l'ai jamais retrouvée. C'est tout le sujet de l'histoire.</em></p>`,
   },
   {
     slug: 'contribution-koan-72-lancements',

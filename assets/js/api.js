@@ -441,10 +441,13 @@ async function loadCards(page, container) {
       return;
     }
 
-    // Cartes mises en avant d'abord, l'ordre de l'API (le plus récent d'abord)
-    // étant conservé à l'intérieur de chaque groupe. Sans ça le drapeau
-    // `featured` ne servait qu'une fois un filtre actif.
-    cards.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    // Cartes mises en avant d'abord, puis `sort_order` comme ordre éditorial
+    // (il suit la chronologie par défaut, et permet de forcer une carte en
+    // tête quand elle le mérite). Sans ça le drapeau `featured` ne servait
+    // qu'une fois un filtre actif.
+    cards.sort((a, b) =>
+      (b.featured ? 1 : 0) - (a.featured ? 1 : 0) ||
+      (a.sort_order ?? 0) - (b.sort_order ?? 0));
 
     container.innerHTML = cards.map(card => {
       const tags = JSON.parse(card.tags || '[]');
