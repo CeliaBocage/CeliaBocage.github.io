@@ -589,18 +589,19 @@ const cards = [
     context: `STAGE`,
     category: `["Cybersécurité","Data / IA"]`,
     languages: `["Python","TypeScript"]`,
-    tools: `["Claude Code","MCP","Docker","MongoDB","GitHub Actions","Git"]`,
-    libraries: `["Node.js"]`,
-    tags: `["Gouvernance IA","CI/CD","Sécurité","Management"]`,
+    tools: `["MongoDB","Docker","Grafana","Claude Code","MCP","GitHub Actions","Git"]`,
+    libraries: `["Node.js","API REST"]`,
+    tags: `["DB360","Gouvernance IA","CI/CD","Sécurité","Management"]`,
     featured: 1,
     sort_order: 0,
     start_date: `2026-05`,
     end_date: `2026-08`,
     description: `<ul class="card-description">
+    <li><strong>DB360</strong>, mon initiative, portée du constat au <strong>déploiement en production</strong> : une base d'événements horodatés — releases, downtimes, campagnes, incidents, faits extérieurs — <strong>corrélable aux métriques</strong>, pour expliquer les écarts de trafic que les chiffres seuls ne justifient pas.</li>
+    <li>Sur DB360, la <strong>chaîne complète</strong> : conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — j'ai raccordé un agent IA à la base via <strong>MCP</strong>, aucune saisie manuelle. <strong>MongoDB</strong>, Node.js, API REST, <strong>Docker</strong>, source de données <strong>Grafana</strong>.</li>
     <li><strong>Gouvernance Claude Code</strong> : revue de <strong>PRs sur le MCP interne</strong> (Python, TypeScript), développement de <em>skills</em>, validation des solutions produites par les <strong>citizen developers</strong>.</li>
     <li><strong>Hygiène des secrets</strong> et vérification de l'absence de failles de sécurité dans les solutions développées hors des équipes tech — rôle technique de management des différents pôles.</li>
     <li><strong>CI/CD</strong> et <strong>GitHub Actions</strong> ; intégration d'<strong>API LLM</strong> dans les workflows développeurs.</li>
-    <li>Conception et déploiement en production de <strong>DB360</strong>, base d'événements 360 (<strong>MongoDB</strong>, <strong>Docker</strong>) centralisant releases, downtimes et opérations pour les outils internes — <em>initiative personnelle</em>.</li>
     <li><strong>Synchronisation des configurations</strong> Claude / skills / MCP sur les postes de travail (crons &amp; hooks).</li>
     <li>Suivi hebdomadaire et <strong>animation de workshops</strong> : bases de l'informatique, <em>vibe coding</em>, gouvernance IA — sensibilisation aux risques, déblocage, montée en autonomie.</li>
 </ul>`,
