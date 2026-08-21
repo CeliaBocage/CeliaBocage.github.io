@@ -581,50 +581,74 @@ const cards = [
   // === EXPERIENCES ===
   {
     page: 'experiences',
-    title: `Stage Data Science - <a href="https://www.artmajeur.com" target="_blank" style="color: inherit; text-decoration: underline;">ArtMajeur</a>`,
-    location: 'Levallois-Perret',
-    date_range: '10 mois',
-    image_url: '../assets/Images/ArtMajeur.jpeg',
-    link_url: 'https://www.artmajeur.com',
-    context: 'STAGE',
-    category: '["Data / IA"]',
-    languages: '["Python","SQL"]',
-    tools: '["Cursor","Claude Code"]',
-    libraries: '["BERT","Dash","Plotly"]',
-    tags: '["Stratégie"]',
+    title: `Stage Tech, AI Governance &amp; Citizen Developers - <a href="https://weborama.com" target="_blank" style="color: inherit; text-decoration: underline;">Weborama</a>`,
+    location: `Levallois-Perret`,
+    date_range: `4 mois`,
+    image_url: null,
+    link_url: `https://weborama.com`,
+    context: `STAGE`,
+    category: `["Cybersécurité","Data / IA"]`,
+    languages: `["Python","TypeScript"]`,
+    tools: `["Claude Code","MCP","Docker","MongoDB","GitHub Actions","Git"]`,
+    libraries: `["Node.js"]`,
+    tags: `["Gouvernance IA","CI/CD","Sécurité","Management"]`,
     featured: 1,
     sort_order: 0,
-    start_date: '2025-06',
-    end_date: null,
+    start_date: `2026-05`,
+    end_date: `2026-08`,
     description: `<ul class="card-description">
-    <li><strong>Analyse de données comportementales</strong> sur une plateforme de ~3,5 millions d'œuvres et ~1 million de comptes (acheteurs et artistes), à l'aide de <strong>SQL</strong>, <strong>Python</strong> et de méthodes statistiques.</li>
-    <li><strong>Classification sémantique</strong> avec <strong>BERT</strong> des descriptions d'œuvres et des biographies d'artistes pour améliorer le référencement et la recherche.</li>
-    <li>Conception de <strong>dashboards interactifs</strong> avec <strong>Plotly/Dash</strong> et de cartographies de données pour les équipes produit, dev et communication.</li>
-    <li>Recherche et implémentation de nouvelles <strong>stratégies statistiques</strong> pour améliorer la pertinence des recommandations.</li>
-    <li>Conception de <strong>requêtes SQL complexes</strong> avec traitement des données directement dans la requête.</li>
-    <li>Utilisation d'un <strong>linter</strong> pour garantir la conformité du code lors du merge des projets sur la plateforme centralisant les dashboards.</li>
-    <li>Gestion, maintenance et optimisation de la <strong>base de données</strong> de la plateforme.</li>
-    <li>Réalisation d'une étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes — proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
-    <li>Mission actuelle sur l'<strong>AI Governor</strong> de l'entreprise : rôle technique de management des différents pôles de citizen developers, avec vérification qu'il n'y aura pas de problèmes de <strong>sécurité</strong> dans les solutions développées.</li>
+    <li><strong>Gouvernance Claude Code</strong> : revue de <strong>PRs sur le MCP interne</strong> (Python, TypeScript), développement de <em>skills</em>, validation des solutions produites par les <strong>citizen developers</strong>.</li>
+    <li><strong>Hygiène des secrets</strong> et vérification de l'absence de failles de sécurité dans les solutions développées hors des équipes tech — rôle technique de management des différents pôles.</li>
+    <li><strong>CI/CD</strong> et <strong>GitHub Actions</strong> ; intégration d'<strong>API LLM</strong> dans les workflows développeurs.</li>
+    <li>Conception et déploiement en production de <strong>DB360</strong>, base d'événements 360 (<strong>MongoDB</strong>, <strong>Docker</strong>) centralisant releases, downtimes et opérations pour les outils internes — <em>initiative personnelle</em>.</li>
+    <li><strong>Synchronisation des configurations</strong> Claude / skills / MCP sur les postes de travail (crons &amp; hooks).</li>
+    <li>Suivi hebdomadaire et <strong>animation de workshops</strong> : bases de l'informatique, <em>vibe coding</em>, gouvernance IA — sensibilisation aux risques, déblocage, montée en autonomie.</li>
+</ul>`,
+  },
+  {
+    page: 'experiences',
+    title: `Stage Data Science - <a href="https://www.artmajeur.com" target="_blank" style="color: inherit; text-decoration: underline;">ArtMajeur</a>`,
+    location: `Levallois-Perret`,
+    date_range: `8 mois`,
+    image_url: `../assets/Images/ArtMajeur.jpeg`,
+    link_url: `https://www.artmajeur.com`,
+    context: `STAGE`,
+    category: `["Data / IA"]`,
+    languages: `["Python","SQL"]`,
+    tools: `["PostgreSQL","Cursor","Claude Code"]`,
+    libraries: `["BERT","pandas","Dash","Plotly"]`,
+    tags: `["Stratégie","BERT","A/B testing"]`,
+    featured: 1,
+    sort_order: 1,
+    start_date: `2025-10`,
+    end_date: `2026-05`,
+    description: `<ul class="card-description">
+    <li><strong>Analyse du comportement utilisateur</strong> sur une plateforme de ~3,5 millions d'œuvres et ~1 million de comptes (acheteurs et artistes) : <strong>SQL (PostgreSQL)</strong>, <strong>Python</strong> (pandas, statistiques).</li>
+    <li>Développement d'un <strong>pipeline d'embeddings BERT</strong> pour l'analyse sémantique des descriptions d'œuvres et des biographies d'artistes (classification thématique), au service du référencement et de la recherche.</li>
+    <li>Production de <strong>dashboards et visualisations</strong> (<strong>Plotly/Dash</strong>, radar charts, courbes de percentiles) comparant les œuvres vendues et non vendues, pour les équipes produit, dev et communication.</li>
+    <li>Mise en évidence de <strong>leviers d'amélioration</strong> pour maximiser la visibilité, l'engagement et les ventes des artistes.</li>
+    <li>Conception de <strong>requêtes SQL complexes</strong> avec traitement des données directement dans la requête ; gestion, maintenance et optimisation de la <strong>base de données</strong> de la plateforme.</li>
+    <li>Étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes — proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
+    <li><strong>Sensibilisation des équipes aux risques de sécurité</strong> : clés d'API, hygiène des secrets.</li>
 </ul>`,
   },
   {
     page: 'experiences',
     title: `Commis de salle - <a href="https://hoteleldoradoparis.com/" target="_blank" style="color: inherit; text-decoration: underline;">Hôtel Eldorado, 4*</a>`,
-    location: 'Paris 18',
-    date_range: '3 mois',
-    image_url: '../assets/Images/Eldorado.jpg',
-    link_url: 'https://hoteleldoradoparis.com/',
-    context: 'CDD',
-    category: '["Hôtellerie-Restauration","Service"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Autonomie","Adaptation","Dynamisme"]',
+    location: `Paris 18`,
+    date_range: `3 mois`,
+    image_url: `../assets/Images/Eldorado.jpg`,
+    link_url: `https://hoteleldoradoparis.com/`,
+    context: `CDD`,
+    category: `["Hôtellerie-Restauration","Service"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Autonomie","Adaptation","Dynamisme"]`,
     featured: 0,
-    sort_order: 1,
-    start_date: '2025-05',
-    end_date: '2025-07',
+    sort_order: 2,
+    start_date: `2025-05`,
+    end_date: `2025-07`,
     description: `<ul class="card-description">
     <li>Service de <strong>~75 couverts par service</strong> (salle de 40 places, 2 services par repas) dans un hôtel 4 étoiles parisien.</li>
     <li>Mise en place <strong>autonome</strong> de la salle, gestion du service en toute polyvalence au contact d'une clientèle internationale.</li>
@@ -641,21 +665,21 @@ const cards = [
   },
   {
     page: 'experiences',
-    title: 'Réceptionniste - Pharmacie de Piquerouge',
-    location: 'Gaillac',
-    date_range: '4 mois',
-    image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
+    title: `Réceptionniste - Pharmacie de Piquerouge`,
+    location: `Gaillac`,
+    date_range: `2 mois`,
+    image_url: `../assets/Images/Pharmacie_de_piquerouge.jpg`,
     link_url: null,
-    context: 'CDD',
-    category: '["Santé / Pharmacie"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Rigueur","Organisation","Gestion de stock"]',
+    context: `CDD`,
+    category: `["Santé / Pharmacie"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Rigueur","Organisation","Gestion de stock"]`,
     featured: 0,
-    sort_order: 2,
-    start_date: '2023-05',
-    end_date: '2023-08',
+    sort_order: 3,
+    start_date: `2024-07`,
+    end_date: `2024-08`,
     description: `<ul class="card-description">
     <li>Réception des livraisons, <strong>gestion de stock</strong> et mise en rayon dans une pharmacie de grande envergure (~2/3 des références en parapharmacie).</li>
     <li>Forte <strong>rigueur</strong> et rapidité d'exécution dans le respect des normes de traçabilité, avec un volume nécessitant depuis l'installation d'un robot de stockage.</li>
@@ -664,21 +688,21 @@ const cards = [
   },
   {
     page: 'experiences',
-    title: 'Réceptionniste - Pharmacie de Piquerouge',
-    location: 'Gaillac',
-    date_range: '3 mois',
-    image_url: '../assets/Images/Pharmacie_de_piquerouge.jpg',
+    title: `Réceptionniste - Pharmacie de Piquerouge`,
+    location: `Gaillac`,
+    date_range: `4 mois`,
+    image_url: `../assets/Images/Pharmacie_de_piquerouge.jpg`,
     link_url: null,
-    context: 'CDD',
-    category: '["Santé / Pharmacie"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Rigueur","Organisation","Gestion de stock"]',
+    context: `CDD`,
+    category: `["Santé / Pharmacie"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Rigueur","Organisation","Gestion de stock"]`,
     featured: 0,
-    sort_order: 3,
-    start_date: '2024-06',
-    end_date: '2024-08',
+    sort_order: 4,
+    start_date: `2022-05`,
+    end_date: `2022-08`,
     description: `<ul class="card-description">
     <li>Réception des livraisons, <strong>gestion de stock</strong> et mise en rayon dans une pharmacie de grande envergure (~2/3 des références en parapharmacie).</li>
     <li>Forte <strong>rigueur</strong> et rapidité d'exécution dans le respect des normes de traçabilité, avec un volume nécessitant depuis l'installation d'un robot de stockage.</li>
@@ -689,45 +713,71 @@ const cards = [
   // === FORMATIONS ===
   {
     page: 'formations',
-    title: `3ème année - École d'ingénieurs EPITA`,
-    location: 'Villejuif',
-    date_range: '2023 - Présent',
+    title: `Cycle ingénieur en apprentissage - École d'ingénieurs EPITA`,
+    location: `Villejuif`,
+    date_range: `2023 - 2029`,
     image_url: null,
     link_url: null,
-    context: 'ÉCOLE',
-    category: '["Informatique"]',
-    languages: '["C","C#","Python","Rust","Assembly"]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Algorithmique","Mathématiques"]',
+    context: `ÉCOLE`,
+    category: `["Informatique","Cybersécurité"]`,
+    languages: `["C","C#","Python","Rust","Assembly","SQL"]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Algorithmique","Mathématiques","Cybersécurité","Réseaux","Systèmes"]`,
     featured: 1,
     sort_order: 0,
-    start_date: '2023-09',
-    end_date: null,
+    start_date: `2023-09`,
+    end_date: `2029-07`,
     description: `<ul class="card-description">
-    <li>Formation d'ingénieur généraliste en informatique, avec un tronc commun intensif en <strong>algorithmique</strong>, <strong>mathématiques</strong> et programmation.</li>
-    <li>Apprentissage approfondi des langages <strong>C</strong>, <strong>C#</strong>, <strong>Python</strong> et <strong>SQL</strong> à travers de nombreux travaux pratiques.</li>
-    <li>Réalisation de projets techniques majeurs chaque semestre : <strong>jeu vidéo 3D</strong> (S2), <strong>OCR par Machine Learning</strong> (S3).</li>
+    <li>Formation d'ingénieur en informatique : <strong>cycle préparatoire</strong> (2023 - 2026) puis <strong>cycle ingénieur en apprentissage</strong>, majeure <strong>Cybersécurité &amp; Système</strong> (sept. 2026 - juil. 2029).</li>
+    <li>Tronc commun intensif en <strong>algorithmique</strong>, <strong>mathématiques</strong>, <strong>systèmes</strong>, <strong>réseaux</strong> et <strong>sécurité</strong>.</li>
+    <li>Apprentissage approfondi des langages <strong>C</strong>, <strong>C#</strong>, <strong>Python</strong>, <strong>Assembly</strong> et <strong>SQL</strong> à travers de nombreux travaux pratiques.</li>
+    <li>Projets techniques majeurs chaque semestre : <strong>jeu vidéo 3D multijoueur</strong> (S2), <strong>OCR par réseau de neurones</strong> à 99,9 % (S3).</li>
     <li>Semestre d'échange international en <strong>Game Design</strong> en Irlande, renforçant autonomie et ouverture culturelle.</li>
 </ul>`,
   },
   {
     page: 'formations',
-    title: `Semestre à l'étranger - Game Design`,
-    location: 'ATU Sligo, Irlande',
-    date_range: 'Janv. 2025 - Juin 2025',
+    title: `Permis, Licences & Certificats`,
+    location: null,
+    date_range: `2021 - 2025`,
     image_url: null,
     link_url: null,
-    context: 'ÉCOLE',
-    category: '["Game Design","Informatique"]',
-    languages: '["C#","SQL","LINQ","XAML"]',
-    tools: '["Photoshop","Maya","Unreal Engine"]',
-    libraries: '[]',
-    tags: '["International","Anglais"]',
+    context: `CERTIF`,
+    category: `[]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Permis B","Permis A2","Bateau","PSC1","Prévention VSS"]`,
     featured: 0,
     sort_order: 1,
-    start_date: '2025-01',
-    end_date: '2025-06',
+    start_date: `2021-01`,
+    end_date: `2025-12`,
+    description: `<ul class="card-description">
+    <li><strong>Permis B</strong> — Permis de conduire automobile.</li>
+    <li><strong>Permis A2</strong> — Permis moto (motocyclettes de puissance intermédiaire).</li>
+    <li><strong>Permis bateau fluvial & côtier</strong> — Navigation en eaux intérieures et en mer.</li>
+    <li><strong>Certificat de formation contre les VSS</strong> — Formation à la prévention et à la prise en charge des violences sexistes et sexuelles.</li>
+    <li><strong>PSC1</strong> — Prévention et Secours Civiques de niveau 1, formation aux premiers secours (massage cardiaque, PLS, gestion des hémorragies, etc.).</li>
+</ul>`,
+  },
+  {
+    page: 'formations',
+    title: `Semestre à l'étranger - Game Design`,
+    location: `ATU Sligo, Irlande`,
+    date_range: `Janv. 2025 - Juin 2025`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Game Design","Informatique"]`,
+    languages: `["C#","SQL","LINQ","XAML"]`,
+    tools: `["Photoshop","Maya","Unreal Engine"]`,
+    libraries: `[]`,
+    tags: `["International","Anglais"]`,
+    featured: 0,
+    sort_order: 2,
+    start_date: `2025-01`,
+    end_date: `2025-06`,
     description: `<ul class="card-description">
     <li>Semestre d'échange dédié au <strong>Game Design</strong>, à la <strong>modélisation 3D</strong> et au développement logiciel.</li>
     <li>Immersion anglophone complète pendant 6 mois, consolidant un <strong>niveau courant</strong> à l'oral et à l'écrit.</li>
@@ -738,21 +788,21 @@ const cards = [
   },
   {
     page: 'formations',
-    title: 'BAFA',
-    location: 'Gaillac',
-    date_range: '2024',
+    title: `BAFA`,
+    location: `Gaillac`,
+    date_range: `2024`,
     image_url: null,
     link_url: null,
-    context: 'CERTIF',
-    category: '["Animation / Jeunesse"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Pédagogie","Responsabilité"]',
+    context: `CERTIF`,
+    category: `["Animation / Jeunesse"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Pédagogie","Responsabilité"]`,
     featured: 0,
-    sort_order: 2,
-    start_date: '2024-04',
-    end_date: '2024-04',
+    sort_order: 3,
+    start_date: `2024-04`,
+    end_date: `2024-04`,
     description: `<ul class="card-description">
     <li>Obtention du <strong>Brevet d'Aptitude aux Fonctions d'Animateur</strong>, diplôme national d'encadrement de mineurs.</li>
     <li>Spécialisation <strong>accueil de scoutisme</strong> : encadrement de camps et de week-ends avec des jeunes de 8 à 11 ans.</li>
@@ -761,165 +811,119 @@ const cards = [
   },
   {
     page: 'formations',
-    title: 'Baccalauréat Général',
-    location: 'Lycée St Joseph, Gaillac',
-    date_range: '2023',
+    title: `Baccalauréat Général — Mention`,
+    location: `Lycée St Joseph, Gaillac`,
+    date_range: `2023`,
     image_url: null,
     link_url: null,
-    context: 'ÉCOLE',
-    category: '["Sciences"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Mathématiques","Physique-Chimie"]',
-    featured: 0,
-    sort_order: 3,
-    start_date: '2020-09',
-    end_date: '2023-08',
-    description: `<ul class="card-description">
-    <li>Spécialités <strong>Mathématiques</strong> et <strong>Physique-Chimie</strong>, avec l'option <strong>Maths Expertes</strong>.</li>
-    <li>Profil scientifique solide ayant préparé l'entrée en école d'ingénieurs.</li>
-</ul>`,
-  },
-  {
-    page: 'formations',
-    title: 'Permis, Licences & Certificats',
-    location: null,
-    date_range: '2021 - 2025',
-    image_url: null,
-    link_url: null,
-    context: 'CERTIF',
-    category: '[]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Permis B","Permis A2","Bateau","PSC1","Prévention VSS"]',
+    context: `ÉCOLE`,
+    category: `["Sciences"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Mathématiques","Physique-Chimie"]`,
     featured: 0,
     sort_order: 4,
-    start_date: '2021-01',
-    end_date: '2025-12',
+    start_date: `2020-09`,
+    end_date: `2023-08`,
     description: `<ul class="card-description">
-    <li><strong>Permis B</strong> — Permis de conduire automobile.</li>
-    <li><strong>Permis A2</strong> — Permis moto (motocyclettes de puissance intermédiaire).</li>
-    <li><strong>Permis bateau fluvial & côtier</strong> — Navigation en eaux intérieures et en mer.</li>
-    <li><strong>Certificat de formation contre les VSS</strong> — Formation à la prévention et à la prise en charge des violences sexistes et sexuelles.</li>
-    <li><strong>PSC1</strong> — Prévention et Secours Civiques de niveau 1, formation aux premiers secours (massage cardiaque, PLS, gestion des hémorragies, etc.).</li>
+    <li>Baccalauréat général obtenu <strong>avec mention</strong>.</li>
+    <li>Spécialités <strong>Mathématiques</strong> et <strong>Physique-Chimie</strong>, avec l'option <strong>Maths Expertes</strong>.</li>
+    <li>Profil scientifique solide ayant préparé l'entrée en école d'ingénieurs.</li>
 </ul>`,
   },
 
   // === PROJETS ===
   {
     page: 'projets',
-    title: 'Résolution de mots cachés par OCR (équipe de 4)',
-    location: 'EPITA',
-    date_range: '3e semestre',
+    title: `<a href="https://github.com/CeliaBocage/villa-d-audenge" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge — Site vitrine multilingue</a>`,
+    location: `Projet personnel`,
+    date_range: `Continu`,
     image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Informatique","Data / IA"]',
-    languages: '["C"]',
-    tools: '["GTK","Glade"]',
-    libraries: '[]',
-    tags: '["Machine Learning","Analyse d\'Image"]',
-    featured: 1,
+    link_url: `https://github.com/CeliaBocage/villa-d-audenge`,
+    context: `PERSO`,
+    category: `["Informatique","Web"]`,
+    languages: `["TypeScript","SQL"]`,
+    tools: `["Next.js 15","Tailwind CSS 4","Turso/libSQL","Vercel","sharp"]`,
+    libraries: `["React 19","@libsql/client"]`,
+    tags: `["i18n","Full-stack","Analytics","RGPD"]`,
+    featured: 0,
     sort_order: 0,
-    start_date: '2024-09',
-    end_date: '2025-01',
+    start_date: `2026-08`,
+    end_date: null,
     description: `<ul class="card-description">
-    <li>Développement d'un logiciel capable de <strong>détecter et résoudre des grilles de mots cachés</strong> à partir d'une image, grâce à la <strong>reconnaissance optique de caractères (OCR)</strong>.</li>
-    <li>Implémentation d'un <strong>réseau de neurones</strong> en <strong>C</strong> atteignant <strong>99,9 % de précision</strong> sur la reconnaissance de l'alphabet français.</li>
-    <li>Création d'une base de données d'entraînement et gestion du pipeline complet : prétraitement d'image, segmentation, reconnaissance et résolution.</li>
-    <li>Développement de l'interface graphique avec <strong>GTK</strong> et <strong>Glade</strong> pour permettre à l'utilisateur de charger une image et visualiser le résultat.</li>
+    <li>Site vitrine d'une maison de vacances sur le <strong>Bassin d'Arcachon</strong>, avec un <strong>espace propriétaire protégé</strong> pour changer les photos, fixer les tarifs et suivre le trafic.</li>
+    <li><strong>Quatre langues</strong> (français, anglais, espagnol, allemand) avec des URL traduites par page, et un sélecteur qui renvoie vers <em>la même page</em> dans l'autre langue — pas vers l'accueil.</li>
+    <li><strong>Next.js 15</strong> / <strong>React 19</strong> / <strong>TypeScript</strong>, <strong>Tailwind CSS 4</strong>, base <strong>Turso/libSQL</strong>, images redimensionnées et ré-encodées côté navigateur avant envoi, déploiement <strong>Vercel</strong>.</li>
+    <li>Analytics maison avec <strong>salage des identifiants</strong> plutôt qu'un traceur tiers, et pages mentions légales / confidentialité conformes.</li>
+    <li><strong>Aucun contenu inventé :</strong> capacité, équipements, distances, tarifs et conditions sont transcrits de l'annonce et des échanges avec la propriétaire, centralisés dans un seul fichier de contenu.</li>
 </ul>`,
   },
   {
     page: 'projets',
-    title: 'Puzzle/Escape Game 3D - Godot (équipe de 5)',
-    location: 'EPITA',
-    date_range: '2e semestre',
+    title: `CV &amp; lettres de motivation — Chaîne LaTeX ATS-friendly`,
+    location: `Projet personnel`,
+    date_range: `Continu`,
     image_url: null,
     link_url: null,
-    context: 'ÉCOLE',
-    category: '["Game Design","Informatique"]',
-    languages: '["C#","JSON"]',
-    tools: '["Godot","Blender"]',
-    libraries: '[]',
-    tags: '[]',
+    context: `PERSO`,
+    category: `["Informatique"]`,
+    languages: `["LaTeX","Bash","JSON"]`,
+    tools: `["Git","pdflatex"]`,
+    libraries: `[]`,
+    tags: `["Automatisation","Documentation"]`,
     featured: 0,
     sort_order: 1,
-    start_date: '2023-09',
-    end_date: '2024-06',
+    start_date: `2026-08`,
+    end_date: null,
     description: `<ul class="card-description">
-    <li>Escape game <strong>multijoueur</strong> dans un <strong>manoir</strong> : résolution d'énigmes en coopération tout en échappant à un fantôme doté d'un système de <strong>pathfinding</strong> (possibilité de se cacher pour le faire repartir).</li>
-    <li><strong>Modélisation 3D</strong> complète de l'environnement avec <strong>Blender</strong> (manoir, décors, éclairage).</li>
-    <li>Développement d'un système de <strong>configuration des contrôles</strong> en <strong>C#</strong>, avec sauvegarde/chargement dynamique via <strong>JSON</strong>.</li>
-    <li>Intégration de l'ensemble dans le moteur <strong>Godot</strong> : gameplay, physique, IA ennemie et interface utilisateur.</li>
+    <li>Chaîne de génération de mes CV et lettres de motivation en <strong>LaTeX</strong>, <strong>ATS-friendly</strong> (une colonne, police standard, texte réellement parsable par les robots de recrutement).</li>
+    <li>Un <strong>CV de base</strong> versionné en FR et EN comme unique référence, et <strong>une candidature = un dossier</strong> généré par script, adapté au poste visé et volontairement hors du dépôt.</li>
+    <li><strong>Base de connaissances en JSON</strong> : savoirs techniques, projets et histoires réutilisables, avec une règle stricte — tout ce qui y figure doit être défendable en entretien, le reste va dans <code>a_verifier</code>.</li>
+    <li>Style commun factorisé dans un paquet <code>.sty</code> ; compilation et ouverture du PDF en une commande.</li>
 </ul>`,
   },
   {
     page: 'projets',
-    title: 'FPS Solo - Unreal Engine (projet individuel)',
-    location: 'ATU Sligo, Irlande',
-    date_range: `Semestre à l'étranger`,
+    title: `Contribution open source à <a href="https://github.com/Anantys-oss/koan" target="_blank" style="color: inherit; text-decoration: underline;">Kōan</a> (Anantys)`,
+    location: `Open source`,
+    date_range: `Contribution`,
     image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Game Design"]',
-    languages: '["C#"]',
-    tools: '["Unreal Engine","Maya"]',
-    libraries: '[]',
-    tags: '[]',
-    featured: 0,
+    link_url: `https://github.com/Anantys-oss/koan`,
+    context: `PERSO`,
+    category: `["Informatique","Data / IA"]`,
+    languages: `["Python"]`,
+    tools: `["Git","Docker","GitHub"]`,
+    libraries: `[]`,
+    tags: `["Open source","Automatisation","IA agentique"]`,
+    featured: 1,
     sort_order: 2,
-    start_date: '2025-01',
-    end_date: '2025-06',
+    start_date: `2026-06`,
+    end_date: null,
     description: `<ul class="card-description">
-    <li>Réalisation <strong>individuelle</strong> complète d'un FPS solo sous <strong>Unreal Engine</strong>, de la conception au produit jouable.</li>
-    <li>Développement de la logique de jeu en <strong>C#</strong> : déplacements, tir, ennemis IA, conditions de victoire.</li>
-    <li>Création de la carte 3D, des textures et des assets visuels avec <strong>Maya</strong> et Paint.</li>
-    <li>Projet réalisé en contexte international, entièrement en anglais.</li>
-</ul>`,
-  },
-  {
-    page: 'projets',
-    title: 'Logiciel de recettes de cuisine',
-    location: 'ATU Sligo, Irlande',
-    date_range: `Semestre à l'étranger`,
-    image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Informatique"]',
-    languages: '["C#","SQL","XAML","LINQ"]',
-    tools: '["MariaDB"]',
-    libraries: '[]',
-    tags: '[]',
-    featured: 0,
-    sort_order: 3,
-    start_date: '2025-01',
-    end_date: '2025-06',
-    description: `<ul class="card-description">
-    <li>Application desktop de gestion de recettes : ajout, suppression, recherche et <strong>filtrage par ingrédient</strong>.</li>
-    <li>Fonctionnalité de <strong>constraint programming</strong> : suggestion de recettes réalisables avec les ingrédients disponibles ("recettes à partir du frigo").</li>
-    <li>Calcul automatique des <strong>portions</strong> en fonction du nombre de convives.</li>
-    <li>Base de données <strong>MariaDB</strong>, requêtes <strong>SQL/LINQ</strong>, interface multi-pages en <strong>XAML</strong>.</li>
+    <li><strong>Kōan</strong> est un <strong>agent IA autonome open source</strong> publié par <strong>Anantys</strong> — il exécute en tâche de fond des revues de code, des corrections de bugs et des analyses de codebase. ~24 000 lignes de Python. <em>Je n'en suis pas l'autrice : j'y ai contribué.</em></li>
+    <li><strong>Le point de friction :</strong> l'outil ne traitait qu'<strong>un dépôt par exécution</strong>. Pour couvrir tout le parc, il fallait le relancer <strong>72 fois à la main</strong>.</li>
+    <li><strong>Ma contribution :</strong> la <strong>boucle d'itération sur les dépôts</strong>, qui supprime cette manipulation — une seule exécution couvre l'ensemble. Peu de code, mais c'est ce qui fait passer un outil du stade démonstration au stade exploitable.</li>
+    <li>Ce que ça a demandé : lire et modifier une base de code Python conséquente écrite par quelqu'un d'autre, identifier le <strong>vrai</strong> point de friction plutôt que le symptôme, et travailler sous les conventions et le processus de revue du projet.</li>
+    <li><strong>Lecture sécurité :</strong> un agent autonome avec accès en écriture à des dépôts Git est une surface à encadrer. Les garde-fous de Kōan — branches <code>koan/*</code>, pull requests en brouillon uniquement, jamais de commit direct sur <code>main</code> — sont exactement ce qu'il faut savoir défendre.</li>
 </ul>`,
   },
   {
     page: 'projets',
     title: `<a href="https://github.com/CeliaBocage/Projet-Preparation-Piscine-Avant-L-Ing-1" target="_blank" style="color: inherit; text-decoration: underline;">Préparation Piscine – Avant l'Ing 1</a>`,
-    location: 'EPITA',
-    date_range: 'Projet personnel',
+    location: `EPITA`,
+    date_range: `Projet personnel`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Informatique"]',
-    languages: '["C","SQL","Makefile"]',
-    tools: '["PostgreSQL"]',
-    libraries: '[]',
-    tags: '[]',
+    context: `PERSO`,
+    category: `["Informatique"]`,
+    languages: `["C","SQL","Makefile"]`,
+    tools: `["PostgreSQL"]`,
+    libraries: `[]`,
+    tags: `[]`,
     featured: 0,
-    sort_order: 4,
-    start_date: '2026-02',
+    sort_order: 3,
+    start_date: `2026-02`,
     end_date: null,
     description: `<ul class="card-description">
     <li>Projet de préparation à la <strong>piscine</strong> du cycle ingénieur : exploration des différents langages et concepts abordés pendant la piscine.</li>
@@ -930,20 +934,20 @@ const cards = [
   },
   {
     page: 'projets',
-    title: 'How-to-SCRAP',
-    location: 'Projet personnel',
-    date_range: 'Continu',
+    title: `How-to-SCRAP`,
+    location: `Projet personnel`,
+    date_range: `Continu`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Informatique","Data"]',
-    languages: '["Python"]',
-    tools: '[]',
-    libraries: '["BeautifulSoup4","requests"]',
-    tags: '["Web Scraping","Automatisation"]',
+    context: `PERSO`,
+    category: `["Informatique","Data"]`,
+    languages: `["Python"]`,
+    tools: `[]`,
+    libraries: `["BeautifulSoup4","requests"]`,
+    tags: `["Web Scraping","Automatisation"]`,
     featured: 0,
-    sort_order: 5,
-    start_date: '2026-02',
+    sort_order: 4,
+    start_date: `2026-02`,
     end_date: null,
     description: `<ul class="card-description">
     <li>Projet éducatif de <strong>web scraping</strong> en Python : cours théoriques (TD) et exercices pratiques (TP) pour apprendre les techniques de scraping.</li>
@@ -954,46 +958,340 @@ const cards = [
   },
   {
     page: 'projets',
-    title: 'Projet Personnel : Portfolio',
-    location: 'Le Kremlin-Bicêtre',
-    date_range: 'Continu',
+    title: `Command-Taker La Cave — Outil interne d'association`,
+    location: `EPITA - Le Kremlin-Bicêtre`,
+    date_range: `En service`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Informatique","Web"]',
-    languages: '["HTML","CSS","JavaScript"]',
-    tools: '["Git"]',
-    libraries: '[]',
-    tags: '[]',
+    context: `PERSO`,
+    category: `["Informatique","Web"]`,
+    languages: `["TypeScript","SQL"]`,
+    tools: `["Next.js 15","Prisma","Turso/libSQL","Vercel"]`,
+    libraries: `["iron-session"]`,
+    tags: `["Full-stack","Authentification","Utilisateurs réels"]`,
     featured: 0,
-    sort_order: 6,
-    start_date: '2025-10',
+    sort_order: 5,
+    start_date: `2025-11`,
     end_date: null,
     description: `<ul class="card-description">
-    <li>Développement de ce site portfolio entièrement "from scratch", sans framework ni générateur de site.</li>
-    <li>Code source en <strong>HTML</strong>, <strong>CSS</strong> et <strong>JavaScript</strong> vanilla pour une maîtrise totale et des performances optimales.</li>
-    <li>Design <strong>responsive</strong> (mobile, tablette, desktop) avec un système de composants réutilisables (cartes, chips, grilles).</li>
-    <li>Hébergé sur <strong>GitHub Pages</strong> avec déploiement continu via Git.</li>
+    <li>Application interne pour l'association <strong>La Cave</strong> (EPITA, 200 membres), dont je suis présidente : <strong>prise de commande au bar</strong> et <strong>gestion de stock</strong>, jusque-là tenues à la main.</li>
+    <li><strong>Authentification et gestion de rôles</strong> avec <strong>iron-session</strong> : le barman, le trésorier et le membre ne voient pas la même chose.</li>
+    <li>Stack <strong>Next.js 15</strong> / <strong>TypeScript</strong>, ORM <strong>Prisma</strong>, base <strong>Turso/libSQL</strong>, déploiement <strong>Vercel</strong>.</li>
+    <li><strong>En service dans l'association.</strong> Livrer à de vrais utilisateurs impose une rigueur que les projets d'école n'exigent pas : une erreur se voit un vendredi soir, au bar, devant tout le monde.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `Projet Personnel : Portfolio`,
+    location: `Le Kremlin-Bicêtre`,
+    date_range: `Continu`,
+    image_url: null,
+    link_url: `https://github.com/CeliaBocage/CeliaBocage.github.io`,
+    context: `PERSO`,
+    category: `["Informatique","Web"]`,
+    languages: `["HTML","CSS","JavaScript","SQL"]`,
+    tools: `["Git","Vercel","Turso/libSQL"]`,
+    libraries: `["@libsql/client"]`,
+    tags: `["Full-stack","Serverless"]`,
+    featured: 0,
+    sort_order: 6,
+    start_date: `2025-10`,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li>Développement de ce site portfolio entièrement <em>from scratch</em>, sans framework ni générateur de site : <strong>HTML</strong>, <strong>CSS</strong> et <strong>JavaScript</strong> vanilla.</li>
+    <li>Passage d'un site statique à une <strong>application full-stack</strong> : API <strong>serverless</strong> (fonctions Vercel), base de données <strong>Turso/libSQL</strong>, contenu (expériences, projets, publications) servi dynamiquement au lieu d'être écrit en dur.</li>
+    <li><strong>Espace d'administration</strong> protégé par mot de passe (comparaison à temps constant, secret en variable d'environnement) pour créer et modifier les cartes et les publications.</li>
+    <li>Design <strong>responsive</strong> (mobile, tablette, desktop) avec un système de composants réutilisables (cartes, chips, grilles, filtres à facettes) et découpage du CSS par domaine.</li>
+    <li>Déploiement continu sur <strong>Vercel</strong> à chaque push.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `DB360 — Base d'événements 360`,
+    location: `Weborama, Levallois-Perret`,
+    date_range: `Mai - Août 2026`,
+    image_url: null,
+    link_url: null,
+    context: `STAGE`,
+    category: `["Data / IA","Informatique"]`,
+    languages: `["JavaScript","SQL"]`,
+    tools: `["MongoDB","Docker","Railway","Grafana","MCP"]`,
+    libraries: `["Node.js","API REST"]`,
+    tags: `["Traçabilité","Data Engineering","IA agentique","Mise en production"]`,
+    featured: 1,
+    sort_order: 7,
+    start_date: `2026-05`,
+    end_date: `2026-08`,
+    description: `<ul class="card-description">
+    <li><strong>Mon initiative</strong>, portée du constat au déploiement en production : identification du besoin, conception du modèle, développement et mise en production.</li>
+    <li><strong>Le problème :</strong> l'analytics montre <em>que</em> quelque chose s'est passé, jamais <em>pourquoi</em>. Les causes — campagnes, releases, incidents, actualité extérieure, décisions de réunion — ne sont écrites nulle part : elles vivent dans la mémoire de deux ou trois personnes.</li>
+    <li><strong>La réponse :</strong> un <strong>journal d'événements horodatés</strong>, internes et externes, corrélable aux métriques, pour que la cause d'un écart de trafic soit interrogeable au lieu d'être recollée à l'oral.</li>
+    <li><strong>La chaîne complète, de A à Z :</strong> conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — aucune saisie manuelle.</li>
+    <li>L'alimentation passe par une instance de <strong>Kōan</strong> (agent IA autonome) à laquelle on confie des missions précises : j'ai <strong>raccordé l'agent à la base via MCP</strong>. C'est exactement le sujet des architectures agentiques actuelles, sur un système réel.</li>
+    <li><strong>MongoDB</strong>, Node.js, API REST, conteneurisation <strong>Docker</strong>, déploiement <strong>Railway</strong>, exposition en source de données <strong>Grafana</strong>.</li>
+    <li>Besoin né de mes analyses chez <strong>ArtMajeur</strong> ; conception et mise en production pendant le stage Tech chez <strong>Weborama</strong>.</li>
+    <li>La compétence de fond : <strong>traçabilité et mémoire organisationnelle</strong> — cousine directe de la démarche de journalisation et d'audit en sécurité.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `FPS Solo - Unreal Engine (projet individuel)`,
+    location: `ATU Sligo, Irlande`,
+    date_range: `Semestre à l'étranger`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Game Design"]`,
+    languages: `["C#"]`,
+    tools: `["Unreal Engine","Maya"]`,
+    libraries: `[]`,
+    tags: `[]`,
+    featured: 0,
+    sort_order: 8,
+    start_date: `2025-01`,
+    end_date: `2025-06`,
+    description: `<ul class="card-description">
+    <li>Réalisation <strong>individuelle</strong> complète d'un FPS solo sous <strong>Unreal Engine</strong>, de la conception au produit jouable.</li>
+    <li>Développement de la logique de jeu en <strong>C#</strong> : déplacements, tir, ennemis IA, conditions de victoire.</li>
+    <li>Création de la carte 3D, des textures et des assets visuels avec <strong>Maya</strong> et Paint.</li>
+    <li>Projet réalisé en contexte international, entièrement en anglais.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `Logiciel de recettes de cuisine`,
+    location: `ATU Sligo, Irlande`,
+    date_range: `Semestre à l'étranger`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Informatique"]`,
+    languages: `["C#","SQL","XAML","LINQ"]`,
+    tools: `["MariaDB"]`,
+    libraries: `[]`,
+    tags: `[]`,
+    featured: 0,
+    sort_order: 9,
+    start_date: `2025-01`,
+    end_date: `2025-06`,
+    description: `<ul class="card-description">
+    <li>Application desktop de gestion de recettes : ajout, suppression, recherche et <strong>filtrage par ingrédient</strong>.</li>
+    <li>Fonctionnalité de <strong>constraint programming</strong> : suggestion de recettes réalisables avec les ingrédients disponibles ("recettes à partir du frigo").</li>
+    <li>Calcul automatique des <strong>portions</strong> en fonction du nombre de convives.</li>
+    <li>Base de données <strong>MariaDB</strong>, requêtes <strong>SQL/LINQ</strong>, interface multi-pages en <strong>XAML</strong>.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `Résolution de mots cachés par OCR (équipe de 4)`,
+    location: `EPITA`,
+    date_range: `3e semestre`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Informatique","Data / IA"]`,
+    languages: `["C"]`,
+    tools: `["GTK","Glade"]`,
+    libraries: `[]`,
+    tags: `["Machine Learning","Analyse d'Image"]`,
+    featured: 1,
+    sort_order: 10,
+    start_date: `2024-09`,
+    end_date: `2025-01`,
+    description: `<ul class="card-description">
+    <li>Développement d'un logiciel capable de <strong>détecter et résoudre des grilles de mots cachés</strong> à partir d'une image, grâce à la <strong>reconnaissance optique de caractères (OCR)</strong>.</li>
+    <li>Implémentation d'un <strong>réseau de neurones</strong> en <strong>C</strong> atteignant <strong>99,9 % de précision</strong> sur la reconnaissance de l'alphabet français.</li>
+    <li>Création d'une base de données d'entraînement et gestion du pipeline complet : prétraitement d'image, segmentation, reconnaissance et résolution.</li>
+    <li>Développement de l'interface graphique avec <strong>GTK</strong> et <strong>Glade</strong> pour permettre à l'utilisateur de charger une image et visualiser le résultat.</li>
+</ul>`,
+  },
+  {
+    page: 'projets',
+    title: `Puzzle/Escape Game 3D - Godot (équipe de 5)`,
+    location: `EPITA`,
+    date_range: `2e semestre`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Game Design","Informatique"]`,
+    languages: `["C#","JSON"]`,
+    tools: `["Godot","Blender"]`,
+    libraries: `[]`,
+    tags: `[]`,
+    featured: 0,
+    sort_order: 11,
+    start_date: `2023-09`,
+    end_date: `2024-06`,
+    description: `<ul class="card-description">
+    <li>Escape game <strong>multijoueur</strong> dans un <strong>manoir</strong> : résolution d'énigmes en coopération tout en échappant à un fantôme doté d'un système de <strong>pathfinding</strong> (possibilité de se cacher pour le faire repartir).</li>
+    <li><strong>Modélisation 3D</strong> complète de l'environnement avec <strong>Blender</strong> (manoir, décors, éclairage).</li>
+    <li>Développement d'un système de <strong>configuration des contrôles</strong> en <strong>C#</strong>, avec sauvegarde/chargement dynamique via <strong>JSON</strong>.</li>
+    <li>Intégration de l'ensemble dans le moteur <strong>Godot</strong> : gameplay, physique, IA ennemie et interface utilisateur.</li>
+</ul>`,
+  },
+
+  // === VIE ASSOCIATIVE ===
+  {
+    page: 'vie-associative',
+    title: `Staff' Communication - EPITA`,
+    location: `Le Kremlin-Bicêtre`,
+    date_range: `2025 - Présent`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Communication"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Événementiel","Relationnel"]`,
+    featured: 0,
+    sort_order: 0,
+    start_date: `2025-09`,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li>Représentation de l'EPITA sur <strong>3 JPO</strong>, <strong>10 salons étudiants</strong> et des présentations dans des lycées en France (Dunkerque…) et à l'étranger (Roumanie…). [Réalisés sur l'année 2025-2026]</li>
+    <li>Encadrement d'étudiants lors des événements, accueil et conseil personnalisé auprès des futurs candidats et de leurs familles.</li>
+    <li>Engagement régulier d'environ <strong>13 journées de mobilisation par an</strong>, renforçant aisance orale et sens du relationnel.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: `Sentinelle - STOP VSS`,
+    location: `EPITA`,
+    date_range: `2025 - Présent`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Engagement social"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Prévention","Sécurité","Écoute","Engagement"]`,
+    featured: 0,
+    sort_order: 1,
+    start_date: `2025-09`,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li><strong>STOP VSS</strong> est une association de lutte contre les <strong>violences sexistes et sexuelles</strong> (VSS), c'est-à-dire l'ensemble des comportements allant du harcèlement de rue aux agressions sexuelles, en passant par les propos sexistes et les situations d'emprise.</li>
+    <li>Formée en tant que <strong>sentinelle</strong> : présence lors de soirées étudiantes pour veiller à la sécurité des participants et réalisation de <strong>maraudes</strong> afin de détecter et prévenir les situations à risque.</li>
+    <li>Intervention en cas d'<strong>agression sexuelle</strong> ou de comportement inapproprié : mise en sécurité de la victime, écoute et orientation vers les dispositifs d'aide adaptés.</li>
+    <li>Capacité à <strong>accompagner les victimes</strong> : écoute bienveillante, soutien moral et aide dans les démarches auprès des structures compétentes.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: `Présidente de La Cave - Association du terroir (200 membres)`,
+    location: `EPITA`,
+    date_range: `2024 - Présent`,
+    image_url: null,
+    link_url: null,
+    context: `ÉCOLE`,
+    category: `["Culture / Voyage","Engagement social"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Organisation","Logistique","Management","Budget"]`,
+    featured: 0,
+    sort_order: 2,
+    start_date: `2024-11`,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li><strong>Présidence</strong> d'une association EPITA de <strong>200 membres</strong> : animation d'un <strong>bureau de 8 personnes</strong>, gestion budgétaire et planification annuelle.</li>
+    <li>Responsabilité des <strong>prestations traiteur</strong> des événements de l'école et des autres associations : une <strong>dizaine par an, jusqu'à 500 convives</strong>.</li>
+    <li>Chaîne complète prise en charge : recueil du besoin, devis, achats auprès des producteurs, budget et marge, logistique, service.</li>
+    <li>Respect de l'<strong>hygiène alimentaire</strong> et du <strong>cadre légal de l'alcool en milieu étudiant</strong>.</li>
+    <li>Organisation de dégustations de vins et de fromages, de sorties culturelles et de visites de caves, de domaines viticoles et de fermes locales.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: `Cheftaine (Bénévolat) - Scouts et Guides de France`,
+    location: `Gaillac`,
+    date_range: `2022 - 2024`,
+    image_url: null,
+    link_url: null,
+    context: `BÉNÉVOLAT`,
+    category: `["Animation / Jeunesse","Engagement social"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Leadership","Pédagogie","BAFA","Responsabilité"]`,
+    featured: 0,
+    sort_order: 3,
+    start_date: `2022-09`,
+    end_date: `2024-08`,
+    description: `<ul class="card-description">
+    <li>Encadrement bénévole d'un groupe de <strong>30 jeunes</strong> (8-11 ans), au sein d'une unité d'environ 100 scouts.</li>
+    <li>Conception et animation d'activités éducatives lors de réunions hebdomadaires, week-ends et camps.</li>
+    <li>Responsabilité de la sécurité physique et morale des jeunes, en lien avec les familles.</li>
+    <li>Investissement de 5 à 15 h par mois, développant patience, pédagogie et sens des responsabilités.</li>
+</ul>`,
+  },
+  {
+    page: 'vie-associative',
+    title: `Scoute - Scouts et Guides de France`,
+    location: `Gaillac`,
+    date_range: `2013 - 2022`,
+    image_url: null,
+    link_url: null,
+    context: `BÉNÉVOLAT`,
+    category: `["Animation / Jeunesse","Engagement social"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Esprit d'équipe","Autonomie","Vie en plein air"]`,
+    featured: 0,
+    sort_order: 4,
+    start_date: `2013-09`,
+    end_date: `2022-08`,
+    description: `<ul class="card-description">
+    <li><strong>9 ans de scoutisme</strong> au sein des Scouts et Guides de France, de la branche cadette à la branche aînée.</li>
+    <li>Participation régulière à des réunions hebdomadaires, week-ends et <strong>camps</strong> d'été.</li>
+    <li>Développement de l'<strong>autonomie</strong>, du sens du collectif et du goût pour la vie en plein air.</li>
 </ul>`,
   },
 
   // === PASSIONS ===
   {
     page: 'passions',
-    title: `Apprentissage de la cybersécurité en autodidacte`,
-    location: 'Plateformes en ligne',
-    date_range: 'Continu',
+    title: `Sports`,
+    location: `USOMC (Les Massives) & salle`,
+    date_range: `Pratique régulière`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Cybersécurité"]',
-    languages: '[]',
-    tools: '["TryHackMe","HackTheBox","RootMe","HackThisSite"]',
-    libraries: '[]',
-    tags: '[]',
-    featured: 1,
+    context: `PERSO`,
+    category: `["Sport"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Esprit d'équipe","Concentration","Implication"]`,
+    featured: 0,
     sort_order: 0,
-    start_date: '2024-03',
+    start_date: `2025-09`,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li><strong>Rugby</strong> en club (USOMC – Les Massives), 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
+    <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
+    <li><strong>Running</strong> — courses régulières pour l'endurance et la gestion de l'effort.</li>
+    <li><strong>Surf</strong> — pratique sur la côte atlantique, lecture des conditions et patience.</li>
+</ul>`,
+  },
+  {
+    page: 'passions',
+    title: `Apprentissage de la cybersécurité en autodidacte`,
+    location: `Plateformes en ligne`,
+    date_range: `Continu`,
+    image_url: null,
+    link_url: null,
+    context: `PERSO`,
+    category: `["Cybersécurité"]`,
+    languages: `[]`,
+    tools: `["TryHackMe","HackTheBox","RootMe","HackThisSite"]`,
+    libraries: `[]`,
+    tags: `[]`,
+    featured: 1,
+    sort_order: 1,
+    start_date: `2024-03`,
     end_date: null,
     description: `<ul class="card-description">
     <li>Pratique régulière du <strong>pentest</strong> sur des environnements virtuels : reconnaissance, exploitation de vulnérabilités, élévation de privilèges.</li>
@@ -1005,43 +1303,43 @@ const cards = [
   },
   {
     page: 'passions',
-    title: 'Sports',
-    location: 'USOMC (Les Massives) & salle',
-    date_range: 'Pratique régulière',
+    title: `Œnologie`,
+    location: `EPITA - Le Kremlin-Bicêtre`,
+    date_range: `Depuis 2024`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Sport"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Esprit d\'équipe","Concentration","Implication"]',
+    context: `PERSO`,
+    category: `["Culture / Voyage"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `[]`,
     featured: 0,
-    sort_order: 1,
-    start_date: '2025-09',
+    sort_order: 2,
+    start_date: `2024-01`,
     end_date: null,
     description: `<ul class="card-description">
-    <li><strong>Rugby</strong> en club (USOMC – Les Massives) depuis 1 an, 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
-    <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
-    <li><strong>Running</strong> — courses régulières pour l'endurance et la gestion de l'effort.</li>
+    <li>Apprentissage des cépages, des terroirs et du processus de vinification, de la vigne à la bouteille.</li>
+    <li>Présidente de l'association <strong>La Cave</strong> à l'EPITA : organisation de dégustations et de visites de domaines.</li>
+    <li>Participation régulière à des dégustations commentées pour affiner le palais et la culture œnologique.</li>
 </ul>`,
   },
   {
     page: 'passions',
-    title: 'Voyage',
-    location: 'Localisations variées',
-    date_range: 'Continu',
+    title: `Voyage`,
+    location: `Localisations variées`,
+    date_range: `Continu`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Culture / Voyage"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Ouverture culturelle"]',
+    context: `PERSO`,
+    category: `["Culture / Voyage"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Ouverture culturelle"]`,
     featured: 0,
-    sort_order: 2,
-    start_date: '2023-01',
+    sort_order: 3,
+    start_date: `2023-01`,
     end_date: null,
     description: `<ul class="card-description">
     <li><strong>Tanzanie</strong> (Zanzibar) — découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
@@ -1052,145 +1350,24 @@ const cards = [
   },
   {
     page: 'passions',
-    title: 'Œnologie',
-    location: 'EPITA - Le Kremlin-Bicêtre',
-    date_range: 'Depuis 2024',
+    title: `Photographie`,
+    location: `Localisations variées`,
+    date_range: `Continu`,
     image_url: null,
     link_url: null,
-    context: 'PERSO',
-    category: '["Culture / Voyage"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '[]',
-    featured: 0,
-    sort_order: 3,
-    start_date: '2024-01',
-    end_date: null,
-    description: `<ul class="card-description">
-    <li>Apprentissage des cépages, des terroirs et du processus de vinification, de la vigne à la bouteille.</li>
-    <li>Présidente de l'association <strong>La Cave</strong> à l'EPITA : organisation de dégustations et de visites de domaines.</li>
-    <li>Participation régulière à des dégustations commentées pour affiner le palais et la culture œnologique.</li>
-</ul>`,
-  },
-
-  // === VIE ASSOCIATIVE ===
-  {
-    page: 'vie-associative',
-    title: 'Scoute - Scouts et Guides de France',
-    location: 'Gaillac',
-    date_range: '2013 - 2022',
-    image_url: null,
-    link_url: null,
-    context: 'BÉNÉVOLAT',
-    category: '["Animation / Jeunesse","Engagement social"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Esprit d\'équipe","Autonomie","Vie en plein air"]',
-    featured: 0,
-    sort_order: 0,
-    start_date: '2013-09',
-    end_date: '2022-08',
-    description: `<ul class="card-description">
-    <li><strong>9 ans de scoutisme</strong> au sein des Scouts et Guides de France, de la branche cadette à la branche aînée.</li>
-    <li>Participation régulière à des réunions hebdomadaires, week-ends et <strong>camps</strong> d'été.</li>
-    <li>Développement de l'<strong>autonomie</strong>, du sens du collectif et du goût pour la vie en plein air.</li>
-</ul>`,
-  },
-  {
-    page: 'vie-associative',
-    title: 'Cheftaine (Bénévolat) - Scouts et Guides de France',
-    location: 'Gaillac',
-    date_range: '2022 - 2024',
-    image_url: null,
-    link_url: null,
-    context: 'BÉNÉVOLAT',
-    category: '["Animation / Jeunesse","Engagement social"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Leadership","Pédagogie","BAFA","Responsabilité"]',
-    featured: 0,
-    sort_order: 1,
-    start_date: '2022-09',
-    end_date: '2024-08',
-    description: `<ul class="card-description">
-    <li>Encadrement bénévole d'un groupe de <strong>30 jeunes</strong> (8-11 ans), au sein d'une unité d'environ 100 scouts.</li>
-    <li>Conception et animation d'activités éducatives lors de réunions hebdomadaires, week-ends et camps.</li>
-    <li>Responsabilité de la sécurité physique et morale des jeunes, en lien avec les familles.</li>
-    <li>Investissement de 5 à 15 h par mois, développant patience, pédagogie et sens des responsabilités.</li>
-</ul>`,
-  },
-  {
-    page: 'vie-associative',
-    title: `Staff' Communication - EPITA`,
-    location: 'Le Kremlin-Bicêtre',
-    date_range: '2025 - Présent',
-    image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Communication"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Événementiel","Relationnel"]',
-    featured: 0,
-    sort_order: 2,
-    start_date: '2025-09',
-    end_date: null,
-    description: `<ul class="card-description">
-    <li>Représentation de l'EPITA sur <strong>3 JPO</strong>, <strong>10 salons étudiants</strong> et des présentations dans des lycées en France (Dunkerque…) et à l'étranger (Roumanie…). [Réalisés sur l'année 2025-2026]</li>
-    <li>Encadrement d'étudiants lors des événements, accueil et conseil personnalisé auprès des futurs candidats et de leurs familles.</li>
-    <li>Engagement régulier d'environ <strong>13 journées de mobilisation par an</strong>, renforçant aisance orale et sens du relationnel.</li>
-</ul>`,
-  },
-  {
-    page: 'vie-associative',
-    title: 'Présidente de La Cave - Association du terroir (~50 membres)',
-    location: 'EPITA',
-    date_range: '2024 - Présent',
-    image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Culture / Voyage","Engagement social"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Organisation","Logistique","Management"]',
-    featured: 0,
-    sort_order: 3,
-    start_date: '2024-11',
-    end_date: null,
-    description: `<ul class="card-description">
-    <li><strong>Direction du bureau</strong> de l'association (~10 membres actifs) : gestion budgétaire, coordination de l'équipe et planification annuelle.</li>
-    <li>Organisation d'une <strong>vingtaine d'événements par an</strong> : dégustations de vins et de fromages, sorties culturelles.</li>
-    <li>Planification de visites de caves, de domaines viticoles et de fermes locales.</li>
-    <li>Promotion des produits du terroir français et sensibilisation à l'œnologie au sein de l'EPITA.</li>
-</ul>`,
-  },
-  {
-    page: 'vie-associative',
-    title: 'Sentinelle - STOP VSS',
-    location: 'EPITA',
-    date_range: '2025 - Présent',
-    image_url: null,
-    link_url: null,
-    context: 'ÉCOLE',
-    category: '["Engagement social"]',
-    languages: '[]',
-    tools: '[]',
-    libraries: '[]',
-    tags: '["Prévention","Sécurité","Écoute","Engagement"]',
+    context: `PERSO`,
+    category: `["Culture / Voyage"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Créativité","Observation","Patience"]`,
     featured: 0,
     sort_order: 4,
-    start_date: '2025-09',
+    start_date: `2023-01`,
     end_date: null,
     description: `<ul class="card-description">
-    <li><strong>STOP VSS</strong> est une association de lutte contre les <strong>violences sexistes et sexuelles</strong> (VSS), c'est-à-dire l'ensemble des comportements allant du harcèlement de rue aux agressions sexuelles, en passant par les propos sexistes et les situations d'emprise.</li>
-    <li>Formée en tant que <strong>sentinelle</strong> : présence lors de soirées étudiantes pour veiller à la sécurité des participants et réalisation de <strong>maraudes</strong> afin de détecter et prévenir les situations à risque.</li>
-    <li>Intervention en cas d'<strong>agression sexuelle</strong> ou de comportement inapproprié : mise en sécurité de la victime, écoute et orientation vers les dispositifs d'aide adaptés.</li>
-    <li>Capacité à <strong>accompagner les victimes</strong> : écoute bienveillante, soutien moral et aide dans les démarches auprès des structures compétentes.</li>
+    <li><strong>Photographie</strong> en voyage et au quotidien : cadrage, lumière, composition.</li>
+    <li>Un exercice d'<strong>observation</strong> et de patience — regarder longtemps avant de déclencher, ce qui se transpose plutôt bien à l'analyse de données comme à la reconnaissance.</li>
 </ul>`,
   },
 ];
