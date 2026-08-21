@@ -80,6 +80,7 @@ export default async function handler(req, res) {
       if (admin && all) {
         const result = await db.execute({
           sql: 'SELECT * FROM posts ORDER BY created_at DESC',
+          args: [],
         });
         return res.status(200).json(result.rows);
       }
@@ -89,6 +90,7 @@ export default async function handler(req, res) {
         sql: `SELECT id, slug, title, summary, tags, image_url, context, category,
                      languages, tools, libraries, featured, sort_order, created_at
               FROM posts WHERE published = 1 ORDER BY created_at DESC`,
+        args: [],
       });
       let posts = result.rows;
 
