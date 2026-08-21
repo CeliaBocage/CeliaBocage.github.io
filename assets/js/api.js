@@ -441,6 +441,11 @@ async function loadCards(page, container) {
       return;
     }
 
+    // Cartes mises en avant d'abord, l'ordre de l'API (le plus récent d'abord)
+    // étant conservé à l'intérieur de chaque groupe. Sans ça le drapeau
+    // `featured` ne servait qu'une fois un filtre actif.
+    cards.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
     container.innerHTML = cards.map(card => {
       const tags = JSON.parse(card.tags || '[]');
       const catValues = JSON.parse(card.category || '[]');
