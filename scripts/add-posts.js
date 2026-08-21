@@ -22,7 +22,7 @@ const newPosts = [
   {
     slug: 'db-360-la-memoire-de-lentreprise',
     title: `J'ai construit la mémoire que l'entreprise n'avait pas. 🧠🗄️`,
-    summary: `La DB 360 : une timeline unique où chaque événement business est enregistré — et souvent, rentre tout seul. De l'idée au déploiement.`,
+    summary: `La DB 360 : une timeline unique où chaque événement business est enregistré et, souvent, rentre tout seul. De l'idée au déploiement.`,
     image_url: null,
     tags: '["Data","MongoDB","DataEngineering","Weborama","DB360","Traçabilité"]',
     created_at: '2026-07-12',
@@ -46,7 +46,7 @@ const newPosts = [
 <p><strong>🏗️ Ce que j'ai appris en la concevant :</strong></p>
 
 <p><strong>1. Un bon modèle de données se lit en 5 minutes.</strong><br>
-Un seul type d'objet au centre — l'<strong>événement horodaté</strong> — avec juste ce qu'il faut de champs pour le situer : quand, quoi, qui, quelle source, quel périmètre. Pas besoin d'être technique pour comprendre le modèle, et c'est tout l'objectif : les équipes qui l'alimentent ne sont pas des développeurs.</p>
+Un seul type d'objet au centre, l'<strong>événement horodaté</strong>, avec juste ce qu'il faut de champs pour le situer : quand, quoi, qui, quelle source, quel périmètre. Pas besoin d'être technique pour comprendre le modèle, et c'est tout l'objectif : les équipes qui l'alimentent ne sont pas des développeurs.</p>
 
 <p><strong>2. La donnée que personne ne remplit n'existera jamais.</strong><br>
 Le piège d'un tel outil, c'est de demander aux équipes de remplir un formulaire de plus. Personne ne le fait. Alors j'ai branché des <strong>connecteurs qui alimentent la base automatiquement</strong> : les releases produit remontent depuis GitHub, les coupons depuis Stripe, les publications depuis les réseaux sociaux, le reste depuis un Google Sheets.</p>
@@ -58,7 +58,7 @@ C'est aussi une vraie application : une <strong>API REST</strong>, un modèle d'
 
 <p>Le plus satisfaisant ?</p>
 
-<p>Passer d'une frustration — <em>« mais pourquoi ce pic ?! »</em> — à un outil concret qui répond à la question pour toute l'équipe, aujourd'hui et dans deux ans.</p>
+<p>Passer d'une frustration (<em>« mais pourquoi ce pic ?! »</em>) à un outil concret qui répond à la question pour toute l'équipe, aujourd'hui et dans deux ans.</p>
 
 <p><strong>La donnée la plus précieuse d'une entreprise, c'est celle qui n'a jamais été enregistrée. J'ai construit l'endroit où l'enregistrer. 💡</strong></p>
 
@@ -89,9 +89,9 @@ Moi, j'ouvre une machine vulnérable sur <strong>HackTheBox</strong> et j'essaie
 
 <p>Sur une machine, tu pars de rien. Une IP, un port ouvert, un service qui tourne. Et il faut :</p>
 <ul>
-  <li>🔎 <strong>Énumérer</strong> — ne rien laisser passer, parce que la faille est souvent dans le détail qu'on ignore.</li>
-  <li>🧩 <strong>Relier les indices</strong> — un identifiant traîne ici, un fichier de conf mal protégé là… et soudain tout s'emboîte.</li>
-  <li>⏳ <strong>Encaisser la frustration</strong> — bloquer 2h sur une machine, puis comprendre que la solution tenait à un rien.</li>
+  <li>🔎 <strong>Énumérer</strong> : ne rien laisser passer, parce que la faille est souvent dans le détail qu'on ignore.</li>
+  <li>🧩 <strong>Relier les indices</strong> : un identifiant traîne ici, un fichier de conf mal protégé là… et soudain tout s'emboîte.</li>
+  <li>⏳ <strong>Encaisser la frustration</strong> : bloquer 2h sur une machine, puis comprendre que la solution tenait à un rien.</li>
 </ul>
 
 <p>Ce que j'aime, c'est que ça mobilise exactement le même réflexe que la data : <strong>observer, formuler une hypothèse, tester, recommencer.</strong></p>
@@ -131,7 +131,7 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 <ul>
   <li>Toute entrée utilisateur est hostile jusqu'à preuve du contraire.</li>
   <li>Ce qui est « caché » n'est pas « protégé ».</li>
-  <li>La faille n'est presque jamais là où le code est complexe — elle est là où on a supposé que « personne ne ferait ça ».</li>
+  <li>La faille n'est presque jamais là où le code est complexe, elle est là où on a supposé que « personne ne ferait ça ».</li>
 </ul>
 
 <p>Le plus drôle ? Depuis que je pense comme une attaquante, <strong>j'écris du code plus solide.</strong> Je valide mes entrées, je me méfie de mes propres suppositions, je teste les cas tordus.</p>
@@ -162,16 +162,16 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p>Et croyez-moi, avant qu'une machine « lise » une lettre, il se passe beaucoup de choses :</p>
 <ul>
-  <li>🖼️ <strong>Prétraitement de l'image</strong> — passage en niveaux de gris, binarisation, suppression du bruit. Une machine ne voit pas une lettre, elle voit des pixels.</li>
-  <li>✂️ <strong>Segmentation</strong> — découper l'image en lignes, puis en caractères. Là où l'œil humain sépare tout instantanément, il faut tout expliquer au code.</li>
-  <li>🧠 <strong>Reconnaissance</strong> — entraîner un réseau de neurones à associer un bloc de pixels à une lettre.</li>
+  <li>🖼️ <strong>Prétraitement de l'image</strong> : passage en niveaux de gris, binarisation, suppression du bruit. Une machine ne voit pas une lettre, elle voit des pixels.</li>
+  <li>✂️ <strong>Segmentation</strong> : découper l'image en lignes, puis en caractères. Là où l'œil humain sépare tout instantanément, il faut tout expliquer au code.</li>
+  <li>🧠 <strong>Reconnaissance</strong> : entraîner un réseau de neurones à associer un bloc de pixels à une lettre.</li>
 </ul>
 
 <p>La grande leçon de ce projet ?</p>
 
 <p><strong>Coder l'intelligence « à la main » en C, c'est comprendre à quel point rien n'est évident pour une machine.</strong></p>
 
-<p>Chaque étape que notre cerveau fait sans y penser — reconnaître un « A », ignorer une tache — devient une ligne de code, un algorithme, une décision.</p>
+<p>Chaque étape que notre cerveau fait sans y penser (reconnaître un « A », ignorer une tache) devient une ligne de code, un algorithme, une décision.</p>
 
 <p>Et c'est exactement ce qui rend l'informatique passionnante : <strong>décomposer l'évidence jusqu'à ce qu'une machine puisse la reproduire.</strong></p>`,
   },
@@ -195,9 +195,9 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p>Sur mon projet de <strong>jeu 3D</strong> (moteur <strong>Godot</strong>, scripts en <strong>C#</strong>), j'ai touché à toute la chaîne :</p>
 <ul>
-  <li>🗿 <strong>Modélisation 3D sur Blender</strong> — créer les objets, les textures, penser à ce que le joueur va voir.</li>
-  <li>⚙️ <strong>Scripts C#</strong> — les déplacements, les interactions, la logique de jeu.</li>
-  <li>📋 <strong>Menus dynamiques gérés en JSON</strong> — pour ne pas coder « en dur » chaque option, mais charger la configuration depuis un fichier.</li>
+  <li>🗿 <strong>Modélisation 3D sur Blender</strong> : créer les objets, les textures, penser à ce que le joueur va voir.</li>
+  <li>⚙️ <strong>Scripts C#</strong> : les déplacements, les interactions, la logique de jeu.</li>
+  <li>📋 <strong>Menus dynamiques gérés en JSON</strong> : pour ne pas coder « en dur » chaque option, mais charger la configuration depuis un fichier.</li>
 </ul>
 
 <p>Ce dernier point m'a appris quelque chose que je réutilise partout depuis :</p>
@@ -248,7 +248,7 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p>💡 La détection d'intrusion, la chasse aux menaces (<em>threat hunting</em>), l'analyse SOC… c'est de l'analyse de données appliquée à la sécurité.</p>
 
-<p>Ce que j'apprends à faire parler chez ArtMajeur — des chiffres — je veux le faire parler demain sur des logs, des flux réseau, des comportements.</p>
+<p>Ce que j'apprends à faire parler chez ArtMajeur (des chiffres), je veux le faire parler demain sur des logs, des flux réseau, des comportements.</p>
 
 <p><strong>La donnée ne ment pas. Elle attend juste quelqu'un qui sache poser les bonnes questions.</strong></p>`,
   },
@@ -272,7 +272,7 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p>Sans standard, brancher un LLM sur les outils d'une entreprise, c'est écrire un connecteur sur mesure par couple modèle × outil. N modèles, M outils, N × M connecteurs à maintenir. Le <strong>Model Context Protocol</strong> définit une interface commune : un serveur écrit une fois est consommable par n'importe quel client compatible. On passe de N × M à N + M.</p>
 
-<p>Techniquement : un hôte (l'application, par exemple Claude Code) embarque un <strong>client MCP</strong> qui parle à des <strong>serveurs MCP</strong> en JSON-RPC — stdio en local, HTTP/SSE à distance. Un serveur expose trois primitives : des <strong>tools</strong> (les actions que le modèle peut appeler), des <strong>resources</strong> (des données lisibles, adressées par URI) et des <strong>prompts</strong> (des modèles d'invite réutilisables). Le modèle découvre les capacités à l'exécution : rien n'est codé en dur.</p>
+<p>Techniquement : un hôte (l'application, par exemple Claude Code) embarque un <strong>client MCP</strong> qui parle à des <strong>serveurs MCP</strong> en JSON-RPC : stdio en local, HTTP/SSE à distance. Un serveur expose trois primitives : des <strong>tools</strong> (les actions que le modèle peut appeler), des <strong>resources</strong> (des données lisibles, adressées par URI) et des <strong>prompts</strong> (des modèles d'invite réutilisables). Le modèle découvre les capacités à l'exécution : rien n'est codé en dur.</p>
 
 <p>C'est élégant. Et c'est précisément ce qui m'inquiète. 🧐</p>
 
@@ -284,11 +284,11 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p><strong>2. Les secrets restent côté serveur.</strong> Jamais dans le contexte du modèle. Un contexte, ça se logue, ça se met en cache, ça part chez un fournisseur tiers.</p>
 
-<p><strong>3. Les sorties d'outils sont des données non fiables.</strong> C'est l'<strong>injection de prompt indirecte</strong> : le contenu d'une page web ou d'un ticket que l'outil rapporte peut contenir des instructions. Le modèle ne fait pas la différence entre « voici la donnée » et « voici ce que tu dois faire ». Nous, si — à condition d'y avoir pensé avant.</p>
+<p><strong>3. Les sorties d'outils sont des données non fiables.</strong> C'est l'<strong>injection de prompt indirecte</strong> : le contenu d'une page web ou d'un ticket que l'outil rapporte peut contenir des instructions. Le modèle ne fait pas la différence entre « voici la donnée » et « voici ce que tu dois faire ». Nous, si, à condition d'y avoir pensé avant.</p>
 
 <p><strong>4. Validation humaine sur le destructif, journalisation de tous les appels.</strong> Un appel d'outil non consigné est un appel qu'on ne pourra pas auditer.</p>
 
-<p>Ajoutez à cela des <strong>citizen developers</strong> — des collègues non-développeurs outillés par l'IA, qui produisent maintenant du code utile. C'était l'autre moitié de mon stage : les accompagner, animer des workshops, et surtout parler d'hygiène des secrets avant que le sujet ne se règle tout seul, mal.</p>
+<p>Ajoutez à cela des <strong>citizen developers</strong>, des collègues non-développeurs outillés par l'IA, qui produisent maintenant du code utile. C'était l'autre moitié de mon stage : les accompagner, animer des workshops, et surtout parler d'hygiène des secrets avant que le sujet ne se règle tout seul, mal.</p>
 
 <p><strong>Les agents IA en interne ne créent pas des risques nouveaux dans leur nature. Ils créent une porte de plus, mieux documentée que les autres. 🚪</strong></p>`,
   },
@@ -308,7 +308,7 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
     sort_order: 0,
     content: `<p>Chez <strong>ArtMajeur</strong>, une plateforme qui réunit des milliers d'artistes, je tombe un jour sur une anomalie dans les données : une <strong>variation forte sur un segment du catalogue</strong>, sans explication dans les chiffres. 📊</p>
 
-<p>Alors je fais ce qu'on fait dans ce cas : je demande. Une personne, puis deux, puis <strong>cinq</strong>. Et petit à petit, une hypothèse se reconstitue — une opération passée, dont plus personne n'a la date exacte.</p>
+<p>Alors je fais ce qu'on fait dans ce cas : je demande. Une personne, puis deux, puis <strong>cinq</strong>. Et petit à petit, une hypothèse se reconstitue : une opération passée, dont plus personne n'a la date exacte.</p>
 
 <p>Une hypothèse. Reconstituée à l'oral. Et surtout : <strong>impossible de dater l'événement.</strong></p>
 
@@ -316,13 +316,13 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
 
 <p><strong>C'est là que le déclic s'est produit.</strong> 💡</p>
 
-<p>Mon problème n'était pas l'analyse. Mon analyse allait très bien. Mon problème, c'était l'<strong>absence de mémoire</strong>. Une donnée sans son contexte n'est pas interprétable — et un contexte qui n'est pas écrit disparaît avec les gens qui le portaient.</p>
+<p>Mon problème n'était pas l'analyse. Mon analyse allait très bien. Mon problème, c'était l'<strong>absence de mémoire</strong>. Une donnée sans son contexte n'est pas interprétable, et un contexte qui n'est pas écrit disparaît avec les gens qui le portaient.</p>
 
 <p>J'ai proposé une base d'événements horodatés, internes et externes, corrélable aux métriques : <strong>DB360</strong>. Releases, campagnes, incidents, faits extérieurs. Pour que la cause d'un écart soit <em>interrogeable</em> au lieu d'être recollée à l'oral. J'ai porté l'idée jusqu'au déploiement en production, pendant mon stage suivant.</p>
 
 <p><strong>Et c'est en cybersécurité que cette leçon m'a le plus servi.</strong></p>
 
-<p>Parce que la phrase est exactement la même. Un incident non documenté est un incident qui se reproduira. Sans journal horodaté, il n'y a <strong>ni post-mortem, ni apprentissage</strong> — juste des gens qui se souviennent à peu près, et qui finiront par partir.</p>
+<p>Parce que la phrase est exactement la même. Un incident non documenté est un incident qui se reproduira. Sans journal horodaté, il n'y a <strong>ni post-mortem, ni apprentissage</strong>, juste des gens qui se souviennent à peu près, et qui finiront par partir.</p>
 
 <p>Le SIEM, les logs applicatifs, la journalisation des appels d'outils d'un agent IA : ce sont toutes des réponses au même problème. Pas « garder une trace au cas où ». <strong>Rendre le passé interrogeable.</strong></p>
 
@@ -344,11 +344,11 @@ Maintenant, je vois <strong>un point d'entrée</strong>. Qu'est-ce qui se passe 
     libraries: '[]',
     featured: 0,
     sort_order: 0,
-    content: `<p>Une précision d'abord, parce qu'elle compte : <strong>Kōan n'est pas mon projet.</strong> C'est un <strong>agent IA autonome open source</strong> publié par <strong>Anantys</strong> — « an autonomous AI agent that works while you sleep ». Environ 24 000 lignes de Python. Moi, j'y ai <strong>contribué</strong>. 🧑‍💻</p>
+    content: `<p>Une précision d'abord, parce qu'elle compte : <strong>Kōan n'est pas mon projet.</strong> C'est un <strong>agent IA autonome open source</strong> publié par <strong>Anantys</strong> : « an autonomous AI agent that works while you sleep ». Environ 24 000 lignes de Python. Moi, j'y ai <strong>contribué</strong>. 🧑‍💻</p>
 
 <p>Ce que fait Kōan : il exploite du quota de modèle inutilisé pour exécuter en tâche de fond des <strong>revues de code</strong>, des corrections de bugs et des analyses de codebase. File de missions partagée, cycle de vie des tâches, modes de budget adaptatifs, mémoire isolée par projet, pilotage par messagerie.</p>
 
-<p>Et un détail d'architecture que je trouve exemplaire : il travaille sur des branches <code>koan/*</code> et n'ouvre que des <strong>pull requests en brouillon</strong>. <strong>Jamais de commit direct sur <code>main</code>.</strong> Un agent autonome avec un accès en écriture à vos dépôts, c'est une surface d'attaque — et là, le garde-fou est dans la conception, pas dans la bonne volonté de l'utilisateur. 🔒</p>
+<p>Et un détail d'architecture que je trouve exemplaire : il travaille sur des branches <code>koan/*</code> et n'ouvre que des <strong>pull requests en brouillon</strong>. <strong>Jamais de commit direct sur <code>main</code>.</strong> Un agent autonome avec un accès en écriture à vos dépôts, c'est une surface d'attaque, et là, le garde-fou est dans la conception, pas dans la bonne volonté de l'utilisateur. 🔒</p>
 
 <p><strong>Maintenant, ma contribution. Elle est modeste, et c'est tout l'intérêt de l'histoire.</strong></p>
 
@@ -395,7 +395,7 @@ C'est la leçon que je garde. La valeur ajoutée d'un développeur n'est pas pro
 
 <p>Chaque couche ajoute son en-tête en descendant la pile, et le retire en remontant. C'est cette <strong>encapsulation</strong> qui rend le débogage méthodique possible : le problème vit dans une couche, une seule, et on peut l'isoler. Le câble ou le signal (L1) ? Les trames et l'ARP (L2) ? L'adressage et le routage (L3) ? Les ports et l'état TCP (L4) ? Ou une bêtise applicative en L7 ?</p>
 
-<p>Au passage : la pile réelle, TCP/IP, en condense quatre. OSI reste le <strong>vocabulaire commun</strong> pour désigner un problème à quelqu'un d'autre — c'est déjà énorme.</p>
+<p>Au passage : la pile réelle, TCP/IP, en condense quatre. OSI reste le <strong>vocabulaire commun</strong> pour désigner un problème à quelqu'un d'autre, c'est déjà énorme.</p>
 
 <p><strong>Et la lecture sécurité, elle, tient dans une phrase : chaque couche a ses attaques.</strong> 🎯</p>
 
@@ -403,9 +403,9 @@ C'est la leçon que je garde. La valeur ajoutée d'un développeur n'est pas pro
 
 <p><strong>Un exemple qui m'a marquée : TCP contre UDP.</strong></p>
 
-<p>On présente souvent ça comme une préférence. C'est un <strong>arbitrage fiabilité contre latence</strong>. TCP ouvre une connexion (SYN / SYN-ACK / ACK), numérote, acquitte, retransmet, contrôle la congestion — au prix d'une latence d'établissement et de 20 octets d'en-tête minimum. UDP a un en-tête de 8 octets, aucun acquittement, aucun réordonnancement. On le choisit quand perdre un paquet coûte moins cher qu'attendre : DNS, DHCP, VoIP, jeux, et QUIC/HTTP3 qui reconstruit la fiabilité au-dessus.</p>
+<p>On présente souvent ça comme une préférence. C'est un <strong>arbitrage fiabilité contre latence</strong>. TCP ouvre une connexion (SYN / SYN-ACK / ACK), numérote, acquitte, retransmet, contrôle la congestion, au prix d'une latence d'établissement et de 20 octets d'en-tête minimum. UDP a un en-tête de 8 octets, aucun acquittement, aucun réordonnancement. On le choisit quand perdre un paquet coûte moins cher qu'attendre : DNS, DHCP, VoIP, jeux, et QUIC/HTTP3 qui reconstruit la fiabilité au-dessus.</p>
 
-<p>Savoir <em>pourquoi</em> le DNS tient en UDP — et bascule en TCP au-delà de 512 octets ou pour un transfert de zone — vaut mieux que savoir <em>que</em> le DNS est en UDP.</p>
+<p>Savoir <em>pourquoi</em> le DNS tient en UDP (et bascule en TCP au-delà de 512 octets ou pour un transfert de zone) vaut mieux que savoir <em>que</em> le DNS est en UDP.</p>
 
 <p>Et ce même arbitrage explique les attaques : la poignée de main en trois temps est la base du <strong>SYN flood</strong> et des scans Nmap (SYN semi-ouvert contre connect scan) ; UDP est sans état, donc trivial à usurper, ce qui en fait le vecteur des <strong>amplifications DNS et NTP</strong>.</p>
 

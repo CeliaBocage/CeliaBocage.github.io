@@ -597,13 +597,13 @@ const cards = [
     start_date: `2026-05`,
     end_date: `2026-08`,
     description: `<ul class="card-description">
-    <li><strong>DB360</strong>, mon initiative, portée du constat au <strong>déploiement en production</strong> : une base d'événements horodatés — releases, downtimes, campagnes, incidents, faits extérieurs — <strong>corrélable aux métriques</strong>, pour expliquer les écarts de trafic que les chiffres seuls ne justifient pas.</li>
-    <li>Sur DB360, la <strong>chaîne complète</strong> : conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — j'ai raccordé un agent IA à la base via <strong>MCP</strong>, aucune saisie manuelle. <strong>MongoDB</strong>, Node.js, API REST, <strong>Docker</strong>, source de données <strong>Grafana</strong>.</li>
+    <li><strong>DB360</strong>, mon initiative, portée du constat au <strong>déploiement en production</strong> : une base d'événements horodatés (releases, downtimes, campagnes, incidents, faits extérieurs), <strong>corrélable aux métriques</strong>, pour expliquer les écarts de trafic que les chiffres seuls ne justifient pas.</li>
+    <li>Sur DB360, la <strong>chaîne complète</strong> : conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> (j'ai raccordé un agent IA à la base via <strong>MCP</strong>), aucune saisie manuelle. <strong>MongoDB</strong>, Node.js, API REST, <strong>Docker</strong>, source de données <strong>Grafana</strong>.</li>
     <li><strong>Gouvernance Claude Code</strong> : revue de <strong>PRs sur le MCP interne</strong> (Python, TypeScript), développement de <em>skills</em>, validation des solutions produites par les <strong>citizen developers</strong>.</li>
-    <li><strong>Hygiène des secrets</strong> et vérification de l'absence de failles de sécurité dans les solutions développées hors des équipes tech — rôle technique de management des différents pôles.</li>
+    <li><strong>Hygiène des secrets</strong> et vérification de l'absence de failles de sécurité dans les solutions développées hors des équipes tech ; rôle technique de management des différents pôles.</li>
     <li><strong>CI/CD</strong> et <strong>GitHub Actions</strong> ; intégration d'<strong>API LLM</strong> dans les workflows développeurs.</li>
     <li><strong>Synchronisation des configurations</strong> Claude / skills / MCP sur les postes de travail (crons &amp; hooks).</li>
-    <li>Suivi hebdomadaire et <strong>animation de workshops</strong> : bases de l'informatique, <em>vibe coding</em>, gouvernance IA — sensibilisation aux risques, déblocage, montée en autonomie.</li>
+    <li>Suivi hebdomadaire et <strong>animation de workshops</strong> : bases de l'informatique, <em>vibe coding</em>, gouvernance IA ; sensibilisation aux risques, déblocage, montée en autonomie.</li>
 </ul>`,
   },
   {
@@ -629,7 +629,7 @@ const cards = [
     <li>Production de <strong>dashboards et visualisations</strong> (<strong>Plotly/Dash</strong>, radar charts, courbes de percentiles) comparant les œuvres vendues et non vendues, pour les équipes produit, dev et communication.</li>
     <li>Mise en évidence de <strong>leviers d'amélioration</strong> pour maximiser la visibilité, l'engagement et les ventes des artistes.</li>
     <li>Conception de <strong>requêtes SQL complexes</strong> avec traitement des données directement dans la requête ; gestion, maintenance et optimisation de la <strong>base de données</strong> de la plateforme.</li>
-    <li>Étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes — proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
+    <li>Étude ayant conduit à un <strong>changement sur la plateforme</strong> pour améliorer les ventes, proposition validée par <strong>A/B testing</strong> puis déployée à l'ensemble des utilisateurs.</li>
     <li><strong>Sensibilisation des équipes aux risques de sécurité</strong> : clés d'API, hygiène des secrets.</li>
 </ul>`,
   },
@@ -755,11 +755,11 @@ const cards = [
     start_date: `2021-01`,
     end_date: `2025-12`,
     description: `<ul class="card-description">
-    <li><strong>Permis B</strong> — Permis de conduire automobile.</li>
-    <li><strong>Permis A2</strong> — Permis moto (motocyclettes de puissance intermédiaire).</li>
-    <li><strong>Permis bateau fluvial & côtier</strong> — Navigation en eaux intérieures et en mer.</li>
-    <li><strong>Certificat de formation contre les VSS</strong> — Formation à la prévention et à la prise en charge des violences sexistes et sexuelles.</li>
-    <li><strong>PSC1</strong> — Prévention et Secours Civiques de niveau 1, formation aux premiers secours (massage cardiaque, PLS, gestion des hémorragies, etc.).</li>
+    <li><strong>Permis B</strong> : permis de conduire automobile.</li>
+    <li><strong>Permis A2</strong> : permis moto (motocyclettes de puissance intermédiaire).</li>
+    <li><strong>Permis bateau fluvial & côtier</strong> : navigation en eaux intérieures et en mer.</li>
+    <li><strong>Certificat de formation contre les VSS</strong> : formation à la prévention et à la prise en charge des violences sexistes et sexuelles.</li>
+    <li><strong>PSC1</strong> : Prévention et Secours Civiques de niveau 1, formation aux premiers secours (massage cardiaque, PLS, gestion des hémorragies, etc.).</li>
 </ul>`,
   },
   {
@@ -812,7 +812,7 @@ const cards = [
   },
   {
     page: 'formations',
-    title: `Baccalauréat Général — Mention`,
+    title: `Baccalauréat Général, Mention`,
     location: `Lycée St Joseph, Gaillac`,
     date_range: `2023`,
     image_url: null,
@@ -837,7 +837,7 @@ const cards = [
   // === PROJETS ===
   {
     page: 'projets',
-    title: `DB360 — Base d'événements 360`,
+    title: `DB360 : base d'événements 360`,
     location: `Weborama, Levallois-Perret`,
     date_range: `Mai - Août 2026`,
     image_url: null,
@@ -854,18 +854,18 @@ const cards = [
     end_date: `2026-08`,
     description: `<ul class="card-description">
     <li><strong>Mon initiative</strong>, portée du constat au déploiement en production : identification du besoin, conception du modèle, développement et mise en production.</li>
-    <li><strong>Le problème :</strong> l'analytics montre <em>que</em> quelque chose s'est passé, jamais <em>pourquoi</em>. Les causes — campagnes, releases, incidents, actualité extérieure, décisions de réunion — ne sont écrites nulle part : elles vivent dans la mémoire de deux ou trois personnes.</li>
+    <li><strong>Le problème :</strong> l'analytics montre <em>que</em> quelque chose s'est passé, jamais <em>pourquoi</em>. Les causes (campagnes, releases, incidents, actualité extérieure, décisions de réunion) ne sont écrites nulle part : elles vivent dans la mémoire de deux ou trois personnes.</li>
     <li><strong>La réponse :</strong> un <strong>journal d'événements horodatés</strong>, internes et externes, corrélable aux métriques, pour que la cause d'un écart de trafic soit interrogeable au lieu d'être recollée à l'oral.</li>
-    <li><strong>La chaîne complète, de A à Z :</strong> conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong> — aucune saisie manuelle.</li>
+    <li><strong>La chaîne complète, de A à Z :</strong> conception du <strong>schéma</strong> depuis la page blanche (entités, relations, contraintes), exposition par des <strong>routes API</strong> plutôt qu'un accès direct à la base, puis <strong>alimentation automatique</strong>, aucune saisie manuelle.</li>
     <li>L'alimentation passe par une instance de <strong>Kōan</strong> (agent IA autonome) à laquelle on confie des missions précises : j'ai <strong>raccordé l'agent à la base via MCP</strong>. C'est exactement le sujet des architectures agentiques actuelles, sur un système réel.</li>
     <li><strong>MongoDB</strong>, Node.js, API REST, conteneurisation <strong>Docker</strong>, déploiement <strong>Railway</strong>, exposition en source de données <strong>Grafana</strong>.</li>
     <li>Besoin né de mes analyses chez <strong>ArtMajeur</strong> ; conception et mise en production pendant le stage Tech chez <strong>Weborama</strong>.</li>
-    <li>La compétence de fond : <strong>traçabilité et mémoire organisationnelle</strong> — cousine directe de la démarche de journalisation et d'audit en sécurité.</li>
+    <li>La compétence de fond : <strong>traçabilité et mémoire organisationnelle</strong>, cousine directe de la démarche de journalisation et d'audit en sécurité.</li>
 </ul>`,
   },
   {
     page: 'projets',
-    title: `<a href="https://github.com/CeliaBocage/villa-d-audenge" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge — Site vitrine multilingue</a>`,
+    title: `<a href="https://github.com/CeliaBocage/villa-d-audenge" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge : site vitrine multilingue</a>`,
     location: `Projet personnel`,
     date_range: `Continu`,
     image_url: null,
@@ -882,7 +882,7 @@ const cards = [
     end_date: null,
     description: `<ul class="card-description">
     <li>Site vitrine d'une maison de vacances sur le <strong>Bassin d'Arcachon</strong>, avec un <strong>espace propriétaire protégé</strong> pour changer les photos, fixer les tarifs et suivre le trafic.</li>
-    <li><strong>Quatre langues</strong> (français, anglais, espagnol, allemand) avec des URL traduites par page, et un sélecteur qui renvoie vers <em>la même page</em> dans l'autre langue — pas vers l'accueil.</li>
+    <li><strong>Quatre langues</strong> (français, anglais, espagnol, allemand) avec des URL traduites par page, et un sélecteur qui renvoie vers <em>la même page</em> dans l'autre langue, pas vers l'accueil.</li>
     <li><strong>Next.js 15</strong> / <strong>React 19</strong> / <strong>TypeScript</strong>, <strong>Tailwind CSS 4</strong>, base <strong>Turso/libSQL</strong>, images redimensionnées et ré-encodées côté navigateur avant envoi, déploiement <strong>Vercel</strong>.</li>
     <li>Analytics maison avec <strong>salage des identifiants</strong> plutôt qu'un traceur tiers, et pages mentions légales / confidentialité conformes.</li>
     <li><strong>Aucun contenu inventé :</strong> capacité, équipements, distances, tarifs et conditions sont transcrits de l'annonce et des échanges avec la propriétaire, centralisés dans un seul fichier de contenu.</li>
@@ -906,11 +906,11 @@ const cards = [
     start_date: `2026-06`,
     end_date: null,
     description: `<ul class="card-description">
-    <li><strong>Kōan</strong> est un <strong>agent IA autonome open source</strong> publié par <strong>Anantys</strong> — il exécute en tâche de fond des revues de code, des corrections de bugs et des analyses de codebase. ~24 000 lignes de Python. <em>Je n'en suis pas l'autrice : j'y ai contribué.</em></li>
+    <li><strong>Kōan</strong> est un <strong>agent IA autonome open source</strong> publié par <strong>Anantys</strong> : il exécute en tâche de fond des revues de code, des corrections de bugs et des analyses de codebase. ~24 000 lignes de Python. <em>Je n'en suis pas l'autrice : j'y ai contribué.</em></li>
     <li><strong>Le point de friction :</strong> l'outil ne traitait qu'<strong>un dépôt par exécution</strong>. Pour couvrir tout le parc, il fallait le relancer <strong>72 fois à la main</strong>.</li>
-    <li><strong>Ma contribution :</strong> la <strong>boucle d'itération sur les dépôts</strong>, qui supprime cette manipulation — une seule exécution couvre l'ensemble. Peu de code, mais c'est ce qui fait passer un outil du stade démonstration au stade exploitable.</li>
+    <li><strong>Ma contribution :</strong> la <strong>boucle d'itération sur les dépôts</strong>, qui supprime cette manipulation : une seule exécution couvre l'ensemble. Peu de code, mais c'est ce qui fait passer un outil du stade démonstration au stade exploitable.</li>
     <li>Ce que ça a demandé : lire et modifier une base de code Python conséquente écrite par quelqu'un d'autre, identifier le <strong>vrai</strong> point de friction plutôt que le symptôme, et travailler sous les conventions et le processus de revue du projet.</li>
-    <li><strong>Lecture sécurité :</strong> un agent autonome avec accès en écriture à des dépôts Git est une surface à encadrer. Les garde-fous de Kōan — branches <code>koan/*</code>, pull requests en brouillon uniquement, jamais de commit direct sur <code>main</code> — sont exactement ce qu'il faut savoir défendre.</li>
+    <li><strong>Lecture sécurité :</strong> un agent autonome avec accès en écriture à des dépôts Git est une surface à encadrer. Les garde-fous de Kōan (branches <code>koan/*</code>, pull requests en brouillon uniquement, jamais de commit direct sur <code>main</code>) sont exactement ce qu'il faut savoir défendre.</li>
 </ul>`,
   },
   {
@@ -963,7 +963,7 @@ const cards = [
   },
   {
     page: 'projets',
-    title: `Command-Taker La Cave — Outil interne d'association`,
+    title: `Command-Taker La Cave : outil interne d'association`,
     location: `EPITA - Le Kremlin-Bicêtre`,
     date_range: `En service`,
     image_url: null,
@@ -1247,10 +1247,10 @@ const cards = [
     start_date: `2025-09`,
     end_date: null,
     description: `<ul class="card-description">
-    <li><strong>Rugby</strong> en club (USOMC – Les Massives), 2 entraînements par semaine — esprit d'équipe, combativité et solidarité.</li>
-    <li><strong>Musculation</strong> — 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
-    <li><strong>Running</strong> — courses régulières pour l'endurance et la gestion de l'effort.</li>
-    <li><strong>Surf</strong> — pratique sur la côte atlantique, lecture des conditions et patience.</li>
+    <li><strong>Rugby</strong> en club (USOMC – Les Massives), 2 entraînements par semaine : esprit d'équipe, combativité et solidarité.</li>
+    <li><strong>Musculation</strong> : 3 séances par semaine, discipline personnelle et dépassement de soi.</li>
+    <li><strong>Running</strong> : courses régulières pour l'endurance et la gestion de l'effort.</li>
+    <li><strong>Surf</strong> : pratique sur la côte atlantique, lecture des conditions et patience.</li>
 </ul>`,
   },
   {
@@ -1319,10 +1319,10 @@ const cards = [
     start_date: `2023-01`,
     end_date: null,
     description: `<ul class="card-description">
-    <li><strong>Tanzanie</strong> (Zanzibar) — découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
-    <li><strong>Irlande</strong> (Sligo, Galway, Dublin, Cork, Belfast…) — exploration approfondie pendant mon semestre d'échange.</li>
-    <li><strong>Indonésie</strong> (Jakarta, Yogyakarta, Ubud) — immersion dans la diversité culturelle et naturelle de l'archipel.</li>
-    <li><strong>Roumanie</strong> (Bucarest) — découverte du patrimoine historique d'Europe de l'Est.</li>
+    <li><strong>Tanzanie</strong> (Zanzibar) : découverte d'une culture et de paysages uniques en Afrique de l'Est.</li>
+    <li><strong>Irlande</strong> (Sligo, Galway, Dublin, Cork, Belfast…) : exploration approfondie pendant mon semestre d'échange.</li>
+    <li><strong>Indonésie</strong> (Jakarta, Yogyakarta, Ubud) : immersion dans la diversité culturelle et naturelle de l'archipel.</li>
+    <li><strong>Roumanie</strong> (Bucarest) : découverte du patrimoine historique d'Europe de l'Est.</li>
 </ul>`,
   },
   {
@@ -1344,7 +1344,7 @@ const cards = [
     end_date: null,
     description: `<ul class="card-description">
     <li><strong>Photographie</strong> en voyage et au quotidien : cadrage, lumière, composition.</li>
-    <li>Un exercice d'<strong>observation</strong> et de patience — regarder longtemps avant de déclencher, ce qui se transpose plutôt bien à l'analyse de données comme à la reconnaissance.</li>
+    <li>Un exercice d'<strong>observation</strong> et de patience : regarder longtemps avant de déclencher, ce qui se transpose plutôt bien à l'analyse de données comme à la reconnaissance.</li>
 </ul>`,
   },
 ];

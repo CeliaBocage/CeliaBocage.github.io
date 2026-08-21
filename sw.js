@@ -51,7 +51,7 @@ self.addEventListener('fetch', (event) => {
     // Ignorer les requetes non-GET
     if (event.request.method !== 'GET') return;
 
-    // Ne pas cacher les appels API — toujours aller au reseau
+    // Ne pas cacher les appels API, toujours aller au reseau
     const url = new URL(event.request.url);
     if (url.hostname !== location.hostname) return;
 
