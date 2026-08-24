@@ -1347,6 +1347,29 @@ const cards = [
     <li>Un exercice d'<strong>observation</strong> et de patience : regarder longtemps avant de déclencher, ce qui se transpose plutôt bien à l'analyse de données comme à la reconnaissance.</li>
 </ul>`,
   },
+  {
+    page: 'passions',
+    title: `Plongée sous-marine`,
+    location: `Niveau 1 FFESSM`,
+    date_range: `Continu`,
+    image_url: null,
+    link_url: null,
+    context: `PERSO`,
+    category: `["Sport"]`,
+    languages: `[]`,
+    tools: `[]`,
+    libraries: `[]`,
+    tags: `["Sang-froid","Curiosité","Rigueur"]`,
+    featured: 0,
+    sort_order: 5,
+    start_date: null,
+    end_date: null,
+    description: `<ul class="card-description">
+    <li><strong>Niveau 1 FFESSM</strong> obtenu, avec l'envie de continuer à me former sur les niveaux suivants.</li>
+    <li>Une discipline qui m'a immédiatement captivée : un rapport au corps, à la pression et à l'environnement totalement différent de tous les autres sports que j'ai pratiqués, où le contrôle de la respiration et le calme priment sur la performance.</li>
+    <li>Une manière d'apprendre à évoluer en équipe dans un milieu qui ne pardonne pas l'improvisation, avec un vrai plaisir à progresser palier par palier.</li>
+</ul>`,
+  },
 ];
 
 async function seedCards() {
