@@ -865,11 +865,11 @@ const cards = [
   },
   {
     page: 'projets',
-    title: `<a href="https://github.com/CeliaBocage/villa-d-audenge" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge : site vitrine multilingue</a>`,
+    title: `<a href="https://villa-d-audenge.vercel.app/" target="_blank" style="color: inherit; text-decoration: underline;">Villa d'Audenge : site vitrine multilingue</a>`,
     location: `Projet personnel`,
     date_range: `Continu`,
     image_url: null,
-    link_url: `https://github.com/CeliaBocage/villa-d-audenge`,
+    link_url: `https://villa-d-audenge.vercel.app/`,
     context: `PERSO`,
     category: `["Informatique","Web"]`,
     languages: `["TypeScript","SQL"]`,
